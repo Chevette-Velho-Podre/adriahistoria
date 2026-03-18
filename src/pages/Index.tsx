@@ -14,6 +14,7 @@ const initialPlan: LessonPlan = {
   metodologia: "",
   avaliacao: "",
   habilidades: [],
+  objetosConhecimento: [],
 };
 
 const Index = () => {
@@ -35,8 +36,23 @@ const Index = () => {
     []
   );
 
+  const handleToggleObjeto = useCallback(
+    (id: string) => {
+      setPlan((prev) => {
+        const exists = prev.objetosConhecimento.includes(id);
+        return {
+          ...prev,
+          objetosConhecimento: exists
+            ? prev.objetosConhecimento.filter((o) => o !== id)
+            : [...prev.objetosConhecimento, id],
+        };
+      });
+    },
+    []
+  );
+
   const handleAnoChange = useCallback((ano: string) => {
-    setPlan((prev) => ({ ...prev, ano, habilidades: [] }));
+    setPlan((prev) => ({ ...prev, ano, habilidades: [], objetosConhecimento: [] }));
   }, []);
 
   return (
@@ -62,7 +78,9 @@ const Index = () => {
           <CurriculumSidebar
             selectedAno={plan.ano}
             selectedSkills={plan.habilidades}
+            selectedObjetos={plan.objetosConhecimento}
             onToggleSkill={handleToggleSkill}
+            onToggleObjeto={handleToggleObjeto}
           />
         </div>
 

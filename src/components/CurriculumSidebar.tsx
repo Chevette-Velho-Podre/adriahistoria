@@ -6,10 +6,12 @@ import SkillCard from "./SkillCard";
 interface CurriculumSidebarProps {
   selectedAno: string;
   selectedSkills: Habilidade[];
+  selectedObjetos: string[];
   onToggleSkill: (h: Habilidade) => void;
+  onToggleObjeto: (id: string) => void;
 }
 
-const CurriculumSidebar = ({ selectedAno, selectedSkills, onToggleSkill }: CurriculumSidebarProps) => {
+const CurriculumSidebar = ({ selectedAno, selectedSkills, selectedObjetos, onToggleSkill, onToggleObjeto }: CurriculumSidebarProps) => {
   const [search, setSearch] = useState("");
   const [expandedTrimestres, setExpandedTrimestres] = useState<Record<string, boolean>>({});
 
@@ -76,11 +78,20 @@ const CurriculumSidebar = ({ selectedAno, selectedSkills, onToggleSkill }: Curri
               </button>
               {expanded && (
                 <div className="space-y-4 ml-1">
-                  {trimestre.objetos.map(obj => (
+                  {trimestre.objetos.map(obj => {
+                    const isObjSelected = selectedObjetos.includes(obj.id);
+                    return (
                     <div key={obj.id}>
-                      <p className="text-xs font-semibold text-foreground/70 mb-2 pl-1">
+                      <button
+                        onClick={() => onToggleObjeto(obj.id)}
+                        className={`w-full text-left text-xs font-semibold mb-2 pl-1 py-1 px-2 rounded transition-all duration-200 ${
+                          isObjSelected
+                            ? "text-skill-badge bg-skill-badge/10 border border-skill-badge/30"
+                            : "text-foreground/70 hover:text-skill-badge hover:bg-skill-hover border border-transparent"
+                        }`}
+                      >
                         {obj.titulo}
-                      </p>
+                      </button>
                       <div className="space-y-1.5">
                         {obj.habilidades.map(h => (
                           <SkillCard
@@ -92,7 +103,8 @@ const CurriculumSidebar = ({ selectedAno, selectedSkills, onToggleSkill }: Curri
                         ))}
                       </div>
                     </div>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
             </div>
