@@ -91,10 +91,10 @@ const CurriculumSidebar = ({ selectedAno, selectedTrimestre, selectedSkills, sel
                     <div key={obj.id}>
                       <button
                         onClick={() => onToggleObjeto(obj.id)}
-                        className={`w-full text-left text-xs font-semibold mb-2 pl-1 py-1 px-2 rounded transition-all duration-200 ${
+                      className={`w-full text-left text-[13px] font-bold mb-2 py-2 px-3 rounded-md transition-all duration-200 ${
                           isObjSelected
-                            ? "text-skill-badge bg-skill-badge/10 border border-skill-badge/30"
-                            : "text-foreground/70 hover:text-skill-badge hover:bg-skill-hover border border-transparent"
+                            ? "text-primary-foreground bg-primary shadow-sm"
+                            : "text-foreground bg-accent border border-border hover:bg-primary/10 hover:border-primary/30"
                         }`}
                       >
                         {obj.titulo}
