@@ -109,3 +109,52 @@
     text-wrap: pretty;
   }
 }
+
+@media print {
+  @page {
+    size: A4;
+    margin: 15mm;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Hide non-printable UI elements */
+  .lg\:hidden,
+  [data-print-hide] {
+    display: none !important;
+  }
+
+  /* Hide sidebar on print */
+  .lg\:block.w-full.lg\:w-\[400px\] {
+    display: none !important;
+  }
+
+  /* Make form take full width */
+  .flex-1.flex.flex-col.overflow-hidden {
+    width: 100% !important;
+    overflow: visible !important;
+  }
+
+  /* Remove sticky header backdrop */
+  .sticky {
+    position: relative !important;
+  }
+
+  /* Ensure content flows naturally */
+  .overflow-y-auto,
+  .overflow-hidden {
+    overflow: visible !important;
+  }
+
+  .h-screen {
+    height: auto !important;
+  }
+
+  /* Page break control */
+  section {
+    break-inside: avoid;
+  }
+}
