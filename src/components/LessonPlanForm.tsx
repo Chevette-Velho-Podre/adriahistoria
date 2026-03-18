@@ -105,7 +105,7 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange }: LessonPlanFormProps) =>
 História 
  
      </h1>
-            <p className="text-xs text-muted-foreground">Referencial Curricular — Montes Claros</p>
+            <p className="text-xs text-muted-foreground">Referencial Curricular — Montes Claros/MG</p>
           </div>
         </div>
         <AnimatePresence>
