@@ -96,6 +96,7 @@ const Index = () => {
             plan={plan}
             onChange={setPlan}
             onAnoChange={handleAnoChange}
+            onTrimestreChange={handleTrimestreChange}
           />
         </div>
       </div>
