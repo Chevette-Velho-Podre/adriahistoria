@@ -172,6 +172,24 @@ História
                 )}
               </select>
             </InputGroup>
+            <InputGroup label="Trimestre">
+              <div className="flex gap-2">
+                {availableTrimestres.map((num) => (
+                  <button
+                    key={num}
+                    type="button"
+                    onClick={() => onTrimestreChange(plan.trimestre === num ? null : num)}
+                    className={`flex-1 px-3 py-2 text-sm rounded-md border transition-all ${
+                      plan.trimestre === num
+                        ? "bg-skill-badge text-skill-badge-foreground border-skill-badge font-semibold"
+                        : "bg-background border-input text-foreground hover:bg-accent"
+                    }`}
+                  >
+                    {num}º
+                  </button>
+                ))}
+              </div>
+            </InputGroup>
           </div>
         </section>
 

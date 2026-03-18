@@ -22,10 +22,16 @@ const CurriculumSidebar = ({ selectedAno, selectedTrimestre, selectedSkills, sel
 
   const filteredTrimestres = useMemo(() => {
     if (!anoData) return [];
-    const q = search.toLowerCase();
-    if (!q) return anoData.trimestres;
+    // Filter by selected trimestre first
+    let trimestres = anoData.trimestres;
+    if (selectedTrimestre !== null) {
+      trimestres = trimestres.filter(t => t.numero === selectedTrimestre);
+    }
 
-    return anoData.trimestres
+    const q = search.toLowerCase();
+    if (!q) return trimestres;
+
+    return trimestres
       .map(t => ({
         ...t,
         objetos: t.objetos
@@ -38,7 +44,7 @@ const CurriculumSidebar = ({ selectedAno, selectedTrimestre, selectedSkills, sel
           .filter(o => o.habilidades.length > 0 || o.titulo.toLowerCase().includes(q)),
       }))
       .filter(t => t.objetos.length > 0);
-  }, [anoData, search]);
+  }, [anoData, search, selectedTrimestre]);
 
   const toggleTrimestre = (key: string) => {
     setExpandedTrimestres(prev => ({ ...prev, [key]: !prev[key] }));
