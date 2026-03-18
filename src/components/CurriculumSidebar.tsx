@@ -103,7 +103,8 @@ const CurriculumSidebar = ({ selectedAno, selectedSkills, selectedObjetos, onTog
                         ))}
                       </div>
                     </div>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
             </div>
