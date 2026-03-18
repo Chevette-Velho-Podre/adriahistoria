@@ -56,9 +56,12 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange }: Less
   );
 
   const handleAnoChange = (ano: string) => {
-    onChange({ ...plan, ano, habilidades: [], objetosConhecimento: [] });
+    onChange({ ...plan, ano, trimestre: null, habilidades: [], objetosConhecimento: [] });
     onAnoChange(ano);
   };
+
+  const anoData = useMemo(() => curriculumData.find((a) => a.ano === plan.ano), [plan.ano]);
+  const availableTrimestres = useMemo(() => anoData?.trimestres.map(t => t.numero) ?? [], [anoData]);
 
   const removeSkill = (codigo: string) => {
     onChange({
