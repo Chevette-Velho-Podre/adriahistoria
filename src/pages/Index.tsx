@@ -36,8 +36,23 @@ const Index = () => {
     []
   );
 
+  const handleToggleObjeto = useCallback(
+    (id: string) => {
+      setPlan((prev) => {
+        const exists = prev.objetosConhecimento.includes(id);
+        return {
+          ...prev,
+          objetosConhecimento: exists
+            ? prev.objetosConhecimento.filter((o) => o !== id)
+            : [...prev.objetosConhecimento, id],
+        };
+      });
+    },
+    []
+  );
+
   const handleAnoChange = useCallback((ano: string) => {
-    setPlan((prev) => ({ ...prev, ano, habilidades: [] }));
+    setPlan((prev) => ({ ...prev, ano, habilidades: [], objetosConhecimento: [] }));
   }, []);
 
   return (
