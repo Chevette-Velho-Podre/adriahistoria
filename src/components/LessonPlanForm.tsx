@@ -54,7 +54,7 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange }: LessonPlanFormProps) =>
   );
 
   const handleAnoChange = (ano: string) => {
-    onChange({ ...plan, ano, habilidades: [] });
+    onChange({ ...plan, ano, habilidades: [], objetosConhecimento: [] });
     onAnoChange(ano);
   };
 
@@ -64,6 +64,23 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange }: LessonPlanFormProps) =>
       habilidades: plan.habilidades.filter((h) => h.codigo !== codigo),
     });
   };
+
+  const removeObjeto = (id: string) => {
+    onChange({
+      ...plan,
+      objetosConhecimento: plan.objetosConhecimento.filter((o) => o !== id),
+    });
+  };
+
+  // Resolve objeto names from IDs
+  const selectedObjetos = useMemo(() => {
+    const anoData = curriculumData.find(a => a.ano === plan.ano);
+    if (!anoData) return [];
+    const all = anoData.trimestres.flatMap(t => t.objetos);
+    return plan.objetosConhecimento
+      .map(id => all.find(o => o.id === id))
+      .filter(Boolean) as { id: string; titulo: string }[];
+  }, [plan.ano, plan.objetosConhecimento]);
 
   // Auto-save indicator
   useEffect(() => {
