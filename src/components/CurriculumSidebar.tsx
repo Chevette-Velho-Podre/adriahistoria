@@ -5,6 +5,7 @@ import SkillCard from "./SkillCard";
 
 interface CurriculumSidebarProps {
   selectedAno: string;
+  selectedTrimestre: number | null;
   selectedSkills: Habilidade[];
   selectedObjetos: string[];
   onToggleSkill: (h: Habilidade) => void;
