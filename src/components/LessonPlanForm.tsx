@@ -324,13 +324,15 @@ História
         </section>
 
         {/* Sugestão Metodológica contextual */}
-        {plan.habilidades.length > 0 && (() => {
+        {(plan.habilidades.length > 0 || plan.objetosConhecimento.length > 0) && (() => {
           const anoData = curriculumData.find((a) => a.ano === plan.ano);
           const sugestoes = new Set<string>();
           if (anoData) {
             for (const t of anoData.trimestres) {
               for (const o of t.objetos) {
-                if (o.sugestaoMetodologica && o.habilidades.some((h) => plan.habilidades.some((s) => s.codigo === h.codigo))) {
+                const matchBySkill = o.habilidades.some((h) => plan.habilidades.some((s) => s.codigo === h.codigo));
+                const matchByObjeto = plan.objetosConhecimento.includes(o.id);
+                if (o.sugestaoMetodologica && (matchBySkill || matchByObjeto)) {
                   sugestoes.add(`${o.titulo}: ${o.sugestaoMetodologica}`);
                 }
               }
