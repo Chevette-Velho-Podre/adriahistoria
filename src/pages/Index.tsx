@@ -1,16 +1,82 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState, useCallback } from "react";
+import { Menu, X } from "lucide-react";
+import CurriculumSidebar from "@/components/CurriculumSidebar";
+import LessonPlanForm, { type LessonPlan } from "@/components/LessonPlanForm";
+import type { Habilidade } from "@/data/curriculum";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const initialPlan: LessonPlan = {
+  professor: "",
+  escola: "",
+  data: "",
+  ano: "6º Ano",
+  tema: "",
+  objetivos: "",
+  metodologia: "",
+  avaliacao: "",
+  habilidades: [],
+};
+
+const Index = () => {
+  const [plan, setPlan] = useState<LessonPlan>(initialPlan);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const handleToggleSkill = useCallback(
+    (h: Habilidade) => {
+      setPlan((prev) => {
+        const exists = prev.habilidades.some((s) => s.codigo === h.codigo);
+        return {
+          ...prev,
+          habilidades: exists
+            ? prev.habilidades.filter((s) => s.codigo !== h.codigo)
+            : [...prev.habilidades, h],
+        };
+      });
+    },
+    []
+  );
+
+  const handleAnoChange = useCallback((ano: string) => {
+    setPlan((prev) => ({ ...prev, ano, habilidades: [] }));
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+    <div className="h-screen flex flex-col bg-background">
+      {/* Mobile header */}
+      <div className="lg:hidden flex items-center justify-between px-4 py-3 border-b border-border bg-card">
+        <span className="text-sm font-semibold text-foreground">Clio — Planejador</span>
+        <button
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+          className="p-2 rounded-md hover:bg-accent transition-colors"
+        >
+          {sidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+      </div>
+
+      <div className="flex flex-1 overflow-hidden">
+        {/* Sidebar - desktop always visible, mobile toggle */}
+        <div
+          className={`${
+            sidebarOpen ? "block" : "hidden"
+          } lg:block w-full lg:w-[400px] lg:min-w-[400px] absolute lg:relative z-20 h-[calc(100vh-49px)] lg:h-full`}
+        >
+          <CurriculumSidebar
+            selectedAno={plan.ano}
+            selectedSkills={plan.habilidades}
+            onToggleSkill={handleToggleSkill}
+          />
+        </div>
+
+        {/* Editor */}
+        <div className="flex-1 flex flex-col overflow-hidden">
+          <LessonPlanForm
+            plan={plan}
+            onChange={setPlan}
+            onAnoChange={handleAnoChange}
+          />
+        </div>
+      </div>
     </div>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
