@@ -330,6 +330,14 @@ História
 
         })()}
 
+        {/* Assinatura */}
+        <section className="mt-12 pt-8">
+          <div className="flex flex-col items-center gap-2">
+            <div className="w-64 border-t border-foreground/40" />
+            <p className="text-sm text-muted-foreground">Assinatura do(a) Professor(a)</p>
+          </div>
+        </section>
+
         <div className="h-8" />
       </div>
     </div>);
