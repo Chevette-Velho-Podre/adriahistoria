@@ -53,7 +53,11 @@ const Index = () => {
   );
 
   const handleAnoChange = useCallback((ano: string) => {
-    setPlan((prev) => ({ ...prev, ano, habilidades: [], objetosConhecimento: [] }));
+    setPlan((prev) => ({ ...prev, ano, trimestre: null, habilidades: [], objetosConhecimento: [] }));
+  }, []);
+
+  const handleTrimestreChange = useCallback((trimestre: number | null) => {
+    setPlan((prev) => ({ ...prev, trimestre, habilidades: [], objetosConhecimento: [] }));
   }, []);
 
   return (
