@@ -9,6 +9,7 @@ const initialPlan: LessonPlan = {
   escola: "",
   data: "",
   ano: "6º Ano",
+  trimestre: null,
   tema: "",
   objetivos: "",
   metodologia: "",
@@ -52,7 +53,11 @@ const Index = () => {
   );
 
   const handleAnoChange = useCallback((ano: string) => {
-    setPlan((prev) => ({ ...prev, ano, habilidades: [], objetosConhecimento: [] }));
+    setPlan((prev) => ({ ...prev, ano, trimestre: null, habilidades: [], objetosConhecimento: [] }));
+  }, []);
+
+  const handleTrimestreChange = useCallback((trimestre: number | null) => {
+    setPlan((prev) => ({ ...prev, trimestre, habilidades: [], objetosConhecimento: [] }));
   }, []);
 
   return (
@@ -77,6 +82,7 @@ const Index = () => {
         >
           <CurriculumSidebar
             selectedAno={plan.ano}
+            selectedTrimestre={plan.trimestre}
             selectedSkills={plan.habilidades}
             selectedObjetos={plan.objetosConhecimento}
             onToggleSkill={handleToggleSkill}
@@ -90,6 +96,7 @@ const Index = () => {
             plan={plan}
             onChange={setPlan}
             onAnoChange={handleAnoChange}
+            onTrimestreChange={handleTrimestreChange}
           />
         </div>
       </div>

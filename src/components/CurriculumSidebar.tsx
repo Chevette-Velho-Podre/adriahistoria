@@ -5,13 +5,14 @@ import SkillCard from "./SkillCard";
 
 interface CurriculumSidebarProps {
   selectedAno: string;
+  selectedTrimestre: number | null;
   selectedSkills: Habilidade[];
   selectedObjetos: string[];
   onToggleSkill: (h: Habilidade) => void;
   onToggleObjeto: (id: string) => void;
 }
 
-const CurriculumSidebar = ({ selectedAno, selectedSkills, selectedObjetos, onToggleSkill, onToggleObjeto }: CurriculumSidebarProps) => {
+const CurriculumSidebar = ({ selectedAno, selectedTrimestre, selectedSkills, selectedObjetos, onToggleSkill, onToggleObjeto }: CurriculumSidebarProps) => {
   const [search, setSearch] = useState("");
   const [expandedTrimestres, setExpandedTrimestres] = useState<Record<string, boolean>>({});
 
@@ -21,10 +22,16 @@ const CurriculumSidebar = ({ selectedAno, selectedSkills, selectedObjetos, onTog
 
   const filteredTrimestres = useMemo(() => {
     if (!anoData) return [];
-    const q = search.toLowerCase();
-    if (!q) return anoData.trimestres;
+    // Filter by selected trimestre first
+    let trimestres = anoData.trimestres;
+    if (selectedTrimestre !== null) {
+      trimestres = trimestres.filter(t => t.numero === selectedTrimestre);
+    }
 
-    return anoData.trimestres
+    const q = search.toLowerCase();
+    if (!q) return trimestres;
+
+    return trimestres
       .map(t => ({
         ...t,
         objetos: t.objetos
@@ -37,7 +44,7 @@ const CurriculumSidebar = ({ selectedAno, selectedSkills, selectedObjetos, onTog
           .filter(o => o.habilidades.length > 0 || o.titulo.toLowerCase().includes(q)),
       }))
       .filter(t => t.objetos.length > 0);
-  }, [anoData, search]);
+  }, [anoData, search, selectedTrimestre]);
 
   const toggleTrimestre = (key: string) => {
     setExpandedTrimestres(prev => ({ ...prev, [key]: !prev[key] }));

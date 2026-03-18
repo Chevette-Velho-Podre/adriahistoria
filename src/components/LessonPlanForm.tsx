@@ -8,18 +8,20 @@ export interface LessonPlan {
   escola: string;
   data: string;
   ano: string;
+  trimestre: number | null;
   tema: string;
   objetivos: string;
   metodologia: string;
   avaliacao: string;
   habilidades: Habilidade[];
-  objetosConhecimento: string[]; // IDs of selected ObjetoConhecimento
+  objetosConhecimento: string[];
 }
 
 interface LessonPlanFormProps {
   plan: LessonPlan;
   onChange: (plan: LessonPlan) => void;
   onAnoChange: (ano: string) => void;
+  onTrimestreChange: (trimestre: number | null) => void;
 }
 
 const InputGroup = ({
@@ -43,7 +45,7 @@ const inputClass =
 const textareaClass =
 "w-full px-3 py-2 text-sm bg-background border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring/30 transition-all resize-y min-h-[80px] placeholder:text-muted-foreground/50";
 
-const LessonPlanForm = ({ plan, onChange, onAnoChange }: LessonPlanFormProps) => {
+const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange }: LessonPlanFormProps) => {
   const [saved, setSaved] = useState(false);
 
   const update = useCallback(
@@ -54,9 +56,12 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange }: LessonPlanFormProps) =>
   );
 
   const handleAnoChange = (ano: string) => {
-    onChange({ ...plan, ano, habilidades: [], objetosConhecimento: [] });
+    onChange({ ...plan, ano, trimestre: null, habilidades: [], objetosConhecimento: [] });
     onAnoChange(ano);
   };
+
+  const anoData = useMemo(() => curriculumData.find((a) => a.ano === plan.ano), [plan.ano]);
+  const availableTrimestres = useMemo(() => anoData?.trimestres.map(t => t.numero) ?? [], [anoData]);
 
   const removeSkill = (codigo: string) => {
     onChange({
@@ -166,6 +171,24 @@ História
                   </option>
                 )}
               </select>
+            </InputGroup>
+            <InputGroup label="Trimestre">
+              <div className="flex gap-2">
+                {availableTrimestres.map((num) => (
+                  <button
+                    key={num}
+                    type="button"
+                    onClick={() => onTrimestreChange(plan.trimestre === num ? null : num)}
+                    className={`flex-1 px-3 py-2 text-sm rounded-md border transition-all ${
+                      plan.trimestre === num
+                        ? "bg-skill-badge text-skill-badge-foreground border-skill-badge font-semibold"
+                        : "bg-background border-input text-foreground hover:bg-accent"
+                    }`}
+                  >
+                    {num}º
+                  </button>
+                ))}
+              </div>
             </InputGroup>
           </div>
         </section>
