@@ -82,6 +82,7 @@ const Index = () => {
         >
           <CurriculumSidebar
             selectedAno={plan.ano}
+            selectedTrimestre={plan.trimestre}
             selectedSkills={plan.habilidades}
             selectedObjetos={plan.objetosConhecimento}
             onToggleSkill={handleToggleSkill}
