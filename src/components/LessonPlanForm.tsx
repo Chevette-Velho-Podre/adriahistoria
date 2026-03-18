@@ -8,12 +8,13 @@ export interface LessonPlan {
   escola: string;
   data: string;
   ano: string;
+  trimestre: number | null;
   tema: string;
   objetivos: string;
   metodologia: string;
   avaliacao: string;
   habilidades: Habilidade[];
-  objetosConhecimento: string[]; // IDs of selected ObjetoConhecimento
+  objetosConhecimento: string[];
 }
 
 interface LessonPlanFormProps {
