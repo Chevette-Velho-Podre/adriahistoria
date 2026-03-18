@@ -9,6 +9,7 @@ const initialPlan: LessonPlan = {
   escola: "",
   data: "",
   ano: "6º Ano",
+  trimestre: null,
   tema: "",
   objetivos: "",
   metodologia: "",
