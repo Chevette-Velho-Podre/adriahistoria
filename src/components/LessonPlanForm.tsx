@@ -186,6 +186,40 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange }: LessonPlanFormProps) =>
               />
             </InputGroup>
 
+            <InputGroup label="Objetos de Conhecimento">
+              <div className="min-h-[48px] p-3 bg-background border border-input rounded-md">
+                {selectedObjetos.length === 0 ? (
+                  <p className="text-xs text-muted-foreground/60">
+                    ← Clique nos títulos dos objetos ao lado para adicioná-los
+                  </p>
+                ) : (
+                  <div className="space-y-2">
+                    <AnimatePresence mode="popLayout">
+                      {selectedObjetos.map((obj) => (
+                        <motion.div
+                          key={obj.id}
+                          layout
+                          initial={{ opacity: 0, y: -4 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, scale: 0.95 }}
+                          transition={{ duration: 0.2 }}
+                          className="flex items-start gap-2 p-2 rounded-md bg-accent border border-border"
+                        >
+                          <span className="flex-1 text-sm text-foreground/90 leading-relaxed">{obj.titulo}</span>
+                          <button
+                            onClick={() => removeObjeto(obj.id)}
+                            className="mt-0.5 p-0.5 rounded-sm hover:bg-foreground/10 transition-colors"
+                          >
+                            <X className="h-3.5 w-3.5 text-muted-foreground" />
+                          </button>
+                        </motion.div>
+                      ))}
+                    </AnimatePresence>
+                  </div>
+                )}
+              </div>
+            </InputGroup>
+
             <InputGroup label="Habilidades Selecionadas">
               <div className="min-h-[48px] p-3 bg-background border border-input rounded-md">
                 {plan.habilidades.length === 0 ? (
@@ -193,14 +227,33 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange }: LessonPlanFormProps) =>
                     ← Clique nas habilidades ao lado para adicioná-las
                   </p>
                 ) : (
-                  <div className="flex flex-wrap gap-2">
+                  <div className="space-y-2">
                     <AnimatePresence mode="popLayout">
                       {plan.habilidades.map((h) => (
-                        <SelectedSkillBadge
+                        <motion.div
                           key={h.codigo}
-                          habilidade={h}
-                          onRemove={removeSkill}
-                        />
+                          layout
+                          initial={{ opacity: 0, y: -4 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, scale: 0.95 }}
+                          transition={{ duration: 0.2 }}
+                          className="flex items-start gap-2 p-2 rounded-md bg-skill-hover border border-border"
+                        >
+                          <div className="flex-1">
+                            <span className="font-tabular text-xs font-bold text-skill-badge mr-1.5">
+                              {h.codigo}
+                            </span>
+                            <span className="text-sm text-foreground/80 text-pretty leading-relaxed">
+                              {h.descricao}
+                            </span>
+                          </div>
+                          <button
+                            onClick={() => removeSkill(h.codigo)}
+                            className="mt-0.5 p-0.5 rounded-sm hover:bg-foreground/10 transition-colors"
+                          >
+                            <X className="h-3.5 w-3.5 text-muted-foreground" />
+                          </button>
+                        </motion.div>
                       ))}
                     </AnimatePresence>
                   </div>

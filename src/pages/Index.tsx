@@ -14,6 +14,7 @@ const initialPlan: LessonPlan = {
   metodologia: "",
   avaliacao: "",
   habilidades: [],
+  objetosConhecimento: [],
 };
 
 const Index = () => {
