@@ -1,8 +1,7 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { FileText, Check } from "lucide-react";
+import { FileText, Check, X } from "lucide-react";
 import { curriculumData, type Habilidade } from "@/data/curriculum";
-import SelectedSkillBadge from "./SelectedSkillBadge";
 
 export interface LessonPlan {
   professor: string;
@@ -14,6 +13,7 @@ export interface LessonPlan {
   metodologia: string;
   avaliacao: string;
   habilidades: Habilidade[];
+  objetosConhecimento: string[]; // IDs of selected ObjetoConhecimento
 }
 
 interface LessonPlanFormProps {
