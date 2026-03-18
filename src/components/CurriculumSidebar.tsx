@@ -11,7 +11,7 @@ interface CurriculumSidebarProps {
   onToggleObjeto: (id: string) => void;
 }
 
-const CurriculumSidebar = ({ selectedAno, selectedSkills, onToggleSkill }: CurriculumSidebarProps) => {
+const CurriculumSidebar = ({ selectedAno, selectedSkills, selectedObjetos, onToggleSkill, onToggleObjeto }: CurriculumSidebarProps) => {
   const [search, setSearch] = useState("");
   const [expandedTrimestres, setExpandedTrimestres] = useState<Record<string, boolean>>({});
 
