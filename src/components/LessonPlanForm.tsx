@@ -104,14 +104,23 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange }: Less
     });
   };
 
-  // Resolve objeto names from IDs
+  // Resolve objeto names from IDs, merging curriculum data with selected subtopics
   const selectedObjetos = useMemo(() => {
     const anoData = curriculumData.find((a) => a.ano === plan.ano);
     if (!anoData) return [];
     const all = anoData.trimestres.flatMap((t) => t.objetos);
-    return plan.objetosConhecimento.
-    map((id) => all.find((o) => o.id === id)).
-    filter(Boolean) as {id: string; titulo: string; subtopicos?: string[];}[];
+    return plan.objetosConhecimento
+      .map((sel) => {
+        const obj = all.find((o) => o.id === sel.id);
+        if (!obj) return null;
+        return {
+          id: obj.id,
+          titulo: obj.titulo,
+          allSubtopicos: obj.subtopicos ?? [],
+          selectedSubtopicos: sel.subtopicos,
+        };
+      })
+      .filter(Boolean) as { id: string; titulo: string; allSubtopicos: string[]; selectedSubtopicos: string[] }[];
   }, [plan.ano, plan.objetosConhecimento]);
 
   // Auto-save indicator
