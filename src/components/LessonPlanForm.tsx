@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { FileText, Check, X } from "lucide-react";
+import { FileText, Check, X, Download } from "lucide-react";
 import { curriculumData, type Habilidade } from "@/data/curriculum";
 import logoSecretaria from "@/assets/logo-secretaria-educacao.png";
+import { exportToPdf } from "@/utils/exportPdf";
+import { exportToDocx } from "@/utils/exportDocx";
 
 export interface ObjetoSelecionado {
   id: string;
