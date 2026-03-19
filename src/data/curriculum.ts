@@ -47,7 +47,12 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "6-1-2",
-            titulo: "A questão do tempo, sincronias e diacronias: reflexões sobre o sentido das cronologias",
+            titulo: "A questão do tempo, sincronias e diacronias: reflexões sobre o sentido das cronologias (HTEF)",
+            subtopicos: [
+              "A construção social do tempo.",
+              "Unidades de medida do tempo.",
+              "Instrumentos de aferição.",
+            ],
             sugestaoMetodologica: "Trabalhar a ideia de que o tempo é uma construção social, referência para organizar e sistematizar as experiências humanas. Demonstre diferentes instrumentos para aferição do tempo, enfatizando o aspecto do controle social (datas e prazos, registros de entrada e saída etc).",
             habilidades: [
               { codigo: "EF06HIMOC06", descricao: "Conceituar tempo." },
