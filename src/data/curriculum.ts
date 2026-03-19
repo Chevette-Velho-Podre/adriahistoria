@@ -30,7 +30,11 @@ export const curriculumData: AnoLetivo[] = [
         objetos: [
           {
             id: "6-1-1",
-            titulo: "Formas de registro da história e da produção do conhecimento histórico",
+            titulo: "Formas de registro da história e da produção do conhecimento histórico (HTEF)",
+            subtopicos: [
+              "A função social da História.",
+              "Fontes históricas e sua importância.",
+            ],
             sugestaoMetodologica: "Desenvolver a ideia de que História não é \"coisa do passado\", mas uma interpretação construída a partir de vestígios. Comece com um problema concreto, a ser discutido, para o qual deve ser elaborada uma solução.",
             habilidades: [
               { codigo: "EF06HIMOC01", descricao: "Elaborar conceito de História." },
