@@ -85,11 +85,45 @@ function resolveSugestoes(plan: LessonPlan): string[] {
   return Array.from(sugestoes);
 }
 
-async function loadLogo(): Promise<ArrayBuffer | null> {
+type LoadedLogo = {
+  data: ArrayBuffer;
+  width: number;
+  height: number;
+};
+
+function fitLogoSize(width: number, height: number, maxWidth: number, maxHeight: number) {
+  const ratio = Math.min(maxWidth / width, maxHeight / height);
+  return {
+    width: Math.max(1, Math.round(width * ratio)),
+    height: Math.max(1, Math.round(height * ratio)),
+  };
+}
+
+async function loadLogo(): Promise<LoadedLogo | null> {
   try {
     const resp = await fetch(logoSecretaria);
     if (!resp.ok) return null;
-    return await resp.arrayBuffer();
+
+    const blob = await resp.blob();
+    const data = await blob.arrayBuffer();
+    const dimensions = await new Promise<{ width: number; height: number }>((resolve, reject) => {
+      const objectUrl = URL.createObjectURL(blob);
+      const img = new Image();
+
+      img.onload = () => {
+        resolve({ width: img.naturalWidth, height: img.naturalHeight });
+        URL.revokeObjectURL(objectUrl);
+      };
+
+      img.onerror = () => {
+        URL.revokeObjectURL(objectUrl);
+        reject(new Error("Não foi possível carregar a logomarca"));
+      };
+
+      img.src = objectUrl;
+    });
+
+    return { data, ...dimensions };
   } catch {
     return null;
   }
@@ -98,7 +132,8 @@ async function loadLogo(): Promise<ArrayBuffer | null> {
 export async function exportToDocx(plan: LessonPlan) {
   const objetos = resolveObjetos(plan);
   const sugestoes = resolveSugestoes(plan);
-  const logoData = await loadLogo();
+  const logo = await loadLogo();
+  const logoSize = logo ? fitLogoSize(logo.width, logo.height, 200, 80) : null;
   const tableWidth = 9360;
   const col1 = 2400;
   const col2 = tableWidth - col1;
@@ -106,27 +141,27 @@ export async function exportToDocx(plan: LessonPlan) {
   const children: (Paragraph | Table)[] = [];
 
   // Header with logo + titles
-  if (logoData) {
+  if (logo && logoSize) {
     children.push(
       new Table({
         width: { size: tableWidth, type: WidthType.DXA },
-        columnWidths: [2000, 7360],
+        columnWidths: [3200, 6160],
         rows: [
           new TableRow({
             children: [
               new TableCell({
                 borders: noBorders,
-                width: { size: 2000, type: WidthType.DXA },
+                width: { size: 3200, type: WidthType.DXA },
                 verticalAlign: "center" as any,
                 margins: cellMargins,
                 children: [
                   new Paragraph({
-                    alignment: AlignmentType.CENTER,
+                    alignment: AlignmentType.LEFT,
                     children: [
                       new ImageRun({
                         type: "png",
-                        data: logoData,
-                        transformation: { width: 160, height: 80 },
+                        data: logo.data,
+                        transformation: logoSize,
                         altText: { title: "Logo", description: "Secretaria de Educação", name: "logo" },
                       }),
                     ],
@@ -135,7 +170,7 @@ export async function exportToDocx(plan: LessonPlan) {
               }),
               new TableCell({
                 borders: noBorders,
-                width: { size: 7360, type: WidthType.DXA },
+                width: { size: 6160, type: WidthType.DXA },
                 verticalAlign: "center" as any,
                 margins: cellMargins,
                 children: [
