@@ -33,7 +33,7 @@ export const curriculumData: AnoLetivo[] = [
             sugestaoMetodologica: "Desenvolver a ideia de que História não é \"coisa do passado\", mas uma interpretação construída a partir de vestígios. Comece com um problema concreto, a ser discutido, para o qual deve ser elaborada uma solução.",
             habilidades: [
               { codigo: "EF06HIMOC01", descricao: "Elaborar conceito de História." },
-              { codigo: "EF06HIMOC02", descricao: "Compreender a função social da História." },
+              { codigo: "EF06HIMOC02", descricao: "Compreender a função social História." },
               { codigo: "EF06HIMOC03", descricao: "Elaborar conceito sobre fontes históricas." },
               { codigo: "EF06HIMOC04", descricao: "Identificar os tipos de fontes históricas." },
               { codigo: "EF06HIMOC05", descricao: "Reconhecer a importância das fontes históricas para a formação do conhecimento histórico." },
@@ -54,29 +54,23 @@ export const curriculumData: AnoLetivo[] = [
           {
             id: "6-1-3",
             titulo: "As origens da humanidade, seus deslocamentos e os processos de sedentarização",
-            sugestaoMetodologica: "Desenvolver a compreensão de que as narrativas sobre as origens da humanidade não são únicas e nem neutras, mas resultam de diferentes formas de explicar o mundo, tanto científicas quanto míticas. A partir disso, introduza hipóteses sobre o surgimento da espécie humana, as teorias acerca da origem do homem americano e as rotas de povoamento.",
+            sugestaoMetodologica: "Desenvolver a compreensão de que as narrativas sobre as origens da humanidade não são únicas e nem neutras, mas resultam de diferentes formas de explicar o mundo, tanto científicas quanto míticas. A partir disso, introduza hipóteses sobre o surgimento da espécie humana, as teorias acerca da origem do homem americano e as rotas de povoamento do continente, enfatizando deslocamentos, adaptações e processos de sedentarização.",
             habilidades: [
               { codigo: "EF06HIMOC09", descricao: "Diferenciar História e Pré-história." },
               { codigo: "EF06HI03", descricao: "Identificar as hipóteses científicas sobre o surgimento da espécie humana e sua historicidade e analisar os significados dos mitos de fundação." },
               { codigo: "EF06HI04", descricao: "Conhecer as teorias sobre a origem do homem americano." },
               { codigo: "EF06HI05", descricao: "Descrever modificações da natureza e da paisagem realizadas por diferentes tipos de sociedade, com destaque para os povos indígenas originários e povos africanos, e discutir a natureza e a lógica das transformações ocorridas." },
-            ],
-          },
-          {
-            id: "6-1-4",
-            titulo: "Povos originais e o povoamento do território americano",
-            habilidades: [
               { codigo: "EF06HI06", descricao: "Identificar as rotas de povoamento no território americano." },
               { codigo: "EF06HIMOC10", descricao: "Compreender o modo de vida dos primeiros habitantes do território americano." },
             ],
           },
           {
-            id: "6-1-5",
-            titulo: "Povos da Antiguidade na África",
+            id: "6-1-4",
+            titulo: "Povos da Antiguidade na África (egípcios), no Oriente Médio (mesopotâmicos) e nas Américas (pré-colombianos)",
             sugestaoMetodologica: "Desenvolver a compreensão de que as sociedades antigas apresentaram organizações sociais, políticas, econômicas e culturais complexas. Parta do problema sobre por que algumas civilizações são mais lembradas que outras e realize uma análise comparativa entre Egito, Mesopotâmia e povos pré-colombianos, destacando formas de registro, cultura material, poder, trabalho e produção de conhecimentos, evidenciando que cada sociedade criou soluções próprias para desafios semelhantes.",
             habilidades: [
               { codigo: "EF06HI07", descricao: "Identificar aspectos e formas de registro das sociedades antigas na África, no Oriente Médio e nas Américas, distinguindo alguns significados presentes na cultura material e na tradição oral dessas sociedades." },
-              { codigo: "EF06HIMOC11", descricao: "Identificar e caracterizar os povos hebreus, fenícios e persas, analisando suas peculiaridades e importância para a história da humanidade." },
+              { codigo: "EF06HIMOC11", descricao: "Identificar e caraterizar os povos hebreus, fenícios e persas, analisando suas peculiaridades e importância para a história da humanidade." },
               { codigo: "EF06HIMOC12", descricao: "Caracterizar o Egito Antigo, identificando aspectos sociais, culturais, políticos e econômicos." },
               { codigo: "EF06HIMOC13", descricao: "Caracterizar a Mesopotâmia, identificando os aspectos sociais, econômicos e políticos." },
               { codigo: "EF06HIMOC14", descricao: "Identificar, compreender e diferenciar os povos americanos pré-colombianos." },
@@ -84,21 +78,22 @@ export const curriculumData: AnoLetivo[] = [
             ],
           },
           {
-            id: "6-1-6",
-            titulo: "As diferentes formas de organização política na África",
-            sugestaoMetodologica: "Promover a compreensão de que o continente africano possui trajetória marcada por formas diversas de organização. Explore a existência de reinos e impérios, enfatizando estruturas de poder, econômicas e sociais. A abordagem deve problematizar estereótipos e evidenciar a diversidade de identidades.",
+            id: "6-1-5",
+            titulo: "As diferentes formas de organização política na África: reinos, impérios, cidades-estados e sociedades linhageiras ou aldeias",
+            sugestaoMetodologica: "Promover a compreensão de que o continente africano possui trajetória marcada por formas diversas de organização. Explore a existência de reinos e impérios, enfatizando estruturas de poder, econômicas e sociais. A abordagem deve problematizar estereótipos e evidenciar a diversidade de identidades, reforçando a importância do continente para a história da humanidade.",
             habilidades: [
               { codigo: "EF06HIMOC15", descricao: "Compreender a importância histórica e política do continente africano." },
               { codigo: "EF06HIMOC16", descricao: "Conhecer os impérios africanos: Gana, Mali." },
-              { codigo: "EF06HIMOC17", descricao: "Identificar as diferentes nações que compunham os povos africanos." },
+              { codigo: "EF06HIMOC17", descricao: "Identificar as diferentes e nações que compunham os povos africanos." },
               { codigo: "EF06HIMOC18", descricao: "Analisar o processo de formação política e econômica dos territórios no continente africano." },
             ],
           },
           {
-            id: "6-1-7",
-            titulo: "Os povos indígenas",
-            sugestaoMetodologica: "Explore a pluralidade dos povos indígenas no território brasileiro, destacando hábitos, formas de organização social e ocupação do espaço. A abordagem deve enfatizar os aportes culturais, sociais e tecnológicos, além de analisar as transformações provocadas pela colonização, as disputas territoriais e a lógica das reservas indígenas, reforçando o protagonismo indígena na história do Brasil.",
+            id: "6-1-6",
+            titulo: "Os povos indígenas originários do atual território brasileiro e seus hábitos culturais e sociais",
+            sugestaoMetodologica: "Problematizar a ideia de que os povos indígenas pertencem apenas ao passado, evidenciando sua presença histórica, contemporânea e a diversidade de seus modos de vida. Explore a pluralidade dos povos indígenas no território brasileiro, destacando hábitos, formas de organização social e ocupação do espaço. A abordagem deve enfatizar os aportes culturais, sociais e tecnológicos, além de analisar as transformações provocadas pela colonização, as disputas territoriais e a lógica das reservas indígenas, reforçando o protagonismo indígena na história do Brasil.",
             habilidades: [
+              { codigo: "EF06HI08", descricao: "Identificar os espaços territoriais ocupados e os aportes culturais, científicos, sociais e econômicos dos astecas, maias e incas e dos povos indígenas de diversas regiões brasileiras." },
               { codigo: "EF06HIMOC19", descricao: "Conhecer os povos indígenas brasileiros." },
               { codigo: "EF06HIMOC20", descricao: "Analisar a importância histórica e cultural indígena na sociedade brasileira." },
               { codigo: "EF06HIMOC21", descricao: "Analisar as formas de organização territorial dos povos indígenas, as transformações decorrentes da colonização e a criação das reservas indígenas no Brasil." },
