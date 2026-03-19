@@ -99,6 +99,16 @@ const CurriculumSidebar = ({ selectedAno, selectedTrimestre, selectedSkills, sel
                       >
                         {obj.titulo}
                       </button>
+                      {obj.subtopicos && obj.subtopicos.length > 0 && (
+                        <ul className="ml-3 mb-2 space-y-0.5">
+                          {obj.subtopicos.map((sub, idx) => (
+                            <li key={idx} className="text-xs text-muted-foreground flex items-start gap-1.5">
+                              <span className="mt-1.5 h-1 w-1 rounded-full bg-muted-foreground/50 shrink-0" />
+                              {sub}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                       <div className="space-y-1.5">
                         {obj.habilidades.map(h => (
                           <SkillCard

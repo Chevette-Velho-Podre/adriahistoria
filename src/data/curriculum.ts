@@ -6,6 +6,7 @@ export interface Habilidade {
 export interface ObjetoConhecimento {
   id: string;
   titulo: string;
+  subtopicos?: string[];
   sugestaoMetodologica?: string;
   habilidades: Habilidade[];
 }
@@ -29,7 +30,11 @@ export const curriculumData: AnoLetivo[] = [
         objetos: [
           {
             id: "6-1-1",
-            titulo: "Formas de registro da história e da produção do conhecimento histórico",
+            titulo: "Formas de registro da história e da produção do conhecimento histórico (HTEF)",
+            subtopicos: [
+              "A função social da História.",
+              "Fontes históricas e sua importância.",
+            ],
             sugestaoMetodologica: "Desenvolver a ideia de que História não é \"coisa do passado\", mas uma interpretação construída a partir de vestígios. Comece com um problema concreto, a ser discutido, para o qual deve ser elaborada uma solução.",
             habilidades: [
               { codigo: "EF06HIMOC01", descricao: "Elaborar conceito de História." },
@@ -42,7 +47,12 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "6-1-2",
-            titulo: "A questão do tempo, sincronias e diacronias: reflexões sobre o sentido das cronologias",
+            titulo: "A questão do tempo, sincronias e diacronias: reflexões sobre o sentido das cronologias (HTEF)",
+            subtopicos: [
+              "A construção social do tempo.",
+              "Unidades de medida do tempo.",
+              "Instrumentos de aferição.",
+            ],
             sugestaoMetodologica: "Trabalhar a ideia de que o tempo é uma construção social, referência para organizar e sistematizar as experiências humanas. Demonstre diferentes instrumentos para aferição do tempo, enfatizando o aspecto do controle social (datas e prazos, registros de entrada e saída etc).",
             habilidades: [
               { codigo: "EF06HIMOC06", descricao: "Conceituar tempo." },
@@ -53,7 +63,13 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "6-1-3",
-            titulo: "As origens da humanidade, seus deslocamentos e os processos de sedentarização",
+            titulo: "As origens da humanidade, seus deslocamentos e os processos de sedentarização (HTEF)",
+            subtopicos: [
+              "História e Pré-história.",
+              "Criacionismo X Evolucionismo.",
+              "A origem do homem americano.",
+              "Os povos originais e o povoamento do território americano.",
+            ],
             sugestaoMetodologica: "Desenvolver a compreensão de que as narrativas sobre as origens da humanidade não são únicas e nem neutras, mas resultam de diferentes formas de explicar o mundo, tanto científicas quanto míticas. A partir disso, introduza hipóteses sobre o surgimento da espécie humana, as teorias acerca da origem do homem americano e as rotas de povoamento do continente, enfatizando deslocamentos, adaptações e processos de sedentarização.",
             habilidades: [
               { codigo: "EF06HIMOC09", descricao: "Diferenciar História e Pré-história." },
@@ -66,7 +82,13 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "6-1-4",
-            titulo: "Povos da Antiguidade na África (egípcios), no Oriente Médio (mesopotâmicos) e nas Américas (pré-colombianos)",
+            titulo: "Povos da Antiguidade na África (egípcios), no Oriente Médio (mesopotâmicos) e nas Américas (pré-colombianos) (HMCS)",
+            subtopicos: [
+              "Hebreus, Fenícios e Persas.",
+              "Os egípcios e povos africanos.",
+              "A mesopotâmia.",
+              "Povos pré-colombianos: astecas, maias e incas.",
+            ],
             sugestaoMetodologica: "Desenvolver a compreensão de que as sociedades antigas apresentaram organizações sociais, políticas, econômicas e culturais complexas. Parta do problema sobre por que algumas civilizações são mais lembradas que outras e realize uma análise comparativa entre Egito, Mesopotâmia e povos pré-colombianos, destacando formas de registro, cultura material, poder, trabalho e produção de conhecimentos, evidenciando que cada sociedade criou soluções próprias para desafios semelhantes.",
             habilidades: [
               { codigo: "EF06HI07", descricao: "Identificar aspectos e formas de registro das sociedades antigas na África, no Oriente Médio e nas Américas, distinguindo alguns significados presentes na cultura material e na tradição oral dessas sociedades." },
@@ -79,7 +101,12 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "6-1-5",
-            titulo: "As diferentes formas de organização política na África: reinos, impérios, cidades-estados e sociedades linhageiras ou aldeias",
+            titulo: "As diferentes formas de organização política na África: reinos, impérios, cidades-estados e sociedades linhageiras ou aldeias (HLOP)",
+            subtopicos: [
+              "Os impérios africanos.",
+              "As nações.",
+              "A organização política.",
+            ],
             sugestaoMetodologica: "Promover a compreensão de que o continente africano possui trajetória marcada por formas diversas de organização. Explore a existência de reinos e impérios, enfatizando estruturas de poder, econômicas e sociais. A abordagem deve problematizar estereótipos e evidenciar a diversidade de identidades, reforçando a importância do continente para a história da humanidade.",
             habilidades: [
               { codigo: "EF06HIMOC15", descricao: "Compreender a importância histórica e política do continente africano." },
@@ -90,7 +117,12 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "6-1-6",
-            titulo: "Os povos indígenas originários do atual território brasileiro e seus hábitos culturais e sociais",
+            titulo: "Os povos indígenas originários do atual território brasileiro e seus hábitos culturais e sociais (HMCS)",
+            subtopicos: [
+              "Povos indígenas brasileiros.",
+              "A importância e influência da cultura indígena.",
+              "Territórios e ocupação do solo pelos povos indígenas.",
+            ],
             sugestaoMetodologica: "Problematizar a ideia de que os povos indígenas pertencem apenas ao passado, evidenciando sua presença histórica, contemporânea e a diversidade de seus modos de vida. Explore a pluralidade dos povos indígenas no território brasileiro, destacando hábitos, formas de organização social e ocupação do espaço. A abordagem deve enfatizar os aportes culturais, sociais e tecnológicos, além de analisar as transformações provocadas pela colonização, as disputas territoriais e a lógica das reservas indígenas, reforçando o protagonismo indígena na história do Brasil.",
             habilidades: [
               { codigo: "EF06HI08", descricao: "Identificar os espaços territoriais ocupados e os aportes culturais, científicos, sociais e econômicos dos astecas, maias e incas e dos povos indígenas de diversas regiões brasileiras." },
