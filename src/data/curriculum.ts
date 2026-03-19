@@ -221,7 +221,7 @@ export const curriculumData: AnoLetivo[] = [
         objetos: [
           {
             id: "6-3-1",
-            titulo: "12. Senhores e servos no mundo antigo e no medieval (HTSC)",
+            titulo: "Senhores e servos no mundo antigo e no medieval (HTSC)",
             subtopicos: [
               "Suserania e vassalagem.",
               "Os estamentos.",
@@ -234,7 +234,7 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "6-3-2",
-            titulo: "13. Escravidão e trabalho livre em diferentes temporalidades e espaços (Roma Antiga, Europa medieval e África) (HLOP)",
+            titulo: "Escravidão e trabalho livre em diferentes temporalidades e espaços (Roma Antiga, Europa medieval e África) (HLOP)",
             subtopicos: [
               "A escravidão no continente africano.",
               "A escravidão em Roma.",
@@ -252,7 +252,7 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "6-3-3",
-            titulo: "14. Lógicas comerciais na Antiguidade romana e no mundo medieval (HLOP)",
+            titulo: "Lógicas comerciais na Antiguidade romana e no mundo medieval (HLOP)",
             subtopicos: [
               "O comércio medieval.",
               "As feiras.",
@@ -265,7 +265,7 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "6-3-4",
-            titulo: "15. O papel da religião cristã, dos mosteiros e da cultura na Idade Média (HLOP)",
+            titulo: "O papel da religião cristã, dos mosteiros e da cultura na Idade Média (HLOP)",
             subtopicos: [
               "O cristianismo.",
               "A religião como mecanismo de controle social.",
@@ -280,7 +280,7 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "6-3-5",
-            titulo: "16. O papel da mulher na Grécia e em Roma, e no período medieval (HLOP)",
+            titulo: "O papel da mulher na Grécia e em Roma, e no período medieval (HLOP)",
             subtopicos: [
               "A mulher na sociedade grega e na sociedade romana.",
               "O papel social das mulheres no período medieval.",
