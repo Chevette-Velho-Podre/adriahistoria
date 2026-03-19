@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FileText, Check, X } from "lucide-react";
 import { curriculumData, type Habilidade } from "@/data/curriculum";
+import logoSecretaria from "@/assets/logo-secretaria-educacao.png";
 
 export interface ObjetoSelecionado {
   id: string;
@@ -138,15 +139,11 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange }: Less
     <div className="flex-1 overflow-y-auto">
       {/* Header */}
       <div className="sticky top-0 z-10 bg-background/95 backdrop-blur-sm border-b border-border px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-skill-badge flex items-center justify-center">
-            <FileText className="h-4 w-4 text-skill-badge-foreground" />
-          </div>
+        <div className="flex items-center gap-4">
+          <img src={logoSecretaria} alt="Prefeitura de Montes Claros — Secretaria de Educação" className="h-10 object-contain" />
+          <div className="h-8 w-px bg-border" />
           <div>
-            <h1 className="text-lg text-foreground font-mono font-extrabold text-center border border-primary border-double">Plano de Aula 
-História 
- 
-     </h1>
+            <h1 className="text-lg text-foreground font-mono font-extrabold">Plano de Aula — História</h1>
             <p className="text-xs text-muted-foreground">Referencial Curricular — Montes Claros/MG</p>
           </div>
         </div>
