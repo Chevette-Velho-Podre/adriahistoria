@@ -465,7 +465,9 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange }: Less
           </div>
         </section>
 
-        <div className="h-8" />
+        <footer className="mt-10 pb-4 text-center" data-print-hide>
+          <p className="text-xs text-muted-foreground/60">Adria — Assistente de Planejamento</p>
+        </footer>
       </div>
     </div>);
 
