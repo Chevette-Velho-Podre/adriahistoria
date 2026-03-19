@@ -457,22 +457,36 @@ export const curriculumData: AnoLetivo[] = [
         numero: 3,
         objetos: [
           {
-            id: "7-3-1",
-            titulo: "As lógicas mercantis e a emergência do capitalismo",
-            sugestaoMetodologica: "Compreender as lógicas mercantis que orientaram a expansão europeia. A análise precisa contemplar as transformações decorrentes do surgimento da burguesia e do desenvolvimento do capitalismo, enfatizando a passagem do mercantilismo para o capitalismo como um processo marcado por mudanças econômicas e sociais.",
+            id: "7-3-1and2",
+            titulo: "As lógicas mercantis e o domínio europeu sobre os mares e o contraponto Oriental (HLCM) / A emergência do capitalismo (HLCM)",
+            subtopicos: [
+              "Mercantilismo.",
+              "Os impérios orientais.",
+              "O surgimento da burguesia.",
+              "O surgimento e desenvolvimento do capitalismo.",
+            ],
+            sugestaoMetodologica: "Compreender as lógicas mercantis que orientaram a expansão europeia, situando o mercantilismo no contexto dos Estados modernos. A abordagem deve relacionar essas dinâmicas às interações comerciais entre sociedades europeias, africanas, americanas e orientais. A análise precisa contemplar as transformações decorrentes do surgimento da burguesia e do desenvolvimento do capitalismo, enfatizando a passagem do mercantilismo para o capitalismo como um processo marcado por mudanças econômicas e sociais.",
             habilidades: [
               { codigo: "EF07HI13", descricao: "Caracterizar a ação dos europeus e suas lógicas mercantis visando ao domínio no mundo atlântico." },
-              { codigo: "EF07HI14", descricao: "Descrever as dinâmicas comerciais das sociedades situando o mercantilismo no contexto dos Estados modernos." },
+              { codigo: "EF07HI14", descricao: "Descrever as dinâmicas comerciais das sociedades americanas e africanas e analisar suas interações com outras sociedades do Ocidente e do Oriente." },
               { codigo: "EF07HIMOC29", descricao: "Compreender a importância da política mercantilista como base do Absolutismo Monárquico." },
               { codigo: "EF07HI17", descricao: "Discutir a passagem do mercantilismo para o capitalismo." },
-              { codigo: "EF07HIMOC30", descricao: "Analisar as transformações sociais e econômicas que levaram ao surgimento da burguesia." },
+              { codigo: "EF07HIMOC30", descricao: "Analisar as transformações sociais e econômicas da que levaram ao surgimento da burguesia." },
               { codigo: "EF07HIMOC31", descricao: "Caracterizar o capitalismo e compreender os meios pelos quais as sociedades passaram a se organizar." },
             ],
           },
           {
-            id: "7-3-2",
-            titulo: "A escravidão moderna e o tráfico de escravizados",
-            sugestaoMetodologica: "O fechamento deve reconhecer a importância dos afrodescendentes e da cultura afro-brasileira na formação do Brasil.",
+            id: "7-3-3",
+            titulo: "A escravidão moderna e o tráfico de Escravizados (HLCM)",
+            subtopicos: [
+              "Os afrodescendentes no Brasil.",
+              "A cultura afro-brasileira.",
+              "A escravidão.",
+              "O tráfico negreiro.",
+              "Senhores e escravos.",
+              "Escravidão e resistência.",
+            ],
+            sugestaoMetodologica: "Examinar a escravidão como uma estrutura articulada às lógicas econômicas, políticas e sociais do mundo atlântico, ressaltando suas distinções em relação ao escravismo antigo e à servidão medieval. A abordagem deve analisar o tráfico de africanos escravizados em suas diferentes fases e enfatizar a experiência dos sujeitos escravizados, evidenciando estratégias de resistência. O fechamento deve reconhecer a importância dos afrodescendentes e da cultura afro-brasileira na formação do Brasil.",
             habilidades: [
               { codigo: "EF07HI15", descricao: "Discutir o conceito de escravidão moderna e suas distinções em relação ao escravismo antigo e à servidão medieval." },
               { codigo: "EF07HI16", descricao: "Analisar os mecanismos e as dinâmicas de comércio de escravizados em suas diferentes fases, identificando os agentes responsáveis pelo tráfico e as regiões e zonas africanas de procedência dos escravizados." },
@@ -482,27 +496,29 @@ export const curriculumData: AnoLetivo[] = [
             ],
           },
           {
-            id: "7-3-3",
-            titulo: "Resistências indígenas",
-            sugestaoMetodologica: "A análise precisa enfatizar as estratégias de resistência indígena, as invasões estrangeiras e suas implicações políticas e econômicas.",
+            id: "7-3-4and5",
+            titulo: "Resistências indígenas, invasões e expansão na América portuguesa (HPMC) / As formas de organização das sociedades ameríndias (HLCM)",
+            subtopicos: [
+              "A resistência indígena.",
+              "As invasões estrangeiras.",
+              "As formas de organização das sociedades.",
+            ],
+            sugestaoMetodologica: "Analisar a formação territorial da América Portuguesa evidenciando que a expansão colonial ocorreu em meio a conflitos e negociações. A abordagem deve contemplar as formas de organização e os modos de vida das sociedades ameríndias, contrapondo-os às lógicas europeias de ocupação e domínio, de modo a explicitar diferenças culturais. A análise precisa enfatizar as estratégias de resistência indígena, as invasões estrangeiras e suas implicações políticas e econômicas.",
             habilidades: [
               { codigo: "EF07HI11", descricao: "Analisar a formação histórico-geográfica do território da América portuguesa por meio de mapas históricos." },
               { codigo: "EF07HI12", descricao: "Identificar a distribuição territorial da população brasileira em diferentes épocas, considerando a diversidade étnico-racial e étnico-cultural (indígena, africana, europeia e asiática)." },
-            ],
-          },
-          {
-            id: "7-3-4",
-            titulo: "As formas de organização das sociedades ameríndias",
-            habilidades: [
               { codigo: "EF07HIMOC35", descricao: "Analisar o modo de vida das sociedades indígenas e contrapô-la ao europeu." },
-              { codigo: "EF07HIMOC36", descricao: "Discutir as formas de resistência indígena à dominação portuguesa." },
+              { codigo: "EF07HIMOC36", descricao: "Discutir as formas de resistência indígena a dominação portuguesa." },
               { codigo: "EF07HIMOC37", descricao: "Identificar as invasões estrangeiras ocorridas durante a colonização portuguesa no Brasil." },
             ],
           },
           {
-            id: "7-3-5",
-            titulo: "As lógicas internas das sociedades africanas",
-            sugestaoMetodologica: "A abordagem deve evidenciar a diversidade de povos, etnias e reinos, bem como analisar os elementos que estruturavam essas sociedades, como hierarquias, relações de poder e modos de organização coletiva. A análise precisa reforçar a pluralidade do continente africano e a complexidade de sua formação.",
+            id: "7-3-6",
+            titulo: "As lógicas internas das sociedades africanas (HLCM)",
+            subtopicos: [
+              "Reinos africanos e sua organização social.",
+            ],
+            sugestaoMetodologica: "Compreender as sociedades africanas a partir de suas formas de organização social e estruturas políticas. A abordagem deve evidenciar a diversidade de povos, etnias e reinos, bem como analisar os elementos que estruturavam essas sociedades, como hierarquias, relações de poder e modos de organização coletiva. A análise precisa reforçar a pluralidade do continente africano e a complexidade de sua formação.",
             habilidades: [
               { codigo: "EF07HIMOC38", descricao: "Analisar os elementos que compunham as sociedades africanas: organização social, estrutura política." },
               { codigo: "EF07HIMOC39", descricao: "Diferenciar os povos africanos, compreendendo que existiam diversas etnias e reinos." },
