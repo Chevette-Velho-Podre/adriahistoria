@@ -265,7 +265,7 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "6-3-4",
-            titulo: "15. O papel da religião cristã, dos mosteiros e da cultura na Idade Média (HLOP)",
+            titulo: "O papel da religião cristã, dos mosteiros e da cultura na Idade Média (HLOP)",
             subtopicos: [
               "O cristianismo.",
               "A religião como mecanismo de controle social.",
