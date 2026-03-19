@@ -133,7 +133,7 @@ export async function exportToDocx(plan: LessonPlan) {
   const objetos = resolveObjetos(plan);
   const sugestoes = resolveSugestoes(plan);
   const logo = await loadLogo();
-  const logoSize = logo ? fitLogoSize(logo.width, logo.height, 200, 80) : null;
+  const logoSize = logo ? fitLogoSize(logo.width, logo.height, 320, 120) : null;
   const tableWidth = 9360;
   const col1 = 2400;
   const col2 = tableWidth - col1;
