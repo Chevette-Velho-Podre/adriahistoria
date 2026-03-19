@@ -221,7 +221,7 @@ export const curriculumData: AnoLetivo[] = [
         objetos: [
           {
             id: "6-3-1",
-            titulo: "12. Senhores e servos no mundo antigo e no medieval (HTSC)",
+            titulo: "Senhores e servos no mundo antigo e no medieval (HTSC)",
             subtopicos: [
               "Suserania e vassalagem.",
               "Os estamentos.",
