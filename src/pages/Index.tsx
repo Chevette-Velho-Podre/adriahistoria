@@ -69,7 +69,7 @@ const Index = () => {
   }, []);
 
   const handleTrimestreChange = useCallback((trimestre: number | null) => {
-    setPlan((prev) => ({ ...prev, trimestre, habilidades: [], objetosConhecimento: [] }));
+    setPlan((prev) => ({ ...prev, trimestre }));
   }, []);
 
   return (
