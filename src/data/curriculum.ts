@@ -101,7 +101,12 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "6-1-5",
-            titulo: "As diferentes formas de organização política na África: reinos, impérios, cidades-estados e sociedades linhageiras ou aldeias",
+            titulo: "As diferentes formas de organização política na África: reinos, impérios, cidades-estados e sociedades linhageiras ou aldeias (HLOP)",
+            subtopicos: [
+              "Os impérios africanos.",
+              "As nações.",
+              "A organização política.",
+            ],
             sugestaoMetodologica: "Promover a compreensão de que o continente africano possui trajetória marcada por formas diversas de organização. Explore a existência de reinos e impérios, enfatizando estruturas de poder, econômicas e sociais. A abordagem deve problematizar estereótipos e evidenciar a diversidade de identidades, reforçando a importância do continente para a história da humanidade.",
             habilidades: [
               { codigo: "EF06HIMOC15", descricao: "Compreender a importância histórica e política do continente africano." },
