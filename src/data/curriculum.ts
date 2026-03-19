@@ -138,8 +138,14 @@ export const curriculumData: AnoLetivo[] = [
         objetos: [
           {
             id: "6-2-1",
-            titulo: "O Ocidente Clássico: aspectos da cultura na Grécia e em Roma",
-            sugestaoMetodologica: "Articular a expansão territorial, o conceito de império, a importância das cidades como espaços de poder e as transformações provocadas pelo cristianismo.",
+            titulo: "O Ocidente Clássico: aspectos da cultura na Grécia e em Roma (HMCS)",
+            subtopicos: [
+              "A Antiguidade Clássica.",
+              "O conceito de cidadania na Grécia e em Roma.",
+              "A democracia.",
+              "Arte, Cultura e religiosidade.",
+            ],
+            sugestaoMetodologica: "Examinar os conceitos de cidadania e democracia, na Grécia e Roma, de modo a explicitar suas características e implicações nas formas de organização social e política dessas sociedades. A abordagem deve privilegiar a comparação, evitando anacronismos, de modo a evidenciar que tais noções não são universais, mas categorias historicamente situadas, cujos significados se transformaram ao longo do tempo até a contemporaneidade.",
             habilidades: [
               { codigo: "EF06HI09", descricao: "Discutir o conceito de Antiguidade Clássica, seu alcance e limite na tradição ocidental, assim como os impactos sobre outras sociedades e culturas." },
               { codigo: "EF06HIMOC22", descricao: "Discutir e diferenciar a noção de cidadania na Grécia e em Roma." },
@@ -150,7 +156,18 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "6-2-2",
-            titulo: "As noções de cidadania e política na Grécia e em Roma",
+            titulo: "As noções de cidadania e política na Grécia e em Roma (HLOP)",
+            subtopicos: [
+              "Domínios e expansão das culturas grega e romana.",
+              "Significados do conceito de \"império\" e as lógicas de conquista, conflito e negociação dessa forma de organização política.",
+              "As cidades.",
+              "A organização política.",
+              "A cidadania.",
+              "A pólis grega.",
+              "As fases de Roma.",
+              "O cristianismo.",
+            ],
+            sugestaoMetodologica: "Analisar as noções de cidadania e organização política na Grécia e em Roma como construções históricas marcadas por disputas, limites e exclusões. Explore a formação da pólis grega, as estruturas políticas e sociais romanas, as dinâmicas de inclusão e exclusão, e o papel central da escravidão nessas sociedades. A abordagem deve articular a expansão territorial, o conceito de império, a importância das cidades como espaços de poder e as transformações provocadas pelo cristianismo.",
             habilidades: [
               { codigo: "EF06HI10", descricao: "Explicar a formação da Grécia, enfatizando a pólis e as transformações políticas, sociais e culturais." },
               { codigo: "EF06HI11", descricao: "Caracterizar a Roma Antiga e suas configurações sociais e políticas nos períodos monárquico e republicano." },
@@ -162,30 +179,39 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "6-2-3",
-            titulo: "A passagem do mundo antigo para o mundo medieval",
+            titulo: "A passagem do mundo antigo para o mundo medieval (HLOP) / A fragmentação do poder político na Idade Média (HLOP)",
+            subtopicos: [
+              "A transição entre o mundo antigo e a Idade Média.",
+              "Os povos bárbaros.",
+              "As invasões bárbaras.",
+              "A crise do Império Romano.",
+              "A fragmentação do poder real.",
+              "O feudalismo.",
+              "As cruzadas.",
+            ],
+            sugestaoMetodologica: "Desenvolver o conceito de \"transição\" como ferramenta para compreender as transformações ocorridas entre o final do mundo romano e a formação das estruturas medievais. A abordagem deve articular a crise do Império Romano, os arranjos políticos e territoriais e as interações com os povos germânicos, evitando explicações baseadas em ruptura abrupta ou colapso homogêneo. A partir desse cenário, analisar a sociedade feudal em suas bases econômicas, sociais e políticas, explicitando suas dinâmicas internas, hierarquias e formas de poder. Na análise da religião, privilegiar uma leitura que a compreenda como instituição central na produção de valores e práticas sociais, evitando reducionismos.",
             habilidades: [
               { codigo: "EF06HI14", descricao: "Identificar e analisar diferentes formas de contato, adaptação ou exclusão entre populações em diferentes tempos e espaços." },
               { codigo: "EF06HIMOC29", descricao: "Perceber a participação dos povos bárbaros na ocorrência da crise que leva ao fim do Império Romano." },
               { codigo: "EF06HIMOC30", descricao: "Analisar os fatores que levaram à crise do Império Romano e como estes contribuíram para o Feudalismo." },
               { codigo: "EF06HIMOC31", descricao: "Caracterizar o processo de ruralização da economia e a importância histórica desse fenômeno." },
+              { codigo: "EF06HIMOC32", descricao: "Conceituar o Feudalismo, identificando as principais características políticas, econômicas, sociais e culturais." },
+              { codigo: "EF06HIMOC33", descricao: "Analisar o papel social da religião e das cruzadas durante a Idade Média." },
             ],
           },
           {
             id: "6-2-4",
-            titulo: "A fragmentação do poder político na Idade Média",
-            sugestaoMetodologica: "A fragmentação do poder em suas bases econômicas, sociais e políticas, explicitando suas dinâmicas internas, hierarquias e formas de poder. Na análise da religião, privilegiar uma leitura que a compreenda como instituição central na produção de valores e práticas sociais, evitando reducionismos.",
-            habilidades: [
-              { codigo: "EF06HIMOC32", descricao: "Conceituar o Feudalismo, identificando as principais características políticas, econômicas, sociais e culturais." },
-              { codigo: "EF06HIMOC33", descricao: "Analisar o papel social da religião e das interações com os povos germânicos, evitando explicações baseadas em ruptura abrupta ou colapso homogêneo." },
+            titulo: "O Mediterrâneo como espaço de interação entre as sociedades da Europa, da África e do Oriente Médio (HLOP)",
+            subtopicos: [
+              "A circulação de produtos nos mercados medievais.",
+              "Os tipos de produtos.",
+              "As trocas.",
             ],
-          },
-          {
-            id: "6-2-5",
-            titulo: "O Mediterrâneo como espaço de interação entre sociedades da Europa, da África e do Oriente Médio",
-            sugestaoMetodologica: "Compreender como se davam as negociações de produtos, baseadas em trocas durante a Idade Média. A abordagem deve enfatizar as dinâmicas de deslocamento de pessoas, mercadorias e práticas culturais, destacando a diversidade de produtos comercializados, como especiarias e matérias-primas, e seus significados econômicos e sociais.",
+            sugestaoMetodologica: "Compreender o Mediterrâneo medieval como um espaço de circulação e interação entre sociedades, desmistificando a ideia de isolamento ou estagnação econômica no período. A abordagem deve enfatizar as dinâmicas de deslocamento de pessoas, mercadorias e práticas culturais, destacando a diversidade de produtos comercializados, como especiarias e matérias-primas, e seus significados econômicos e sociais. A análise precisa evidenciar as lógicas de troca, negociação e relacionamentos entre regiões, reforçando a importância do Mediterrâneo e seu papel estruturante nas relações comerciais e culturais da Idade Média.",
             habilidades: [
               { codigo: "EF06HI15", descricao: "Descrever as dinâmicas de circulação de pessoas, produtos e culturas no Mediterrâneo e seu significado." },
               { codigo: "EF06HIMOC34", descricao: "Conhecer os diferentes produtos que circulavam nos mercados medievais: gengibre, algodão, pimenta etc." },
+              { codigo: "EF06HIMOC35", descricao: "Compreender como se davam as negociações de produtos, baseadas em trocas durante a Idade Média." },
             ],
           },
         ],
