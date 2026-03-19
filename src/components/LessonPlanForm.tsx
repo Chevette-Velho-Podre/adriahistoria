@@ -78,7 +78,29 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange }: Less
   const removeObjeto = (id: string) => {
     onChange({
       ...plan,
-      objetosConhecimento: plan.objetosConhecimento.filter((o) => o !== id)
+      objetosConhecimento: plan.objetosConhecimento.filter((o) => o.id !== id)
+    });
+  };
+
+  const removeSubtopico = (objetoId: string, subtopico: string) => {
+    onChange({
+      ...plan,
+      objetosConhecimento: plan.objetosConhecimento.map((o) =>
+        o.id === objetoId
+          ? { ...o, subtopicos: o.subtopicos.filter((s) => s !== subtopico) }
+          : o
+      )
+    });
+  };
+
+  const addSubtopico = (objetoId: string, subtopico: string) => {
+    onChange({
+      ...plan,
+      objetosConhecimento: plan.objetosConhecimento.map((o) =>
+        o.id === objetoId
+          ? { ...o, subtopicos: [...o.subtopicos, subtopico] }
+          : o
+      )
     });
   };
 
