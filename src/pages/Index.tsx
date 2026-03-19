@@ -85,12 +85,20 @@ const Index = () => {
         </button>
       </div>
 
-      <div className="flex flex-1 overflow-hidden">
-        {/* Sidebar - desktop always visible, mobile toggle */}
+      <div className="flex flex-1 overflow-hidden relative">
+        {/* Backdrop for mobile sidebar */}
+        {sidebarOpen && (
+          <div
+            className="lg:hidden fixed inset-0 z-10 bg-black/40"
+            onClick={() => setSidebarOpen(false)}
+          />
+        )}
+
+        {/* Sidebar - desktop always visible, mobile slide-over */}
         <div
           className={`${
-            sidebarOpen ? "block" : "hidden"
-          } lg:block w-full lg:w-[400px] lg:min-w-[400px] absolute lg:relative z-20 h-[calc(100vh-49px)] lg:h-full`}
+            sidebarOpen ? "translate-x-0" : "-translate-x-full"
+          } lg:translate-x-0 fixed lg:relative z-20 h-[calc(100vh-49px)] lg:h-full w-[85vw] max-w-[400px] lg:w-[400px] lg:min-w-[400px] transition-transform duration-300 ease-in-out`}
         >
           <CurriculumSidebar
             selectedAno={plan.ano}
@@ -103,7 +111,7 @@ const Index = () => {
         </div>
 
         {/* Editor */}
-        <div className="flex-1 flex flex-col overflow-hidden">
+        <div className="flex-1 flex flex-col overflow-hidden w-full">
           <LessonPlanForm
             plan={plan}
             onChange={setPlan}
