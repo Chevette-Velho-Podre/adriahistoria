@@ -252,7 +252,7 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "6-3-3",
-            titulo: "14. Lógicas comerciais na Antiguidade romana e no mundo medieval (HLOP)",
+            titulo: "Lógicas comerciais na Antiguidade romana e no mundo medieval (HLOP)",
             subtopicos: [
               "O comércio medieval.",
               "As feiras.",
