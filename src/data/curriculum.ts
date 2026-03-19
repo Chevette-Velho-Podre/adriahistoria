@@ -383,17 +383,22 @@ export const curriculumData: AnoLetivo[] = [
         numero: 2,
         objetos: [
           {
-            id: "7-2-1",
-            titulo: "A ideia de \"Novo Mundo\"",
+            id: "7-2-1and2",
+            titulo: "A ideia de \"Novo Mundo\" ante o Mundo Antigo: permanências e rupturas de saberes e práticas na emergência do mundo moderno (HMCS) / As descobertas científicas e a expansão marítima (HRNM)",
+            subtopicos: [
+              "A expansão marítima e comercial europeia.",
+              "As concepções de \"Novo Mundo\".",
+              "As descobertas científicas.",
+              "A expansão marítima europeia.",
+              "Fatores determinantes para a expansão marítima.",
+              "Consequências.",
+            ],
             sugestaoMetodologica: "Examinar a ideia de \"Novo Mundo\" como uma formulação histórica vinculada à expansão marítima europeia. A abordagem deve articular os fatores que impulsionaram as navegações, bem como situar o contexto em que se estruturaram, destacando os países pioneiros e as razões do pioneirismo. A análise precisa enfatizar que as navegações produziram interações complexas entre Europa, África, Ásia e Américas, afastando a ideia de \"descoberta\" unilateral, ou de passividade por parte dos povos nativos do continente americano.",
             habilidades: [
               { codigo: "EF07HI02", descricao: "Identificar conexões e interações entre as sociedades do Novo Mundo, da Europa, da África e da Ásia no contexto das navegações e indicar a complexidade e as interações que ocorrem nos Oceanos Atlântico, Índico e Pacífico." },
-            ],
-          },
-          {
-            id: "7-2-2",
-            titulo: "As descobertas científicas e a expansão marítima",
-            habilidades: [
+              { codigo: "EF07HIMOC15", descricao: "Estabelecer conexões entre o processo de expansão marítima europeu e as transformações ocorridas nos territórios \"descobertos\" no Novo Mundo." },
+              { codigo: "EF07HI06", descricao: "Comparar as navegações no Atlântico e no Pacífico entre os séculos XIV e XVI." },
+              { codigo: "EF07HIMOC16", descricao: "Identificar o contexto no qual ocorreu expansão marítima europeia." },
               { codigo: "EF07HIMOC17", descricao: "Caracterizar os fatores que levaram à necessidade do processo de expansão marítima." },
               { codigo: "EF07HIMOC18", descricao: "Identificar e analisar os países pioneiros." },
               { codigo: "EF07HIMOC19", descricao: "Analisar os fatores do pioneirismo." },
@@ -402,18 +407,29 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "7-2-3",
-            titulo: "Saberes dos povos africanos e pré-colombianos expressos na cultura material e imaterial",
+            titulo: "Saberes dos povos africanos e pré-colombianos expressos na cultura material e imaterial (HMCS)",
+            subtopicos: [
+              "Sociedade e cultura na América pré-colombiana: práticas culturais, religiosidade e organização política.",
+              "Povos árabes e o islamismo.",
+              "Povos africanos: imaginário, cultura e organização política.",
+            ],
+            sugestaoMetodologica: "Analisar as características das sociedades africanas, árabes e americanas, sobretudo no âmbito das formas de vida. A abordagem deve contemplar o processo de organização dessas sociedades, as manifestações culturais, científicas e o papel da religiosidade como marco regulador das vivências e crenças coletivas.",
             habilidades: [
               { codigo: "EF07HI03", descricao: "Identificar aspectos e processos específicos das sociedades africanas e americanas antes da chegada dos europeus, com destaque para as formas de organização social e o desenvolvimento de saberes e técnicas." },
               { codigo: "EF07HIMOC21", descricao: "Compreender o processo de formação das sociedades pré-colombianas, a partir da cultura e política." },
               { codigo: "EF07HIMOC22", descricao: "Analisar a importância da religiosidade para os povos pré-colombianos." },
               { codigo: "EF09HIMOC23", descricao: "Identificar as origens do islamismo, compreender seus princípios e reconhecer a diversidade histórica e cultural dos povos árabes, evitando estereótipos." },
+              { codigo: "EF07HIMOC24", descricao: "Identificar a importância da cultura e estruturas políticas dos povos africanos." },
             ],
           },
           {
             id: "7-2-4",
-            titulo: "A conquista da América e as formas de organização política dos indígenas e europeus: conflitos, dominação e conciliação",
-            sugestaoMetodologica: "A abordagem deve examinar as estruturas de organização política das sociedades indígenas. A análise precisa problematizar o uso da violência, destacando os impactos para as populações ameríndias.",
+            titulo: "A conquista da América e as formas de organização política dos indígenas e europeus: conflitos, dominação e conciliação (HPMC)",
+            subtopicos: [
+              "A conquista da América espanhola.",
+              "A Colonização da América Portuguesa.",
+            ],
+            sugestaoMetodologica: "Analisar a conquista da América como parte de um processo histórico marcado por conflitos e resistência indígena. A abordagem deve examinar as estruturas de organização política das sociedades americanas, bem como comparar as dinâmicas de dominação espanhola e portuguesa. A análise precisa problematizar o uso da violência, destacando os impactos para as populações ameríndias.",
             habilidades: [
               { codigo: "EF07HI08", descricao: "Descrever as formas de organização das sociedades americanas no tempo da conquista com vistas à compreensão dos mecanismos de alianças, confrontos e resistências." },
               { codigo: "EF07HI09", descricao: "Analisar os diferentes impactos da conquista europeia da América para as populações ameríndias e identificar as formas de resistência." },
@@ -423,8 +439,12 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "7-2-5",
-            titulo: "A estruturação dos vice-reinos nas Américas",
-            sugestaoMetodologica: "A abordagem deve caracterizar os princípios da administração colonial, destacando hierarquias, funções e formas de controle do território, bem como as tensões e distinções entre colonos e autoridades metropolitanas. A análise precisa contemplar também as disputas coloniais e as dinâmicas de poder do período.",
+            titulo: "A estruturação dos vice-reinos nas Américas (HPMC)",
+            subtopicos: [
+              "Organização político-administrativa da América espanhola.",
+              "Disputas coloniais.",
+            ],
+            sugestaoMetodologica: "Examinar a estruturação dos vice-reinos na América Espanhola como parte das estratégias de organização e domínio colonial. A abordagem deve caracterizar os princípios da administração colonial, destacando hierarquias, funções e formas de controle do território, bem como as tensões e distinções entre colonos e autoridades metropolitanas. A análise precisa contemplar também as disputas coloniais e as dinâmicas de poder do período.",
             habilidades: [
               { codigo: "EF07HI10", descricao: "Analisar, com base em documentos históricos, diferentes interpretações sobre as dinâmicas das sociedades americanas no período colonial." },
               { codigo: "EF07HIMOC27", descricao: "Caracterizar a política administrativa colonial na América Espanhola." },
