@@ -280,7 +280,7 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "6-3-5",
-            titulo: "16. O papel da mulher na Grécia e em Roma, e no período medieval (HLOP)",
+            titulo: "O papel da mulher na Grécia e em Roma, e no período medieval (HLOP)",
             subtopicos: [
               "A mulher na sociedade grega e na sociedade romana.",
               "O papel social das mulheres no período medieval.",
