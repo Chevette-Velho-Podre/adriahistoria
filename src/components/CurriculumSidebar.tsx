@@ -58,14 +58,14 @@ const CurriculumSidebar = ({ selectedAno, selectedTrimestre, selectedSkills, sel
     <aside className="w-full h-full flex flex-col bg-card border-r border-border">
       <div className="p-4 border-b border-border">
         <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-3">
-          Referencial Curricular Municipal
+          Secretaria de Educação de Montes Claros Referencial Curricular Municipal Planejamento de história                                                             
         </h2>
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <input type="text" placeholder="Buscar habilidades..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-9 pr-3 py-2 text-sm bg-background border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring/30 transition-all" />
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="w-full pl-9 pr-3 py-2 text-sm bg-background border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring/30 transition-all" />
           
         </div>
       </div>
