@@ -234,7 +234,7 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "6-3-2",
-            titulo: "13. Escravidão e trabalho livre em diferentes temporalidades e espaços (Roma Antiga, Europa medieval e África) (HLOP)",
+            titulo: "Escravidão e trabalho livre em diferentes temporalidades e espaços (Roma Antiga, Europa medieval e África) (HLOP)",
             subtopicos: [
               "A escravidão no continente africano.",
               "A escravidão em Roma.",
