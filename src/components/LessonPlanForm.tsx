@@ -18,6 +18,7 @@ export interface LessonPlan {
   objetivos: string;
   metodologia: string;
   avaliacao: string;
+  observacoes: string;
   habilidades: Habilidade[];
   objetosConhecimento: ObjetoSelecionado[];
 }
@@ -423,6 +424,20 @@ História
             </section>);
 
         })()}
+
+        {/* Seção: Observações */}
+        <section>
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4 pb-2 border-b border-border">
+            Observações
+          </h2>
+          <textarea
+            className={textareaClass}
+            placeholder="Registre aqui observações adicionais que julgar necessárias..."
+            rows={4}
+            value={plan.observacoes}
+            onChange={(e) => update("observacoes", e.target.value)}
+          />
+        </section>
 
         {/* Assinatura */}
         <section className="mt-12 pt-8">
