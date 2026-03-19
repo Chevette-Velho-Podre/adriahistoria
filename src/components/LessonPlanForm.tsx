@@ -236,6 +236,16 @@ História
                             <X className="h-3.5 w-3.5 text-muted-foreground" />
                           </button>
                         </motion.div>
+                        {obj.subtopicos && obj.subtopicos.length > 0 && (
+                          <ul className="ml-6 mb-1 space-y-0.5">
+                            {obj.subtopicos.map((sub, idx) => (
+                              <li key={idx} className="text-xs text-muted-foreground flex items-start gap-1.5">
+                                <span className="mt-1.5 h-1 w-1 rounded-full bg-muted-foreground/50 shrink-0" />
+                                {sub}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
                     )}
                     </AnimatePresence>
                   </div>
