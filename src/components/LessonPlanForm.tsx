@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FileText, Check, X } from "lucide-react";
 import { curriculumData, type Habilidade } from "@/data/curriculum";
+import logoSecretaria from "@/assets/logo-secretaria-educacao.png";
 
 export interface ObjetoSelecionado {
   id: string;
