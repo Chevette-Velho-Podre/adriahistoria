@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FileText, Check, X } from "lucide-react";
 import { curriculumData, type Habilidade } from "@/data/curriculum";
@@ -84,7 +84,7 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange }: Less
     const all = anoData.trimestres.flatMap((t) => t.objetos);
     return plan.objetosConhecimento.
     map((id) => all.find((o) => o.id === id)).
-    filter(Boolean) as {id: string;titulo: string;}[];
+    filter(Boolean) as {id: string; titulo: string; subtopicos?: string[];}[];
   }, [plan.ano, plan.objetosConhecimento]);
 
   // Auto-save indicator
@@ -219,8 +219,8 @@ História
                 <div className="space-y-2">
                     <AnimatePresence mode="popLayout">
                       {selectedObjetos.map((obj) =>
+                    <React.Fragment key={obj.id}>
                     <motion.div
-                      key={obj.id}
                       layout
                       initial={{ opacity: 0, y: -4 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -236,6 +236,17 @@ História
                             <X className="h-3.5 w-3.5 text-muted-foreground" />
                           </button>
                         </motion.div>
+                        {obj.subtopicos && obj.subtopicos.length > 0 && (
+                          <ul className="ml-6 mb-1 space-y-0.5">
+                            {obj.subtopicos.map((sub, idx) => (
+                              <li key={idx} className="text-xs text-muted-foreground flex items-start gap-1.5">
+                                <span className="mt-1.5 h-1 w-1 rounded-full bg-muted-foreground/50 shrink-0" />
+                                {sub}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                    </React.Fragment>
                     )}
                     </AnimatePresence>
                   </div>
