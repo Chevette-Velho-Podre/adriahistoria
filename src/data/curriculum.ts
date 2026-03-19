@@ -819,7 +819,16 @@ export const curriculumData: AnoLetivo[] = [
         objetos: [
           {
             id: "8-3-1",
-            titulo: "Nacionalismo, revoluções e as novas nações europeias",
+            titulo: "Nacionalismo, revoluções e as novas nações europeias (HCM)",
+            subtopicos: [
+              "Ideias liberais.",
+              "Nacionalismo.",
+              "Revoluções de 1830 e 1848.",
+              "Socialismo.",
+              "Anarquismo.",
+              "Comuna de Paris.",
+            ],
+            sugestaoMetodologica: "Examinar o nacionalismo e as revoluções europeias do século XIX como manifestações das transformações que mudaram o continente. A abordagem deve analisar a influência do liberalismo, do nacionalismo e seus vínculos com movimentos de unificação. A análise precisa contemplar o socialismo e o anarquismo como formulações críticas às estruturas do período, destacando conceitos e projetos políticos. O tratamento do tema deve ainda articular essas dinâmicas ao avanço do imperialismo, problematizando as relações entre ideologias raciais, determinismo e dominação colonial na África e na Ásia.",
             habilidades: [
               { codigo: "EF08HIMOC50", descricao: "Compreender como as ideias liberais influenciaram a política europeia do século XIX." },
               { codigo: "EF08HIMOC51", descricao: "Compreender de que forma o nacionalismo influenciou processos de unificação nacionais e disputas territoriais." },
@@ -833,44 +842,52 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "8-3-2",
-            titulo: "Os Estados Unidos da América e a América Latina no século XIX",
-            sugestaoMetodologica: "A análise precisa evidenciar os efeitos da política externa norte-americana sobre a autonomia dos países latino-americanos, ressaltando tensões, formas de influência e mecanismos de intervenção característicos do período.",
+            titulo: "Os Estados Unidos da América e a América Latina no século XIX (HCM)",
+            subtopicos: [
+              "América para os \"americanos\": relacionamento entre Estados Unidos e a América Latina.",
+            ],
+            sugestaoMetodologica: "Examinar as relações entre os Estados Unidos e a América Latina no século XIX, destacando as disputas de poder e interesses estratégicos. A abordagem deve problematizar o \"América para os americanos\" como parte de um projeto político e ideológico, analisando seu significado. A análise precisa evidenciar os efeitos da política externa norte-americana sobre a autonomia dos países latino-americanos, ressaltando tensões, formas de influência e mecanismos de intervenção característicos do período.",
             habilidades: [
               { codigo: "EF08HI25", descricao: "Caracterizar e contextualizar aspectos das relações entre os Estados Unidos e a América Latina no século XIX." },
               { codigo: "EF08HIMOC57", descricao: "Compreender como a política externa dos Estados Unidos afetou o poder e a autonomia dos países latino-americanos no século XIX." },
             ],
           },
           {
-            id: "8-3-3",
-            titulo: "Uma nova ordem econômica: o imperialismo e suas lógicas",
+            id: "8-3-3and4",
+            titulo: "Uma nova ordem econômica: as demandas do capitalismo industrial e o lugar das economias africanas e asiáticas nas dinâmicas globais (HCM) / O imperialismo europeu e a partilha da África e da Ásia (HCM)",
+            subtopicos: [
+              "O Imperialismo europeu.",
+              "A expansão do capital industrial e a importância das economias africanas e asiáticas.",
+              "Justificativas para o colonialismo.",
+              "Meios de dominação.",
+              "Resistência dos dominados.",
+            ],
+            sugestaoMetodologica: "Analisar o imperialismo do século XIX como expressão das demandas do capitalismo industrial e da expansão do capital, examinando a inserção das economias africanas e asiáticas nas dinâmicas globais de exploração e circulação de riquezas. A abordagem deve problematizar as justificativas ideológicas do colonialismo, com destaque para as ideologias raciais e o determinismo, bem como examinar os interesses econômicos e políticos que sustentaram a expansão europeia. A análise precisa caracterizar os meios de dominação empregados, os impactos sobre as sociedades locais e as formas de organização e uso dos recursos, além de evidenciar as diversas estratégias de resistência frente as violências coloniais.",
             habilidades: [
               { codigo: "EF08HI24", descricao: "Reconhecer os principais produtos, utilizados pelos europeus, procedentes do continente africano durante o imperialismo e analisar os impactos sobre as comunidades locais na forma de organização e exploração econômica." },
+              { codigo: "EF08HI23", descricao: "Estabelecer relações causais entre as ideologias raciais e o determinismo no contexto do imperialismo europeu e seus impactos na África e na Ásia." },
               { codigo: "EF08HI26", descricao: "Identificar e contextualizar o protagonismo das populações locais na resistência ao imperialismo na África e Ásia." },
               { codigo: "EF08HIMOC58", descricao: "Analisar o processo de desenvolvimento industrial das nações europeias no contexto do século XIX." },
-            ],
-          },
-          {
-            id: "8-3-4",
-            titulo: "O imperialismo europeu e a partilha da África e da Ásia",
-            habilidades: [
               { codigo: "EF08HIMOC59", descricao: "Conceituar o Imperialismo." },
               { codigo: "EF08HIMOC60", descricao: "Identificar os elementos que justificaram a expansão europeia rumo ao continente africano e asiático." },
               { codigo: "EF08HIMOC61", descricao: "Caracterizar as estratégias de dominação utilizadas pelos países europeus em relação às nações subjugadas na África e Ásia." },
-              { codigo: "EF08HIMOC62", descricao: "Interpretar as formas de resistência dos povos colonizados frente às violências a que foram submetidos durante a dominação imperialista das nações europeias." },
+              { codigo: "EF08HIMOC62", descricao: "Interpretar as formas de resistência dos povos colonizados frente as violências a que foram submetidos durante a dominação imperialista das nações europeias." },
             ],
           },
           {
-            id: "8-3-5",
-            titulo: "Pensamento e cultura no século XIX: darwinismo e racismo",
+            id: "8-3-5and6and7",
+            titulo: "Pensamento e cultura no século XIX: darwinismo e racismo (HCM) / O discurso civilizatório nas Américas, o silenciamento dos saberes indígenas e as formas de integração e destruição de comunidades e povos indígenas (HCM) / A resistência dos povos e comunidades indígenas diante da ofensiva civilizatória (HCM)",
+            subtopicos: [
+              "Teorias raciais.",
+              "O cientificismo.",
+              "Darwinismo racial.",
+              "Extermínio dos povos indígenas.",
+              "Práticas de resistência dos povos indígenas.",
+            ],
+            sugestaoMetodologica: "Problematizar as formulações do século XIX que articularam cientificismo, teorias raciais e darwinismo social, evidenciando seus usos políticos e efeitos na legitimação de hierarquias e práticas de dominação. A abordagem deve discutir o discurso civilizatório nas Américas, explorando seus significados, mecanismos de silenciamento e impactos sobre populações indígenas e negras, com destaque para estratégias de integração forçada. A análise precisa enfatizar que tais construções sustentaram práticas de destruição de comunidades, bem como evidenciar o protagonismo dos povos indígenas em suas diversas formas de resistência, ressaltando estratégias de enfrentamento, adaptação e preservação cultural.",
             habilidades: [
+              { codigo: "EF08HI27", descricao: "Identificar as tensões e os significados dos discursos civilizatórios, avaliando seus impactos negativos para os povos indígenas originários e as populações negras nas Américas." },
               { codigo: "EF08HIMOC63", descricao: "Analisar a importância que as teorias científicas de superioridade dos povos brancos tiveram para a propagação da ideia de \"raças\", racismo e da suposta inferioridade de povos negros e indígenas." },
-            ],
-          },
-          {
-            id: "8-3-6",
-            titulo: "O discurso civilizatório nas Américas, o silenciamento dos saberes indígenas e as formas de integração e destruição de comunidades e povos indígenas",
-            sugestaoMetodologica: "A análise precisa enfatizar que tais construções sustentaram práticas de destruição de comunidades, bem como evidenciar o protagonismo dos povos indígenas em suas diversas formas de resistência, ressaltando estratégias de enfrentamento, adaptação e preservação cultural.",
-            habilidades: [
               { codigo: "EF08HIMOC64", descricao: "Discutir os métodos de resistência das populações indígenas frente as violências de que foram vítimas durante o processo de colonização brasileiro." },
             ],
           },
