@@ -6,6 +6,7 @@ export interface Habilidade {
 export interface ObjetoConhecimento {
   id: string;
   titulo: string;
+  subtopicos?: string[];
   sugestaoMetodologica?: string;
   habilidades: Habilidade[];
 }
