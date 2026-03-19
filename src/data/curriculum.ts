@@ -117,7 +117,12 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "6-1-6",
-            titulo: "Os povos indígenas originários do atual território brasileiro e seus hábitos culturais e sociais",
+            titulo: "Os povos indígenas originários do atual território brasileiro e seus hábitos culturais e sociais (HMCS)",
+            subtopicos: [
+              "Povos indígenas brasileiros.",
+              "A importância e influência da cultura indígena.",
+              "Territórios e ocupação do solo pelos povos indígenas.",
+            ],
             sugestaoMetodologica: "Problematizar a ideia de que os povos indígenas pertencem apenas ao passado, evidenciando sua presença histórica, contemporânea e a diversidade de seus modos de vida. Explore a pluralidade dos povos indígenas no território brasileiro, destacando hábitos, formas de organização social e ocupação do espaço. A abordagem deve enfatizar os aportes culturais, sociais e tecnológicos, além de analisar as transformações provocadas pela colonização, as disputas territoriais e a lógica das reservas indígenas, reforçando o protagonismo indígena na história do Brasil.",
             habilidades: [
               { codigo: "EF06HI08", descricao: "Identificar os espaços territoriais ocupados e os aportes culturais, científicos, sociais e econômicos dos astecas, maias e incas e dos povos indígenas de diversas regiões brasileiras." },
