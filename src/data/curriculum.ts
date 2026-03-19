@@ -221,20 +221,30 @@ export const curriculumData: AnoLetivo[] = [
         objetos: [
           {
             id: "6-3-1",
-            titulo: "Senhores e servos no mundo antigo e no medieval",
-            sugestaoMetodologica: "Analisar as relações entre senhores e servos como formas históricas de organização social e econômica, explorando os vínculos de suserania e vassalagem como formas de articulação política e social, bem como a estrutura rígida dos estamentos no feudalismo enquanto ordenação e legitimação de desigualdades.",
+            titulo: "12. Senhores e servos no mundo antigo e no medieval (HTSC)",
+            subtopicos: [
+              "Suserania e vassalagem.",
+              "Os estamentos.",
+            ],
+            sugestaoMetodologica: "Analisar as relações entre senhores e servos como formas históricas de organização do trabalho, do poder e da hierarquia social, evitando leituras simplistas dessas estruturas. A abordagem deve explorar os vínculos de suserania e vassalagem como formas de articulação política e social, bem como a estrutura rígida dos estamentos no feudalismo enquanto ordenação e legitimação de desigualdades. A análise precisa enfatizar que tais relações expressam contextos históricos específicos, evidenciando as lógicas de dependência, obrigações e manutenção da ordem social.",
             habilidades: [
-              { codigo: "EF06HI16", descricao: "Caracterizar e comparar as dinâmicas de abastecimento e as formas de organização do trabalho e da vida." },
+              { codigo: "EF06HI16", descricao: "Caracterizar e comparar as dinâmicas de abastecimento e as formas de organização do trabalho e da vida social em diferentes sociedades e períodos, com destaque para as relações entre senhores e servos." },
               { codigo: "EF06HIMOC36", descricao: "Compreender como se dava a formação dos estamentos sociais no feudalismo, e sua importância para a manutenção da ordem social estabelecida." },
             ],
           },
           {
             id: "6-3-2",
-            titulo: "Escravidão e trabalho livre em diferentes temporalidades e espaços",
-            sugestaoMetodologica: "A abordagem deve examinar a escravidão em Roma e no continente africano a partir de suas lógicas específicas, bem como analisar a servidão medieval em suas diferenças quanto à escravidão. A análise deve evidenciar que tais regimes de trabalho respondem a contextos históricos específicos, destacando o papel e as condições do trabalhador livre em diferentes temporalidades, reforçando a variedade das relações de trabalho.",
+            titulo: "13. Escravidão e trabalho livre em diferentes temporalidades e espaços (Roma Antiga, Europa medieval e África) (HLOP)",
+            subtopicos: [
+              "A escravidão no continente africano.",
+              "A escravidão em Roma.",
+              "A servidão medieval.",
+              "O trabalho livre.",
+            ],
+            sugestaoMetodologica: "Diferenciar escravidão, servidão e trabalho livre como formas de organização do trabalho. A abordagem deve examinar a escravidão em Roma e no continente africano a partir de suas lógicas específicas, bem como analisar a servidão medieval em suas diferenças quanto à escravidão. A análise deve evidenciar que tais regimes de trabalho respondem a contextos históricos específicos, destacando o papel e as condições do trabalhador livre em diferentes temporalidades, reforçando a variedade das relações de trabalho.",
             habilidades: [
               { codigo: "EF06HI17", descricao: "Diferenciar escravidão, servidão e trabalho livre no mundo antigo." },
-              { codigo: "EF06HIMOC37", descricao: "Identificar e contextualizar formas de organização do trabalho." },
+              { codigo: "EF06HIMOC37", descricao: "Identificar e contextualizar formas de escravização em sociedades africanas." },
               { codigo: "EF06HIMOC38", descricao: "Analisar o papel da escravidão na organização econômica e social da Roma Antiga." },
               { codigo: "EF06HIMOC39", descricao: "Analisar o conceito de servidão e suas diferenças em relação à escravidão." },
               { codigo: "EF06HIMOC40", descricao: "Compreender o papel do trabalhador livre em diferentes momentos históricos." },
@@ -242,16 +252,26 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "6-3-3",
-            titulo: "Lógicas comerciais na Antiguidade romana e no mundo medieval",
+            titulo: "14. Lógicas comerciais na Antiguidade romana e no mundo medieval (HLOP)",
+            subtopicos: [
+              "O comércio medieval.",
+              "As feiras.",
+            ],
             sugestaoMetodologica: "Examinar a economia medieval com ênfase nas dinâmicas comerciais e na importância das feiras como espaços de circulação, negociação e articulação econômica. A abordagem deve evidenciar que as práticas comerciais assumem configurações distintas no tempo e no espaço, condicionadas pelos contextos, e que as trocas não se restringem à mediação monetária, podendo operar por variados instrumentos de troca.",
             habilidades: [
               { codigo: "EF06HIMOC41", descricao: "Caracterizar o comércio medieval." },
+              { codigo: "EF06HIMOC42", descricao: "Compreender a importância das feiras para a manutenção da existência de atividades comerciais." },
             ],
           },
           {
             id: "6-3-4",
-            titulo: "O papel da religião cristã, dos mosteiros e da cultura na Idade Média",
-            sugestaoMetodologica: "A abordagem deve examinar o papel dos mosteiros, das universidades e da arte como espaços de elaboração e difusão cultural, bem como as funções da religião no período. A análise precisa evidenciar a complexidade da cultura medieval e suas dinâmicas de legitimação, sociabilidade e produção de saberes.",
+            titulo: "15. O papel da religião cristã, dos mosteiros e da cultura na Idade Média (HLOP)",
+            subtopicos: [
+              "O cristianismo.",
+              "A religião como mecanismo de controle social.",
+              "A cultura medieval.",
+            ],
+            sugestaoMetodologica: "Analisar o papel do cristianismo na configuração das estruturas sociais, políticas e culturais medievais, considerando sua atuação para a produção de valores, normas e formas de organização da vida. A abordagem deve examinar o papel dos mosteiros, das universidades e da arte como espaços de elaboração e difusão cultural, bem como as funções da religião no período. A análise precisa evidenciar a complexidade da cultura medieval e suas dinâmicas de legitimação, sociabilidade e produção de saberes.",
             habilidades: [
               { codigo: "EF06HI18", descricao: "Analisar o papel da religião cristã na cultura e nos modos de organização social no período medieval." },
               { codigo: "EF06HIMOC43", descricao: "Analisar a influência da religiosidade cristã nas relações sociais, culturais e políticas da sociedade medieval." },
@@ -260,8 +280,12 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "6-3-5",
-            titulo: "O papel da mulher na Grécia e em Roma, e no período medieval",
-            sugestaoMetodologica: "Analisar os papéis sociais atribuídos às mulheres na Grécia, em Roma e no período medieval como construções históricas vinculadas às relações de poder, reforçando a historicidade das relações de gênero.",
+            titulo: "16. O papel da mulher na Grécia e em Roma, e no período medieval (HLOP)",
+            subtopicos: [
+              "A mulher na sociedade grega e na sociedade romana.",
+              "O papel social das mulheres no período medieval.",
+            ],
+            sugestaoMetodologica: "Analisar os papéis sociais atribuídos às mulheres na Grécia, em Roma e no período medieval como construções históricas vinculadas às estruturas sociais, políticas e culturais de cada contexto. A abordagem deve evidenciar diferenças, permanências e limites dessas posições sociais, evitando generalizações ou projeções de valores contemporâneos. A análise precisa enfatizar que as experiências femininas foram condicionadas por fatores como status e organização das relações de poder, reforçando a historicidade das relações de gênero.",
             habilidades: [
               { codigo: "EF06HI19", descricao: "Descrever e analisar os diferentes papéis sociais das mulheres no mundo antigo e nas sociedades medievais." },
             ],
