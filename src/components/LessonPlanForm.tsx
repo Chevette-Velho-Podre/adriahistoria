@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { FileText, Check, X } from "lucide-react";
+import { FileText, Check, X, Download } from "lucide-react";
 import { curriculumData, type Habilidade } from "@/data/curriculum";
 import logoSecretaria from "@/assets/logo-secretaria-educacao.png";
+import { exportToPdf } from "@/utils/exportPdf";
+import { exportToDocx } from "@/utils/exportDocx";
 
 export interface ObjetoSelecionado {
   id: string;
@@ -147,16 +149,35 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange }: Less
             <p className="text-xs text-muted-foreground">Referencial Curricular — Montes Claros/MG</p>
           </div>
         </div>
-        <AnimatePresence>
-          {saved && <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0 }}
-          className="flex items-center gap-1.5 text-success text-xs font-medium">
-            
-              <Check className="h-3.5 w-3.5" />
-              Salvo
-            </motion.div>
-          }
-        </AnimatePresence>
+        <div className="flex items-center gap-2">
+          <AnimatePresence>
+            {saved && <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0 }}
+            className="flex items-center gap-1.5 text-success text-xs font-medium">
+                <Check className="h-3.5 w-3.5" />
+                Salvo
+              </motion.div>
+            }
+          </AnimatePresence>
+          <div data-print-hide className="flex items-center gap-1.5">
+            <button
+              onClick={exportToPdf}
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md border border-input bg-background hover:bg-accent transition-colors"
+              title="Exportar como PDF"
+            >
+              <Download className="h-3.5 w-3.5" />
+              PDF
+            </button>
+            <button
+              onClick={() => exportToDocx(plan)}
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md border border-input bg-background hover:bg-accent transition-colors"
+              title="Exportar como Word (editável)"
+            >
+              <FileText className="h-3.5 w-3.5" />
+              DOCX
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* Form */}
