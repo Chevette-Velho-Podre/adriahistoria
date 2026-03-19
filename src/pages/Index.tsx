@@ -76,7 +76,7 @@ const Index = () => {
     <div className="h-screen flex flex-col bg-background">
       {/* Mobile header */}
       <div className="lg:hidden flex items-center justify-between px-4 py-3 border-b border-border bg-card">
-        <span className="text-sm font-semibold text-foreground">Clio — Planejador</span>
+        <span className="text-sm font-semibold text-foreground">Adria — Assistente de Planejamento</span>
         <button
           onClick={() => setSidebarOpen(!sidebarOpen)}
           className="p-2 rounded-md hover:bg-accent transition-colors"
