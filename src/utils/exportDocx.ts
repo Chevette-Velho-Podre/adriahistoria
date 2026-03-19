@@ -126,7 +126,7 @@ export async function exportToDocx(plan: LessonPlan) {
                       new ImageRun({
                         type: "png",
                         data: logoData,
-                        transformation: { width: 120, height: 60 },
+                        transformation: { width: 160, height: 80 },
                         altText: { title: "Logo", description: "Secretaria de Educação", name: "logo" },
                       }),
                     ],
