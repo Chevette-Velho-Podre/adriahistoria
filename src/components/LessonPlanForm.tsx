@@ -140,16 +140,16 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange }: Less
   return (
     <div className="flex-1 overflow-y-auto">
       {/* Header */}
-      <div className="sticky top-0 z-10 bg-background/95 backdrop-blur-sm border-b border-border px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <img src={logoSecretaria} alt="Prefeitura de Montes Claros — Secretaria de Educação" className="h-10 object-contain" />
-          <div className="h-8 w-px bg-border" />
-          <div>
-            <h1 className="text-lg text-foreground font-mono font-extrabold">Plano de Aula — História</h1>
-            <p className="text-xs text-muted-foreground">Referencial Curricular — Montes Claros/MG</p>
+      <div className="sticky top-0 z-10 bg-background/95 backdrop-blur-sm border-b border-border px-4 sm:px-6 py-3 sm:py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
+        <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+          <img src={logoSecretaria} alt="Prefeitura de Montes Claros — Secretaria de Educação" className="h-8 sm:h-10 object-contain shrink-0" />
+          <div className="h-6 sm:h-8 w-px bg-border shrink-0" />
+          <div className="min-w-0">
+            <h1 className="text-sm sm:text-lg text-foreground font-mono font-extrabold truncate">Plano de Aula — História</h1>
+            <p className="text-[10px] sm:text-xs text-muted-foreground truncate">Referencial Curricular — Montes Claros/MG</p>
           </div>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 self-end sm:self-auto">
           <AnimatePresence>
             {saved && <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0 }}
