@@ -902,9 +902,16 @@ export const curriculumData: AnoLetivo[] = [
         numero: 1,
         objetos: [
           {
-            id: "9-1-1",
-            titulo: "Experiências republicanas e práticas autoritárias: as tensões e disputas do mundo contemporâneo",
-            sugestaoMetodologica: "Compreender a emergência da República no Brasil como uma experiência marcada por disputas políticas, tensões sociais, violência e autoritarismo. A abordagem deve problematizar o arranjo republicano, evidenciando contradições, problemas sociais e revoltas populares, bem como examinar as dinâmicas de marginalização e resistência da população negra no pós-abolição.",
+            id: "9-1-1and2and3and4",
+            titulo: "Experiências republicanas e práticas autoritárias: as tensões e disputas do mundo contemporâneo / A proclamação da República e seus primeiros desdobramentos / A questão da inserção dos negros no período republicano pós-abolição / Os movimentos sociais e a imprensa negra; a cultura afro-brasileira como elemento de resistência e superação das discriminações (HRPH)",
+            subtopicos: [
+              "A transição Império para a República.",
+              "O Brasil Republicano.",
+              "A república que não foi: os problemas sociais e as revoltas populares.",
+              "O negro após a abolição: marginalização e resistência.",
+              "A resistência da população negra pela cultura.",
+            ],
+            sugestaoMetodologica: "Compreender a emergência da República no Brasil como uma experiência marcada por disputas políticas, tensões sociais, violência e autoritarismo, articulando a transição do Império aos conflitos do período. A abordagem deve problematizar o arranjo republicano, evidenciando contradições, problemas sociais e revoltas populares, bem como examinar as dinâmicas de marginalização e resistência da população negra no pós-abolição. A análise precisa destacar os mecanismos de inserção dos negros na ordem republicana, seus limites e resultados, além de reconhecer o papel dos movimentos sociais e das práticas culturais afro-brasileiras como formas de enfrentamento às exclusões e aos dispositivos de controle social.",
             habilidades: [
               { codigo: "EF09HI01", descricao: "Descrever e contextualizar os principais aspectos sociais, culturais, econômicos e políticos da emergência da República no Brasil." },
               { codigo: "EF09HI02", descricao: "Caracterizar e compreender os ciclos da história republicana, identificando particularidades da história local e regional até 1954." },
@@ -912,30 +919,25 @@ export const curriculumData: AnoLetivo[] = [
               { codigo: "EF09HI03", descricao: "Identificar os mecanismos de inserção dos negros na sociedade brasileira pós-abolição e avaliar os seus resultados." },
               { codigo: "EF09HI04", descricao: "Discutir a importância da participação da população negra na formação econômica, política e social do Brasil." },
               { codigo: "EF09HIMOC02", descricao: "Analisar as transformações sociais, econômicas e políticas na sociedade brasileira que, ao longo da história, visaram combater a exclusão social da população negra." },
-            ],
-          },
-          {
-            id: "9-1-2",
-            titulo: "A questão da inserção dos negros no período republicano pós-abolição",
-            sugestaoMetodologica: "A análise precisa destacar os mecanismos de inserção dos negros na ordem republicana, seus limites e resultados, além de reconhecer o papel dos movimentos sociais e das práticas culturais afro-brasileiras como formas de enfrentamento às exclusões e aos dispositivos de controle social.",
-            habilidades: [
               { codigo: "EF09HIMOC03", descricao: "Identificar os mecanismos de controle social que serviram para perseguir e marginalizar as práticas culturais afro-brasileiras." },
             ],
           },
           {
-            id: "9-1-3",
-            titulo: "Primeira República e suas características",
+            id: "9-1-5and6",
+            titulo: "Primeira República e suas características / Contestações e dinâmicas da vida cultural no Brasil entre 1900 e 1930 (HRPH)",
+            subtopicos: [
+              "A república.",
+              "Oligarquias.",
+              "Coronelismo.",
+              "Política do café-com-leite.",
+              "A indústria.",
+              "A Semana de Arte Moderna e o Movimento Tenentista.",
+            ],
+            sugestaoMetodologica: "Caracterizar a Primeira República a partir de suas estruturas de poder, examinando a hegemonia das oligarquias rurais, o coronelismo e a política do café-com-leite como elementos centrais da organização política do período. A abordagem deve contemplar as dinâmicas institucionais e as tensões inerentes a esse arranjo, bem como relacionar a expansão industrial às transformações econômicas e ao surgimento de novos atores sociais. A análise precisa articular tais mudanças aos movimentos de contestação e às dinâmicas culturais das primeiras décadas do século XX, em especial a Semana de Arte Moderna e o Tenentismo, como expressões das disputas que marcaram o período.",
             habilidades: [
               { codigo: "EF09HIMOC04", descricao: "Compreender o enfraquecimento do governo imperial e a ascensão das ideias republicanas." },
               { codigo: "EF09HIMOC05", descricao: "Identificar o contexto em que se deu o fortalecimento dos militares ao longo da Primeira República." },
-              { codigo: "EF09HIMOC06", descricao: "Analisar a hegemonia política das oligarquias rurais, o coronelismo e a política do café-com-leite." },
-            ],
-          },
-          {
-            id: "9-1-4",
-            titulo: "Contestações e dinâmicas da vida cultural no Brasil entre 1900 e 1930",
-            sugestaoMetodologica: "A abordagem deve contemplar as dinâmicas institucionais e as tensões inerentes a esse arranjo, bem como relacionar a expansão industrial às transformações econômicas e ao surgimento de novos atores sociais.",
-            habilidades: [
+              { codigo: "EF09HIMOC06", descricao: "Analisar a hegemonia política das oligarquias rurais durante a Primeira República." },
               { codigo: "EF09HIMOC07", descricao: "Conceituar o fenômeno do coronelismo." },
               { codigo: "EF09HIMOC08", descricao: "Explicar como a alternância de poder entre São Paulo e Minas Gerais moldou a dinâmica política da Primeira República." },
               { codigo: "EF09HIMOC09", descricao: "Relacionar o processo de industrialização ao surgimento do movimento operário e à Primeira Guerra Mundial." },
@@ -944,9 +946,21 @@ export const curriculumData: AnoLetivo[] = [
             ],
           },
           {
-            id: "9-1-5",
-            titulo: "O período varguista e suas contradições",
-            sugestaoMetodologica: "Compreender o período varguista como uma experiência política marcada por disputas ideológicas e contradições. A abordagem deve contemplar as transformações políticas e legais, como a Constituição de 1934, a legislação trabalhista e a centralização autoritária do Estado Novo, bem como os usos da propaganda oficial na difusão de valores nacionalistas e na legitimação do poder.",
+            id: "9-1-7and8and9",
+            titulo: "O período varguista e suas contradições / A emergência da vida urbana e a segregação espacial / O trabalhismo e seu protagonismo político (HRPH)",
+            subtopicos: [
+              "Conceito.",
+              "Política.",
+              "Totalitarismo.",
+              "A constituição de 1934.",
+              "As leis trabalhistas.",
+              "O Estado Novo.",
+              "A indústria e a Segunda Guerra Mundial.",
+              "Propaganda ideológica.",
+              "Desenvolvimento urbano e segregação.",
+              "O trabalhismo como força política.",
+            ],
+            sugestaoMetodologica: "Compreender o período varguista como uma experiência política marcada por disputas ideológicas e contradições. A abordagem deve contemplar as transformações políticas e legais, como a Constituição de 1934, a legislação trabalhista e a centralização autoritária do Estado Novo, bem como os usos da propaganda oficial na difusão de valores nacionalistas e na legitimação do poder. A análise precisa articular o avanço da industrialização às dinâmicas da Segunda Guerra e às tensões internas da política nacional, além do início do processo de urbanização decorrente disso. Deve ainda destacar o trabalhismo como força política, evidenciando seu significado histórico, projeto e desdobramentos na organização da vida pública brasileira.",
             habilidades: [
               { codigo: "EF09HI06", descricao: "Identificar e discutir o papel do trabalhismo como força política, social e cultural no Brasil, em diferentes escalas (nacional, regional, cidade, comunidade)." },
               { codigo: "EF09HIMOC11", descricao: "Conceituar a Era Vargas, identificando suas ambiguidades." },
@@ -954,37 +968,32 @@ export const curriculumData: AnoLetivo[] = [
               { codigo: "EF09HIMOC13", descricao: "Caracterizar o Estado Novo." },
               { codigo: "EF09HIMOC14", descricao: "Analisar as disputas entre comunistas e fascistas no contexto das décadas de 1930 e 1940 no Brasil." },
               { codigo: "EF09HIMOC15", descricao: "Relacionar o desenvolvimento da indústria no Brasil e a Segunda Guerra Mundial." },
-            ],
-          },
-          {
-            id: "9-1-6",
-            titulo: "A emergência da vida urbana e a segregação espacial",
-            habilidades: [
               { codigo: "EF09HIMOC16", descricao: "Discutir os usos da propaganda oficial na difusão de ideias nacionalistas a partir do Departamento de Imprensa e Propaganda, no governo Vargas." },
-              { codigo: "EF09HIMOC17", descricao: "Debater o processo de urbanização brasileiro." },
-            ],
-          },
-          {
-            id: "9-1-7",
-            titulo: "O trabalhismo e seu protagonismo político",
-            sugestaoMetodologica: "O trabalhismo como força política, evidenciando seu significado histórico, projeto e desdobramentos na organização da vida pública brasileira.",
-            habilidades: [
+              { codigo: "EF09HIMOC17", descricao: "Debater o processo de urbanização brasileiro e a segregação das populações pobres e da população negra a partir dos anos 1930." },
               { codigo: "EF09HIMOC18", descricao: "Compreender a importância do trabalhismo para a consolidação da política brasileira, bem como seus desdobramentos sobre a vida pública no país." },
             ],
           },
           {
-            id: "9-1-8",
-            titulo: "A questão indígena durante a República (até 1964)",
-            sugestaoMetodologica: "A abordagem deve problematizar as lógicas que marcaram as relações entre o Estado e indígenas, evidenciando práticas de assimilação e violência. A análise precisa articular essas dinâmicas às pautas indígenas e afrodescendentes, destacando tensões, formas de resistência e impactos culturais, econômicos, religiosos e políticos associados a essas relações.",
+            id: "9-1-10",
+            titulo: "A questão indígena durante a República (até 1964) (HRPH)",
+            subtopicos: [
+              "As políticas indigenistas brasileiras e o extermínio dos povos tradicionais.",
+            ],
+            sugestaoMetodologica: "Compreender a questão indígena no período republicano até 1964 como um campo de disputas políticas, sociais e territoriais, examinando as políticas indigenistas e suas implicações sobre os povos tradicionais. A abordagem deve problematizar as lógicas que marcaram as relações entre o Estado e indígenas, evidenciando práticas de assimilação e violência. A análise precisa articular essas dinâmicas às pautas indígenas e afrodescendentes, destacando tensões, formas de resistência e impactos culturais, econômicos, religiosos e políticos associados a essas relações.",
             habilidades: [
               { codigo: "EF09HI07", descricao: "Identificar e explicar, em meio a lógicas de inclusão e exclusão, as pautas dos povos indígenas, no contexto republicano (até 1964), e das populações afrodescendentes." },
               { codigo: "EF09HIMOC19", descricao: "Problematizar as relações sociais e de poder em torno das pautas indígenas e afrodescendentes, considerando os aspectos culturais, religiosos, econômicos e políticos." },
             ],
           },
           {
-            id: "9-1-9",
-            titulo: "Anarquismo e protagonismo feminino",
-            sugestaoMetodologica: "Discutir o anarquismo, o comunismo e o feminismo como expressões das disputas políticas e sociais do século XX. A abordagem deve destacar o protagonismo feminino, ressaltando conflitos, estratégias de mobilização e reivindicações por direitos. A reflexão precisa articular essas experiências às transformações nos debates sobre diversidade e cidadania, relacionando as conquistas de direitos políticos, sociais e civis à ação dos movimentos sociais.",
+            id: "9-1-11",
+            titulo: "Anarquismo e protagonismo feminino (HRPH)",
+            subtopicos: [
+              "O movimento anarquista.",
+              "O movimento comunista.",
+              "O movimento feminista.",
+            ],
+            sugestaoMetodologica: "Discutir o anarquismo, o comunismo e o feminismo como expressões das disputas políticas e sociais do século XX, evidenciando seus fundamentos, pautas e formas de atuação. A abordagem deve destacar o protagonismo feminino, ressaltando conflitos, estratégias de mobilização e reivindicações por direitos. A reflexão precisa articular essas experiências às transformações nos debates sobre diversidade e cidadania, relacionando as conquistas de direitos políticos, sociais e civis à ação dos movimentos sociais.",
             habilidades: [
               { codigo: "EF09HI08", descricao: "Identificar as transformações ocorridas no debate sobre as questões da diversidade no Brasil durante o século XX e compreender o significado das mudanças de abordagem em relação ao tema." },
               { codigo: "EF09HI09", descricao: "Relacionar as conquistas de direitos políticos, sociais e civis à atuação de movimentos sociais." },
