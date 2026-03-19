@@ -16,6 +16,7 @@ import {
 import { saveAs } from "file-saver";
 import type { LessonPlan } from "@/components/LessonPlanForm";
 import { curriculumData } from "@/data/curriculum";
+import logoSecretaria from "@/assets/logo-secretaria-educacao.png";
 
 const cellBorder = { style: BorderStyle.SINGLE, size: 1, color: "CCCCCC" };
 const cellBorders = { top: cellBorder, bottom: cellBorder, left: cellBorder, right: cellBorder };
