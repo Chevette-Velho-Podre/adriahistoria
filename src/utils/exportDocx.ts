@@ -16,6 +16,7 @@ import {
 import { saveAs } from "file-saver";
 import type { LessonPlan } from "@/components/LessonPlanForm";
 import { curriculumData } from "@/data/curriculum";
+import logoSecretaria from "@/assets/logo-secretaria-educacao.png";
 
 const cellBorder = { style: BorderStyle.SINGLE, size: 1, color: "CCCCCC" };
 const cellBorders = { top: cellBorder, bottom: cellBorder, left: cellBorder, right: cellBorder };
@@ -84,9 +85,9 @@ function resolveSugestoes(plan: LessonPlan): string[] {
   return Array.from(sugestoes);
 }
 
-async function loadLogoAsBase64(): Promise<ArrayBuffer | null> {
+async function loadLogo(): Promise<ArrayBuffer | null> {
   try {
-    const resp = await fetch("/src/assets/logo-secretaria-educacao.png");
+    const resp = await fetch(logoSecretaria);
     if (!resp.ok) return null;
     return await resp.arrayBuffer();
   } catch {
@@ -97,25 +98,76 @@ async function loadLogoAsBase64(): Promise<ArrayBuffer | null> {
 export async function exportToDocx(plan: LessonPlan) {
   const objetos = resolveObjetos(plan);
   const sugestoes = resolveSugestoes(plan);
+  const logoData = await loadLogo();
   const tableWidth = 9360;
   const col1 = 2400;
   const col2 = tableWidth - col1;
 
   const children: (Paragraph | Table)[] = [];
 
-  // Title
-  children.push(
-    new Paragraph({
-      alignment: AlignmentType.CENTER,
-      spacing: { after: 40 },
-      children: [new TextRun({ text: "Plano de Aula — História", bold: true, font: "Arial", size: 32 })],
-    }),
-    new Paragraph({
-      alignment: AlignmentType.CENTER,
-      spacing: { after: 300 },
-      children: [new TextRun({ text: "Referencial Curricular — Montes Claros/MG", font: "Arial", size: 18, color: "666666" })],
-    })
-  );
+  // Header with logo + titles
+  if (logoData) {
+    children.push(
+      new Table({
+        width: { size: tableWidth, type: WidthType.DXA },
+        columnWidths: [2000, 7360],
+        rows: [
+          new TableRow({
+            children: [
+              new TableCell({
+                borders: noBorders,
+                width: { size: 2000, type: WidthType.DXA },
+                verticalAlign: "center" as any,
+                margins: cellMargins,
+                children: [
+                  new Paragraph({
+                    alignment: AlignmentType.CENTER,
+                    children: [
+                      new ImageRun({
+                        type: "png",
+                        data: logoData,
+                        transformation: { width: 120, height: 60 },
+                        altText: { title: "Logo", description: "Secretaria de Educação", name: "logo" },
+                      }),
+                    ],
+                  }),
+                ],
+              }),
+              new TableCell({
+                borders: noBorders,
+                width: { size: 7360, type: WidthType.DXA },
+                verticalAlign: "center" as any,
+                margins: cellMargins,
+                children: [
+                  new Paragraph({
+                    spacing: { after: 40 },
+                    children: [new TextRun({ text: "Plano de Aula — História", bold: true, font: "Arial", size: 32 })],
+                  }),
+                  new Paragraph({
+                    children: [new TextRun({ text: "Referencial Curricular — Montes Claros/MG", font: "Arial", size: 18, color: "666666" })],
+                  }),
+                ],
+              }),
+            ],
+          }),
+        ],
+      })
+    );
+    children.push(new Paragraph({ spacing: { after: 200 }, children: [] }));
+  } else {
+    children.push(
+      new Paragraph({
+        alignment: AlignmentType.CENTER,
+        spacing: { after: 40 },
+        children: [new TextRun({ text: "Plano de Aula — História", bold: true, font: "Arial", size: 32 })],
+      }),
+      new Paragraph({
+        alignment: AlignmentType.CENTER,
+        spacing: { after: 300 },
+        children: [new TextRun({ text: "Referencial Curricular — Montes Claros/MG", font: "Arial", size: 18, color: "666666" })],
+      })
+    );
+  }
 
   // Identificação
   children.push(sectionTitle("Identificação"));
