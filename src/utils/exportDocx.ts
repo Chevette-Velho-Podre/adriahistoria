@@ -133,62 +133,43 @@ export async function exportToDocx(plan: LessonPlan) {
   const objetos = resolveObjetos(plan);
   const sugestoes = resolveSugestoes(plan);
   const logo = await loadLogo();
-  const logoSize = logo ? fitLogoSize(logo.width, logo.height, 320, 120) : null;
+  // A4 content width = 11906 - 1134 - 1134 = 9638 DXA ≈ 6.7 inches ≈ 482 pixels (at 72dpi)
+  // Logo is 1920x239, so scale to full content width preserving aspect ratio
+  const logoSize = logo ? fitLogoSize(logo.width, logo.height, 480, 200) : null;
   const tableWidth = 9360;
   const col1 = 2400;
   const col2 = tableWidth - col1;
 
   const children: (Paragraph | Table)[] = [];
 
-  // Header with logo + titles
+  // Header: logo centered on its own line, then titles — mirrors the PDF layout
   if (logo && logoSize) {
     children.push(
-      new Table({
-        width: { size: tableWidth, type: WidthType.DXA },
-        columnWidths: [3200, 6160],
-        rows: [
-          new TableRow({
-            children: [
-              new TableCell({
-                borders: noBorders,
-                width: { size: 3200, type: WidthType.DXA },
-                verticalAlign: "center" as any,
-                margins: cellMargins,
-                children: [
-                  new Paragraph({
-                    alignment: AlignmentType.LEFT,
-                    children: [
-                      new ImageRun({
-                        type: "png",
-                        data: logo.data,
-                        transformation: logoSize,
-                        altText: { title: "Logo", description: "Secretaria de Educação", name: "logo" },
-                      }),
-                    ],
-                  }),
-                ],
-              }),
-              new TableCell({
-                borders: noBorders,
-                width: { size: 6160, type: WidthType.DXA },
-                verticalAlign: "center" as any,
-                margins: cellMargins,
-                children: [
-                  new Paragraph({
-                    spacing: { after: 40 },
-                    children: [new TextRun({ text: "Plano de Aula — História", bold: true, font: "Arial", size: 32 })],
-                  }),
-                  new Paragraph({
-                    children: [new TextRun({ text: "Referencial Curricular — Montes Claros/MG", font: "Arial", size: 18, color: "666666" })],
-                  }),
-                ],
-              }),
-            ],
+      new Paragraph({
+        alignment: AlignmentType.CENTER,
+        spacing: { after: 120 },
+        children: [
+          new ImageRun({
+            type: "png",
+            data: logo.data,
+            transformation: logoSize,
+            altText: { title: "Logo", description: "Secretaria de Educação", name: "logo" },
           }),
         ],
       })
     );
-    children.push(new Paragraph({ spacing: { after: 200 }, children: [] }));
+    children.push(
+      new Paragraph({
+        alignment: AlignmentType.CENTER,
+        spacing: { after: 40 },
+        children: [new TextRun({ text: "Plano de Aula — História", bold: true, font: "Arial", size: 32 })],
+      }),
+      new Paragraph({
+        alignment: AlignmentType.CENTER,
+        spacing: { after: 300 },
+        children: [new TextRun({ text: "Referencial Curricular — Montes Claros/MG", font: "Arial", size: 18, color: "666666" })],
+      })
+    );
   } else {
     children.push(
       new Paragraph({
