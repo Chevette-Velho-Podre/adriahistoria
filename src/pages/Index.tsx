@@ -40,12 +40,23 @@ const Index = () => {
   const handleToggleObjeto = useCallback(
     (id: string) => {
       setPlan((prev) => {
-        const exists = prev.objetosConhecimento.includes(id);
+        const exists = prev.objetosConhecimento.some((o) => o.id === id);
+        if (exists) {
+          return {
+            ...prev,
+            objetosConhecimento: prev.objetosConhecimento.filter((o) => o.id !== id),
+          };
+        }
+        // Find the object's subtopics from curriculum data
+        const anoData = curriculumData.find((a) => a.ano === prev.ano);
+        const allObjetos = anoData?.trimestres.flatMap((t) => t.objetos) ?? [];
+        const obj = allObjetos.find((o) => o.id === id);
         return {
           ...prev,
-          objetosConhecimento: exists
-            ? prev.objetosConhecimento.filter((o) => o !== id)
-            : [...prev.objetosConhecimento, id],
+          objetosConhecimento: [
+            ...prev.objetosConhecimento,
+            { id, subtopicos: obj?.subtopicos ? [...obj.subtopicos] : [] },
+          ],
         };
       });
     },

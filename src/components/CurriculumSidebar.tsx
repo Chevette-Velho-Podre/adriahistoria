@@ -88,7 +88,7 @@ const CurriculumSidebar = ({ selectedAno, selectedTrimestre, selectedSkills, sel
               {expanded && (
                 <div className="space-y-4 ml-1">
                   {trimestre.objetos.map(obj => {
-                    const isObjSelected = selectedObjetos.includes(obj.id);
+                    const isObjSelected = selectedObjetos.some((o) => o.id === obj.id);
                     return (
                     <div key={obj.id}>
                       <button

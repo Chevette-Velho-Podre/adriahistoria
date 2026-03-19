@@ -400,7 +400,7 @@ História
             for (const t of anoData.trimestres) {
               for (const o of t.objetos) {
                 const matchBySkill = o.habilidades.some((h) => plan.habilidades.some((s) => s.codigo === h.codigo));
-                const matchByObjeto = plan.objetosConhecimento.includes(o.id);
+                const matchByObjeto = plan.objetosConhecimento.some((sel) => sel.id === o.id);
                 if (o.sugestaoMetodologica && (matchBySkill || matchByObjeto)) {
                   sugestoes.add(`${o.titulo}: ${o.sugestaoMetodologica}`);
                 }
