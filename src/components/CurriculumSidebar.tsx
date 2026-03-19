@@ -3,11 +3,13 @@ import { Search, ChevronDown, ChevronRight } from "lucide-react";
 import { curriculumData, type Habilidade } from "@/data/curriculum";
 import SkillCard from "./SkillCard";
 
+import type { ObjetoSelecionado } from "./LessonPlanForm";
+
 interface CurriculumSidebarProps {
   selectedAno: string;
   selectedTrimestre: number | null;
   selectedSkills: Habilidade[];
-  selectedObjetos: string[];
+  selectedObjetos: ObjetoSelecionado[];
   onToggleSkill: (h: Habilidade) => void;
   onToggleObjeto: (id: string) => void;
 }
