@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 import { Menu, X } from "lucide-react";
 import CurriculumSidebar from "@/components/CurriculumSidebar";
 import LessonPlanForm, { type LessonPlan } from "@/components/LessonPlanForm";
-import type { Habilidade } from "@/data/curriculum";
+import { curriculumData, type Habilidade } from "@/data/curriculum";
 
 const initialPlan: LessonPlan = {
   professor: "",
