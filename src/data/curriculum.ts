@@ -302,8 +302,12 @@ export const curriculumData: AnoLetivo[] = [
         objetos: [
           {
             id: "7-1-1",
-            titulo: "A construção da ideia de modernidade e seus impactos na concepção de História",
-            sugestaoMetodologica: "Problematizar a modernidade como construção histórica, evitando sua compreensão como sinônimo automático de progresso. Como estratégia didática, pode-se analisar situações concretas e/ou transformações em diferentes sociedades e épocas, de modo a explicitar que processos de modernização não são universais.",
+            titulo: "A construção da ideia de modernidade e seus impactos na concepção de História (HMCS)",
+            subtopicos: [
+              "A ideia de modernidade na história.",
+              "Os diferentes contextos de modernidade.",
+            ],
+            sugestaoMetodologica: "Problematizar a modernidade como construção histórica, evitando sua compreensão como sinônimo automático de progresso. Como estratégia didática, pode-se analisar situações concretas e/ou transformações em diferentes sociedades e épocas, de modo a explicitar que processos de modernização não são universais. A atividade pode ser estruturada a partir de questões orientadoras, como \"O que significa ser 'moderno' em diferentes momentos históricos?\", levando os estudantes a identificar permanências, rupturas e os significados atribuídos à ideia de \"ser moderno\" em cada contexto.",
             habilidades: [
               { codigo: "EF07HI01", descricao: "Explicar o significado de \"modernidade\" e suas lógicas de inclusão e exclusão, com base em uma concepção europeia." },
               { codigo: "EF07HIMOC01", descricao: "Analisar os impactos das transformações e modernização das sociedades ao longo da história." },
@@ -311,8 +315,12 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "7-1-2",
-            titulo: "Humanismos",
-            sugestaoMetodologica: "A abordagem deve identificar suas principais características e significados, destacando a valorização da experiência, da razão e da investigação, bem como suas implicações nas formas de pensar a ciência e o saber. A análise precisa abordar o surgimento do racionalismo, problematizando as mudanças nas dinâmicas do período.",
+            titulo: "Humanismos: uma nova visão de ser humano e de mundo (HRNM)",
+            subtopicos: [
+              "Contexto histórico.",
+              "O pensamento humanista e científico.",
+            ],
+            sugestaoMetodologica: "Examinar os Humanismos como expressão de transformações intelectuais e culturais que redefiniram o conhecimento e o mundo, situando-os em seu contexto. A abordagem deve identificar suas principais características e significados, destacando a valorização da experiência, da razão e da investigação, bem como suas implicações nas formas de pensar a ciência e o saber. A análise precisa abordar o surgimento do racionalismo, problematizando as mudanças nas dinâmicas do período.",
             habilidades: [
               { codigo: "EF07HI04", descricao: "Identificar as principais características dos Humanismos e dos Renascimentos e analisar seus significados." },
               { codigo: "EF07HIMOC02", descricao: "Identificar como o humanismo contribuiu para mudanças nas formas de pensar a ciência e o conhecimento." },
@@ -321,16 +329,29 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "7-1-3",
-            titulo: "Renascimentos artísticos e culturais",
-            sugestaoMetodologica: "A abordagem deve identificar suas características e as transformações sociais, culturais e intelectuais, destacando mudanças nas formas de representar o ser humano, a natureza e o conhecimento. A análise precisa problematizar os fatores que contribuíram para sua crise, evidenciando tensões, limites e reconfigurações desses processos.",
+            titulo: "Renascimentos artísticos e culturais (HRNM)",
+            subtopicos: [
+              "A Arte do Renascimento.",
+              "Transformações sociais.",
+              "Características do Renascimento.",
+              "A crise do Renascimento.",
+            ],
+            sugestaoMetodologica: "Examinar os renascimentos artísticos e culturais como processos complexos, evitando compreensões restritas a um único modelo. A abordagem deve identificar suas características e as transformações sociais, culturais e intelectuais, destacando mudanças nas formas de representar o ser humano, a natureza e o conhecimento. A análise precisa problematizar os fatores que contribuíram para sua crise, evidenciando tensões, limites e reconfigurações desses processos.",
             habilidades: [
               { codigo: "EF07HIMOC04", descricao: "Reconhecer as diferenças do Renascimento entre os países europeus." },
               { codigo: "EF07HIMOC05", descricao: "Analisar as transformações culturais, sociais e intelectuais associadas ao Renascimento, relacionando-as às mudanças na forma de representar o ser humano, a natureza e o conhecimento." },
+              { codigo: "EF07HIMOC06", descricao: "Analisar os fatores que concorreram para a crise do Renascimento." },
             ],
           },
           {
             id: "7-1-4",
-            titulo: "A formação e o funcionamento das monarquias europeias",
+            titulo: "A formação e o funcionamento das monarquias europeias: a lógica da centralização política e os conflitos na Europa (HPMC)",
+            subtopicos: [
+              "O processo de Formação dos Estados Nacionais.",
+              "O Absolutismo dos reis.",
+              "Os estados modernos absolutistas e a centralização política.",
+            ],
+            sugestaoMetodologica: "Examinar a formação e consolidação das monarquias europeias como parte das transformações do mundo medieval para o moderno. A abordagem deve caracterizar o Absolutismo, o fortalecimento da monarquia e as tensões inerentes ao processo.",
             habilidades: [
               { codigo: "EF07HI07", descricao: "Descrever os processos de formação e consolidação das monarquias e suas principais características com vistas à compreensão das razões da centralização política." },
               { codigo: "EF07HIMOC07", descricao: "Analisar os fatores políticos, econômicos e sociais que contribuíram para o processo de centralização do poder monárquico na Europa, considerando as transformações ocorridas na transição do mundo medieval para o moderno." },
@@ -340,8 +361,13 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "7-1-5",
-            titulo: "Reformas religiosas: a cristandade fragmentada",
-            sugestaoMetodologica: "A análise precisa evidenciar que tais movimentos ultrapassam o campo religioso, envolvendo política, reconfigurações institucionais e mudanças culturais.",
+            titulo: "Reformas religiosas: a cristandade fragmentada (HRNM)",
+            subtopicos: [
+              "A reforma protestante.",
+              "A contrarreforma católica.",
+              "Os impactos políticos e culturais das reformas.",
+            ],
+            sugestaoMetodologica: "Analisar as reformas religiosas como processos que redefiniram as relações entre religião, poder e cultura no mundo moderno. A abordagem deve contemplar os antecedentes da Reforma Protestante, suas vertentes e os impactos decorrentes dessas transformações em diferentes contextos, bem como examinar os desdobramentos da reação católica no âmbito da Contrarreforma. A análise precisa evidenciar que tais movimentos ultrapassam o campo religioso, envolvendo política, reconfigurações institucionais e mudanças culturais.",
             habilidades: [
               { codigo: "EF07HI05", descricao: "Identificar e relacionar as vinculações entre as reformas religiosas e os processos culturais e sociais do período moderno na Europa e na América." },
               { codigo: "EF07HIMOC10", descricao: "Identificar os antecedentes da Reforma Protestante." },
