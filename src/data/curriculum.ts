@@ -63,7 +63,13 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "6-1-3",
-            titulo: "As origens da humanidade, seus deslocamentos e os processos de sedentarização",
+            titulo: "As origens da humanidade, seus deslocamentos e os processos de sedentarização (HTEF)",
+            subtopicos: [
+              "História e Pré-história.",
+              "Criacionismo X Evolucionismo.",
+              "A origem do homem americano.",
+              "Os povos originais e o povoamento do território americano.",
+            ],
             sugestaoMetodologica: "Desenvolver a compreensão de que as narrativas sobre as origens da humanidade não são únicas e nem neutras, mas resultam de diferentes formas de explicar o mundo, tanto científicas quanto míticas. A partir disso, introduza hipóteses sobre o surgimento da espécie humana, as teorias acerca da origem do homem americano e as rotas de povoamento do continente, enfatizando deslocamentos, adaptações e processos de sedentarização.",
             habilidades: [
               { codigo: "EF06HIMOC09", descricao: "Diferenciar História e Pré-história." },
