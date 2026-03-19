@@ -536,7 +536,13 @@ export const curriculumData: AnoLetivo[] = [
         objetos: [
           {
             id: "8-1-1",
-            titulo: "A questão do iluminismo e da ilustração",
+            titulo: "A questão do iluminismo e da ilustração (HCAR)",
+            subtopicos: [
+              "O Iluminismo.",
+              "Teóricos iluministas.",
+              "O despotismo esclarecido.",
+              "O Liberalismo.",
+            ],
             sugestaoMetodologica: "Examinar o Iluminismo como um movimento articulado às transformações da Europa do século XVIII. A abordagem deve identificar conceitos, caracterizar principais teóricos e explicitar suas críticas ao Antigo Regime, bem como analisar as relações entre pensamento iluminista, despotismo esclarecido e a formulação das doutrinas liberais. A análise precisa evidenciar a relação entre Iluminismo e Liberalismo, destacando seus impactos na organização do mundo contemporâneo.",
             habilidades: [
               { codigo: "EF08HI01", descricao: "Identificar os principais aspectos conceituais do iluminismo e do liberalismo e discutir a relação entre eles e a organização do mundo contemporâneo." },
@@ -548,7 +554,12 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "8-1-2",
-            titulo: "As revoluções inglesas e os princípios do liberalismo",
+            titulo: "As revoluções inglesas e os princípios do liberalismo (HCAR)",
+            subtopicos: [
+              "Absolutismo.",
+              "Revolução Puritana.",
+              "Revolução Gloriosa.",
+            ],
             sugestaoMetodologica: "Analisar as revoluções inglesas do século XVII como processos que mudaram as relações entre monarquia e Parlamento, no contexto de crise do absolutismo. A abordagem deve caracterizar a Revolução Puritana e a Revolução Gloriosa, destacando seus fundamentos políticos, conflitos e desdobramentos institucionais, que permitiram a continuidade da monarquia inglesa.",
             habilidades: [
               { codigo: "EF08HI02", descricao: "Identificar as particularidades político-sociais da Inglaterra do século XVII e analisar os desdobramentos posteriores à Revolução Gloriosa." },
@@ -557,8 +568,14 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "8-1-3",
-            titulo: "Revolução Industrial e seus impactos na produção e circulação de povos, produtos e culturas",
-            sugestaoMetodologica: "A abordagem deve relacionar esse processo à emergência do capitalismo industrial, à transição campo–cidade e o surgimento do movimento operário, destacando os impactos nas condições de vida e nas dinâmicas sociais da classe trabalhadora.",
+            titulo: "Revolução Industrial e seus impactos na produção e circulação de povos, produtos e culturas (HCAR)",
+            subtopicos: [
+              "As características da Revolução Industrial.",
+              "Emergência do capitalismo.",
+              "Transição campo/cidade.",
+              "Movimento operário.",
+            ],
+            sugestaoMetodologica: "Examinar a Revolução Industrial em suas bases econômicas, técnicas e sociais, enfatizando as mudanças nas formas de produção e na organização do trabalho. A abordagem deve relacionar esse processo à emergência do capitalismo industrial, à transição campo–cidade e o surgimento do movimento operário, destacando os impactos nas condições de vida e nas dinâmicas sociais da classe trabalhadora.",
             habilidades: [
               { codigo: "EF08HI03", descricao: "Analisar os impactos da Revolução Industrial na produção e circulação de povos, produtos e culturas." },
               { codigo: "EF08HIMOC06", descricao: "Identificar e analisar as transformações da Europa do século XVIII." },
@@ -569,8 +586,18 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "8-1-4",
-            titulo: "Revolução Francesa e seus desdobramentos",
-            sugestaoMetodologica: "A análise precisa enfatizar os impactos e legados do processo revolucionário, sobretudo no mundo contemporâneo.",
+            titulo: "Revolução Francesa e seus desdobramentos (HCAR)",
+            subtopicos: [
+              "A França pré-revolução.",
+              "A crise econômica.",
+              "Grupos sociais envolvidos na revolução.",
+              "As fases da revolução.",
+              "Consequências.",
+              "Era napoleônica.",
+              "Governo dos Cem Dias.",
+              "Congresso de Viena.",
+            ],
+            sugestaoMetodologica: "Analisar a Revolução Francesa vinculada às tensões do Antigo Regime, contemplando a crise econômica, as disputas entre grupos sociais e as reconfigurações políticas ao longo de suas diferentes fases. A abordagem deve articular os antecedentes da revolução à crise do absolutismo, à ascensão da burguesia e às influências iluministas, bem como seus desdobramentos, com destaque para a Era Napoleônica, o Governo dos Cem Dias e o Congresso de Viena. A análise precisa enfatizar os impactos e legados do processo revolucionário, sobretudo no mundo contemporâneo.",
             habilidades: [
               { codigo: "EF08HI04", descricao: "Identificar e relacionar os processos da Revolução Francesa e seus desdobramentos na Europa e no mundo." },
               { codigo: "EF08HIMOC10", descricao: "Identificar os antecedentes e fases da Revolução Francesa." },
@@ -583,8 +610,15 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "8-1-5",
-            titulo: "Independência dos Estados Unidos da América",
-            sugestaoMetodologica: "Analisar a Independência dos Estados Unidos nas tensões entre colônia e metrópole, destacando disputas políticas e o desenvolvimento econômico colonial.",
+            titulo: "Independência dos Estados Unidos da América (HPIA)",
+            subtopicos: [
+              "Contexto histórico.",
+              "Relações colônia/metrópole.",
+              "Economia colonial.",
+              "A política.",
+              "Constituição.",
+            ],
+            sugestaoMetodologica: "Analisar a Independência dos Estados Unidos nas tensões entre colônia e metrópole, considerando seus antecedentes. A abordagem deve examinar as relações entre as XIII Colônias e a Inglaterra, as dinâmicas da economia colonial e os conflitos que impulsionaram a ruptura. A análise precisa contemplar a formulação constitucional e suas influências intelectuais, em especial os referenciais iluministas.",
             habilidades: [
               { codigo: "EF08HI06", descricao: "Aplicar os conceitos de Estado, nação, território, governo e país para o entendimento de conflitos e tensões." },
               { codigo: "EF08HIMOC17", descricao: "Conhecer os fatos e disputas políticas que antecedem a independência americana." },
@@ -595,7 +629,15 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "8-1-6",
-            titulo: "Rebeliões na América portuguesa: as conjurações mineira e baiana",
+            titulo: "Rebeliões na América portuguesa: as conjurações mineira e baiana (HCAR)",
+            subtopicos: [
+              "O Pacto colonial.",
+              "A decadência do ouro.",
+              "Inconfidência mineira.",
+              "Conjuração baiana.",
+              "A Cidadania na América Portuguesa.",
+            ],
+            sugestaoMetodologica: "Analisar as rebeliões na América Portuguesa como manifestações das tensões do sistema colonial, situando o pacto colonial e a decadência da produção aurífera como elementos centrais para a compreensão desses movimentos. A abordagem deve examinar a Inconfidência Mineira e a Conjuração Baiana em seus contextos específicos, contemplando participantes, projetos políticos e desdobramentos. A análise precisa articular tais experiências às circulações de ideias e às transformações mais amplas do período, com destaque para o Iluminismo e os processos revolucionários no espaço atlântico, bem como problematizar a noção de cidadania no contexto colonial.",
             habilidades: [
               { codigo: "EF08HI05", descricao: "Explicar os movimentos e as rebeliões da América portuguesa, articulando as temáticas locais e suas interfaces com processos ocorridos na Europa e nas Américas." },
               { codigo: "EF08HIMOC21", descricao: "Conceituar pacto colonial." },
@@ -608,9 +650,16 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "8-1-7",
-            titulo: "Independências na América",
-            sugestaoMetodologica: "A análise precisa mobilizar os conceitos de Estado, nação, território e governo como instrumentos interpretativos das rupturas e continuidades nas formações políticas americanas, bem como considerar projetos, interesses e limites envolvidos nas experiências independentistas.",
+            titulo: "Independências na América espanhola (HPIA)",
+            subtopicos: [
+              "A revolução dos escravizados em São Domingo e seus múltiplos significados e desdobramentos: o caso do Haiti.",
+              "Estado, nação, território e governo nas Américas.",
+              "A independência dos países da América espanhola.",
+              "O Pan-americanismo.",
+            ],
+            sugestaoMetodologica: "Examinar as independências na América Espanhola como fenômenos marcados por disputas políticas, territoriais e tensões sociais. A abordagem deve atribuir centralidade à Revolução de São Domingo, compreendendo-a como acontecimento singular, e analisar seus significados e desdobramentos. A análise precisa mobilizar os conceitos de Estado, nação, território e governo como instrumentos interpretativos das rupturas e continuidades nas formações políticas americanas, bem como considerar projetos, interesses e limites envolvidos nas experiências independentistas.",
             habilidades: [
+              { codigo: "EF08HI06", descricao: "Aplicar os conceitos de Estado, nação, território, governo e país para o entendimento de conflitos e tensões." },
               { codigo: "EF08HI07", descricao: "Identificar e contextualizar as especificidades dos diversos processos de independência nas Américas, seus aspectos populacionais e suas conformações territoriais." },
               { codigo: "EF08HI08", descricao: "Conhecer o ideário dos líderes dos movimentos independentistas e seu papel nas revoluções que levaram à independência das colônias hispano-americanas." },
               { codigo: "EF08HI09", descricao: "Conhecer as características e os principais pensadores do Pan-americanismo." },
@@ -624,12 +673,23 @@ export const curriculumData: AnoLetivo[] = [
         objetos: [
           {
             id: "8-2-1",
-            titulo: "Os caminhos até a independência do Brasil",
-            sugestaoMetodologica: "A abordagem deve situar a transferência da Corte portuguesa em 1808, a abertura dos portos, os tratados de 1810 e a elevação à condição de Reino Unido como elementos fundamentais das transformações políticas e econômicas do período. A análise precisa contemplar as revoltas e insurreições, com destaque para a revolução de 1817 e a revolução de 1820, Pedro I e as elites, e a proclamação da independência.",
+            titulo: "Os caminhos até a independência do Brasil (HPIA)",
+            subtopicos: [
+              "A vinda da Família Real portuguesa para o Brasil.",
+              "Abertura dos portos às nações amigas e tratados de 1810.",
+              "Modernização e Reino Unido.",
+              "A revolução de 1817.",
+              "A revolução de 1820.",
+              "Pedro I e as elites.",
+              "A proclamação da Independência.",
+            ],
+            sugestaoMetodologica: "Examinar os caminhos até a independência do Brasil como uma dinâmica marcada por tensões e disputas de poder. A abordagem deve situar a transferência da Corte portuguesa em 1808, a abertura dos portos, os tratados de 1810 e a elevação à condição de Reino Unido como elementos fundamentais das transformações políticas e econômicas do período.\n\nA análise precisa contemplar as revoltas e insurreições, com destaque para 1817 e 1820, articulando-as às crises do sistema colonial e do poder metropolitano. Deve ainda problematizar o papel de Pedro I e das elites, bem como analisar a Independência como um arranjo político, enfatizando seus limites, contradições e desdobramentos para a organização do Estado e da sociedade brasileira.",
             habilidades: [
+              { codigo: "EF08HI06", descricao: "Aplicar os conceitos de Estado, nação, território, governo e país para o entendimento de conflitos e tensões." },
+              { codigo: "EF08HI07", descricao: "Identificar e contextualizar as especificidades dos diversos processos de independência nas Américas, seus aspectos populacionais e suas conformações territoriais." },
               { codigo: "EF08HI11", descricao: "Identificar e explicar os protagonismos e a atuação de diferentes grupos sociais e étnicos nas lutas de independência no Brasil, na América espanhola e no Haiti." },
               { codigo: "EF08HI12", descricao: "Caracterizar a organização política e social no Brasil desde a chegada da Corte portuguesa, em 1808, até 1822 e seus desdobramentos para a história política brasileira." },
-              { codigo: "EF08HI13", descricao: "Analisar o processo de independência em diferentes países latino-americanos e comparar as formas de governo neles." },
+              { codigo: "EF08HI13", descricao: "Analisar o processo de independência em diferentes países latino-americanos e comparar as formas de governo neles adotadas." },
               { codigo: "EF08HIMOC27", descricao: "Caracterizar o processo de ascensão da colônia a reino unido e a modernização decorrente da presença da Família Real." },
               { codigo: "EF08HIMOC28", descricao: "Analisar a revolução de 1817, relacionando-a à centralização imposta por D. João VI." },
               { codigo: "EF08HIMOC29", descricao: "Relacionar a Revolução de 1820 à aceleração do processo político da independência." },
@@ -638,25 +698,44 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "8-2-2",
-            titulo: "A tutela da população indígena, a escravidão dos negros e a tutela dos egressos da escravidão",
-            sugestaoMetodologica: "A abordagem deve problematizar a noção de tutela como prática de controle, exclusão e hierarquização social, bem como evidenciar a participação dos negros na sociedade colonial. A análise precisa destacar permanências e reconfigurações dessas relações, identificando preconceitos, estereótipos e violências que incidem sobre populações indígenas e negras no continente.",
+            titulo: "A tutela da população indígena, a escravidão dos negros e a tutela dos egressos da escravidão (HPIA)",
+            subtopicos: [
+              "Os cativos indígenas e africanos.",
+            ],
+            sugestaoMetodologica: "Analisar as formas de tutela e dominação impostas às populações indígenas e negras no contexto brasileiro, examinando a condição dos cativos indígenas e africanos. A abordagem deve problematizar a noção de tutela como prática de controle, exclusão e hierarquização social, bem como evidenciar a participação dos negros na sociedade colonial. A análise precisa destacar permanências e reconfigurações dessas relações, identificando preconceitos, estereótipos e violências que incidem sobre populações indígenas e negras no continente.",
             habilidades: [
               { codigo: "EF08HI14", descricao: "Discutir a noção da tutela dos grupos indígenas e a participação dos negros na sociedade brasileira do final do período colonial, identificando permanências na forma de preconceitos, estereótipos e violências sobre as populações indígenas e negras no Brasil e nas Américas." },
             ],
           },
           {
             id: "8-2-3",
-            titulo: "Brasil: Primeiro Reinado",
-            sugestaoMetodologica: "Compreender o Primeiro Reinado como período de disputas políticas e consolidação do Império.",
+            titulo: "Brasil: Primeiro Reinado (HBS)",
+            subtopicos: [
+              "O governo de Pedro I.",
+              "A Confederação do Equador.",
+              "A Constituição de 1824.",
+              "O Poder Moderador.",
+              "O fim do Primeiro Reinado.",
+            ],
+            sugestaoMetodologica: "Compreender o Primeiro Reinado como período de disputas políticas consolidação do Império. A abordagem deve examinar o governo de D. Pedro I, situando a Confederação do Equador no contexto da resistência ao projeto centralizador. A análise precisa contemplar a Constituição de 1824 e o Poder Moderador como chave da organização do Império, destacando sua função e implicações, bem como considerar os fatores que levaram ao fim do Primeiro Reinado.",
             habilidades: [
               { codigo: "EF08HIMOC31", descricao: "Analisar as características do governo de D. Pedro I." },
               { codigo: "EF08HIMOC32", descricao: "Discutir a ambiência política do Primeiro Reinado e os fatores que levaram a Confederação do Equador." },
+              { codigo: "EF08HIMOC33", descricao: "Analisar a importância da Constituição de 1824, suas características e os impactos que causou." },
+              { codigo: "EF08HIMOC34", descricao: "Caracterizar o Poder Moderador, sua importância e desdobramentos ao longo da história do Império." },
             ],
           },
           {
             id: "8-2-4",
-            titulo: "O Período Regencial e as contestações ao poder central",
-            sugestaoMetodologica: "A abordagem deve contemplar o Ato Adicional como marco de reconfiguração institucional, destacando suas implicações para a descentralização política. A análise precisa examinar as revoltas regenciais em sua diversidade social, política e regional, evidenciando motivações, agentes e tensões com o poder central.",
+            titulo: "O Período Regencial e as contestações ao poder central (HBS)",
+            subtopicos: [
+              "A política regencial.",
+              "Governos regenciais.",
+              "Ato adicional.",
+              "Revoltas regenciais.",
+              "Golpe da Maioridade.",
+            ],
+            sugestaoMetodologica: "Compreender o Período Regencial como uma fase de instabilidade política e disputas em torno da organização do poder no Império, examinando as características e dos diferentes governos regenciais. A abordagem deve contemplar o Ato Adicional como marco de reconfiguração institucional, destacando suas implicações para a descentralização política. A análise precisa examinar as revoltas regenciais em sua diversidade social, política e regional, evidenciando motivações, agentes e tensões com o poder central.",
             habilidades: [
               { codigo: "EF08HI16", descricao: "Identificar, comparar e analisar a diversidade política, social e regional nas rebeliões e nos movimentos contestatórios ao poder centralizado." },
               { codigo: "EF08HIMOC35", descricao: "Caracterizar e distinguir os governos regenciais." },
@@ -667,12 +746,23 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "8-2-5",
-            titulo: "O Brasil do Segundo Reinado: política e economia",
-            sugestaoMetodologica: "A abordagem deve relacionar as medidas legais e diplomáticas, como a Lei Eusébio de Queiroz e a Bill Aberdeen, às transformações institucionais e impactos sociais. A análise precisa incorporar as questões territoriais e a Guerra do Paraguai, enfatizando seus impactos sobre o Exército e a política nacional. Devem ainda ser consideradas o papel da economia cafeeira, o abolicionismo e a imigração, privilegiando as conexões entre mudanças econômicas, tensões sociais e a dinâmica do Império no século XIX.",
+            titulo: "O Brasil do Segundo Reinado: política e economia (HBS)",
+            subtopicos: [
+              "Ascensão de Pedro II.",
+              "Alternância política.",
+              "Lei Eusébio de Queiroz e Lei Bill Aberdeen.",
+              "A Lei de Terras e seus desdobramentos na política do Segundo Reinado.",
+              "Territórios e fronteiras: a Guerra do Paraguai.",
+              "O exército.",
+              "O abolicionismo.",
+              "O café.",
+              "Imigração.",
+            ],
+            sugestaoMetodologica: "Examinar o Segundo Reinado como período de consolidação política e redefinições econômicas, destacando a importância de Pedro II e a dinâmica da alternância partidária na organização do poder. A abordagem deve relacionar as medidas legais e diplomáticas, como a Lei Eusébio de Queiroz e a Bill Aberdeen, às transformações institucionais e impactos sociais. A análise precisa incorporar as questões territoriais e a Guerra do Paraguai, enfatizando seus impactos sobre o Exército e a política nacional. Devem ainda ser consideradas o papel da economia cafeeira, o abolicionismo e a imigração, privilegiando as conexões entre mudanças econômicas, tensões sociais e a dinâmica do Império no século XIX.",
             habilidades: [
               { codigo: "EF08HI15", descricao: "Identificar e analisar os sujeitos envolvidos nas disputas políticas durante o Primeiro e o Segundo Reinado." },
               { codigo: "EF08HI17", descricao: "Relacionar as transformações territoriais com as tensões e conflitos durante o Império." },
-              { codigo: "EF08HI18", descricao: "Identificar as questões internas e externas sobre a dinâmica da alternância partidária durante o Segundo Reinado." },
+              { codigo: "EF08HI18", descricao: "Identificar as questões internas e externas sobre a atuação do Brasil na Guerra do Paraguai e discutir diferentes versões sobre o conflito." },
               { codigo: "EF08HIMOC39", descricao: "Avaliar as primeiras ações de Pedro II enquanto Imperador e a alternância política entre partidos." },
               { codigo: "EF08HIMOC40", descricao: "Conhecer as leis Eusébio de Queiroz e Bill Aberdeen, bem como sua importância histórica." },
               { codigo: "EF08HIMOC41", descricao: "Analisar a situação política, economia e social do Brasil e do Paraguai após o conflito." },
@@ -685,16 +775,25 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "8-2-6",
-            titulo: "O escravismo no Brasil do século XIX: plantations e revoltas de escravizados, abolicionismo e políticas migratórias no Brasil Imperial",
-            sugestaoMetodologica: "Investigar o escravismo no Brasil do século XIX no âmbito das relações econômicas e sociais do Império. A abordagem deve analisar o processo de abolição e seus desdobramentos, evidenciando permanências, tensões e reconfigurações das hierarquias sociais. O tema deve ainda estimular a formulação de questionamentos sobre os legados da escravidão no país, articulando passado e presente na compreensão das desigualdades, exclusão, identidade e dos debates contemporâneos a respeito da temática.",
+            titulo: "O escravismo no Brasil do século XIX: plantations e revoltas de escravizados, abolicionismo e políticas migratórias no Brasil Imperial (HBS)",
+            subtopicos: [
+              "O processo de abolição da escravidão.",
+              "Os desdobramentos da abolição.",
+              "As políticas migratórias para substituição de mão de obra.",
+            ],
+            sugestaoMetodologica: "Investigar o escravismo no Brasil do século XIX no âmbito das relações econômicas e sociais do Império. A abordagem deve analisar o processo de abolição e seus desdobramentos, evidenciando permanências, tensões e reconfigurações das hierarquias sociais. A análise precisa contemplar as políticas migratórias voltadas ao trabalho, situando-as em seus interesses econômicos e implicações sociais. O tema deve ainda estimular a formulação de questionamentos sobre os legados da escravidão no país, articulando passado e presente na compreensão das desigualdades, exclusão, identidade e dos debates contemporâneos a respeito da temática.",
             habilidades: [
               { codigo: "EF08HI19", descricao: "Formular questionamentos sobre o legado da escravidão nas Américas, com base na seleção e consulta de fontes de diferentes naturezas." },
               { codigo: "EF08HI20", descricao: "Identificar e relacionar aspectos das estruturas sociais da atualidade com os legados da escravidão no Brasil e discutir a importância de ações afirmativas." },
+              { codigo: "EF08HIMOC47", descricao: "Discutir a importância histórica das políticas migratórias para a formação do Brasil contemporâneo." },
             ],
           },
           {
             id: "8-2-7",
-            titulo: "Políticas de extermínio do indígena durante o Império",
+            titulo: "Políticas de extermínio do indígena durante o Império (HBS)",
+            subtopicos: [
+              "Políticas imperiais para a população indígena.",
+            ],
             sugestaoMetodologica: "Analisar as políticas imperiais direcionadas às populações indígenas, examinando seus fundamentos, práticas e implicações no contexto da organização do Estado nacional. A abordagem deve problematizar as estratégias de tutela, assimilação e violência institucional, evidenciando seus efeitos sobre territórios, modos de vida e dinâmicas sociais indígenas.",
             habilidades: [
               { codigo: "EF08HI21", descricao: "Identificar e analisar as políticas oficiais com relação ao indígena durante o Império." },
@@ -702,8 +801,11 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "8-2-8",
-            titulo: "A produção do imaginário nacional brasileiro: cultura popular, representações visuais, letras e o Romantismo no Brasil",
-            sugestaoMetodologica: "A abordagem deve analisar o papel das culturas letradas e não letradas e das representações visuais e literárias na elaboração de imagens sobre o Brasil. A análise precisa contemplar o Romantismo como referência estética e política do período, além da atuação de intelectuais e escritores em debates centrais, como o abolicionismo.",
+            titulo: "A produção do imaginário nacional brasileiro: cultura popular, representações visuais, letras e o Romantismo no Brasil (HBS)",
+            subtopicos: [
+              "O imaginário nacional brasileiro: arte e cultura.",
+            ],
+            sugestaoMetodologica: "Examinar a produção do imaginário brasileiro no século XIX como uma construção vinculada às artes, cultura e às disputas em torno da identidade nacional. A abordagem deve analisar o papel das culturas letradas e não letradas e das representações visuais e literárias na elaboração de imagens sobre o Brasil. A análise precisa contemplar o Romantismo como referência estética e política do período, além da atuação de intelectuais e escritores em debates centrais, como o abolicionismo.",
             habilidades: [
               { codigo: "EF08HI22", descricao: "Discutir o papel das culturas letradas, não letradas e das artes na produção das identidades no Brasil do século XIX." },
               { codigo: "EF08HIMOC48", descricao: "Interpretar o papel das artes e da cultura na produção e difusão de imagens sobre o Brasil, problematizando estereótipos, idealizações e projetos de identidade nacional." },
