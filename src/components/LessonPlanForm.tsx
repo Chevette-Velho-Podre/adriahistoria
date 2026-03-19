@@ -181,7 +181,7 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange }: Less
       </div>
 
       {/* Form */}
-      <div className="p-6 max-w-3xl space-y-8">
+      <div className="p-4 sm:p-6 max-w-3xl space-y-6 sm:space-y-8">
         {/* Seção: Identificação */}
         <section>
           <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4 pb-2 border-b border-border">
