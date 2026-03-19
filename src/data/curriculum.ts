@@ -82,7 +82,13 @@ export const curriculumData: AnoLetivo[] = [
           },
           {
             id: "6-1-4",
-            titulo: "Povos da Antiguidade na África (egípcios), no Oriente Médio (mesopotâmicos) e nas Américas (pré-colombianos)",
+            titulo: "Povos da Antiguidade na África (egípcios), no Oriente Médio (mesopotâmicos) e nas Américas (pré-colombianos) (HMCS)",
+            subtopicos: [
+              "Hebreus, Fenícios e Persas.",
+              "Os egípcios e povos africanos.",
+              "A mesopotâmia.",
+              "Povos pré-colombianos: astecas, maias e incas.",
+            ],
             sugestaoMetodologica: "Desenvolver a compreensão de que as sociedades antigas apresentaram organizações sociais, políticas, econômicas e culturais complexas. Parta do problema sobre por que algumas civilizações são mais lembradas que outras e realize uma análise comparativa entre Egito, Mesopotâmia e povos pré-colombianos, destacando formas de registro, cultura material, poder, trabalho e produção de conhecimentos, evidenciando que cada sociedade criou soluções próprias para desafios semelhantes.",
             habilidades: [
               { codigo: "EF06HI07", descricao: "Identificar aspectos e formas de registro das sociedades antigas na África, no Oriente Médio e nas Américas, distinguindo alguns significados presentes na cultura material e na tradição oral dessas sociedades." },
