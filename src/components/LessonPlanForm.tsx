@@ -3,6 +3,11 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FileText, Check, X } from "lucide-react";
 import { curriculumData, type Habilidade } from "@/data/curriculum";
 
+export interface ObjetoSelecionado {
+  id: string;
+  subtopicos: string[];
+}
+
 export interface LessonPlan {
   professor: string;
   escola: string;
@@ -14,7 +19,7 @@ export interface LessonPlan {
   metodologia: string;
   avaliacao: string;
   habilidades: Habilidade[];
-  objetosConhecimento: string[];
+  objetosConhecimento: ObjetoSelecionado[];
 }
 
 interface LessonPlanFormProps {
