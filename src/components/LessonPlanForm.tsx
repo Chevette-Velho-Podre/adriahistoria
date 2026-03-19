@@ -219,8 +219,8 @@ História
                 <div className="space-y-2">
                     <AnimatePresence mode="popLayout">
                       {selectedObjetos.map((obj) =>
+                    <React.Fragment key={obj.id}>
                     <motion.div
-                      key={obj.id}
                       layout
                       initial={{ opacity: 0, y: -4 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -246,6 +246,7 @@ História
                             ))}
                           </ul>
                         )}
+                    </React.Fragment>
                     )}
                     </AnimatePresence>
                   </div>
