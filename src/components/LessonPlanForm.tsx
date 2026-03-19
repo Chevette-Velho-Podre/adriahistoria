@@ -84,7 +84,7 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange }: Less
     const all = anoData.trimestres.flatMap((t) => t.objetos);
     return plan.objetosConhecimento.
     map((id) => all.find((o) => o.id === id)).
-    filter(Boolean) as {id: string;titulo: string;}[];
+    filter(Boolean) as {id: string; titulo: string; subtopicos?: string[];}[];
   }, [plan.ano, plan.objetosConhecimento]);
 
   // Auto-save indicator
