@@ -59,8 +59,6 @@ const CurriculumSidebar = ({ selectedAno, selectedTrimestre, selectedSkills, sel
       <div className="p-4 border-b border-border">
         <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-3">
           Referencial Curricular Municipal
-<
- 
         </h2>
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
