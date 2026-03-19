@@ -3,6 +3,11 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FileText, Check, X } from "lucide-react";
 import { curriculumData, type Habilidade } from "@/data/curriculum";
 
+export interface ObjetoSelecionado {
+  id: string;
+  subtopicos: string[];
+}
+
 export interface LessonPlan {
   professor: string;
   escola: string;
@@ -14,7 +19,7 @@ export interface LessonPlan {
   metodologia: string;
   avaliacao: string;
   habilidades: Habilidade[];
-  objetosConhecimento: string[];
+  objetosConhecimento: ObjetoSelecionado[];
 }
 
 interface LessonPlanFormProps {
@@ -73,18 +78,49 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange }: Less
   const removeObjeto = (id: string) => {
     onChange({
       ...plan,
-      objetosConhecimento: plan.objetosConhecimento.filter((o) => o !== id)
+      objetosConhecimento: plan.objetosConhecimento.filter((o) => o.id !== id)
     });
   };
 
-  // Resolve objeto names from IDs
+  const removeSubtopico = (objetoId: string, subtopico: string) => {
+    onChange({
+      ...plan,
+      objetosConhecimento: plan.objetosConhecimento.map((o) =>
+        o.id === objetoId
+          ? { ...o, subtopicos: o.subtopicos.filter((s) => s !== subtopico) }
+          : o
+      )
+    });
+  };
+
+  const addSubtopico = (objetoId: string, subtopico: string) => {
+    onChange({
+      ...plan,
+      objetosConhecimento: plan.objetosConhecimento.map((o) =>
+        o.id === objetoId
+          ? { ...o, subtopicos: [...o.subtopicos, subtopico] }
+          : o
+      )
+    });
+  };
+
+  // Resolve objeto names from IDs, merging curriculum data with selected subtopics
   const selectedObjetos = useMemo(() => {
     const anoData = curriculumData.find((a) => a.ano === plan.ano);
     if (!anoData) return [];
     const all = anoData.trimestres.flatMap((t) => t.objetos);
-    return plan.objetosConhecimento.
-    map((id) => all.find((o) => o.id === id)).
-    filter(Boolean) as {id: string; titulo: string; subtopicos?: string[];}[];
+    return plan.objetosConhecimento
+      .map((sel) => {
+        const obj = all.find((o) => o.id === sel.id);
+        if (!obj) return null;
+        return {
+          id: obj.id,
+          titulo: obj.titulo,
+          allSubtopicos: obj.subtopicos ?? [],
+          selectedSubtopicos: sel.subtopicos,
+        };
+      })
+      .filter(Boolean) as { id: string; titulo: string; allSubtopicos: string[]; selectedSubtopicos: string[] }[];
   }, [plan.ano, plan.objetosConhecimento]);
 
   // Auto-save indicator
@@ -236,15 +272,37 @@ História
                             <X className="h-3.5 w-3.5 text-muted-foreground" />
                           </button>
                         </motion.div>
-                        {obj.subtopicos && obj.subtopicos.length > 0 && (
-                          <ul className="ml-6 mb-1 space-y-0.5">
-                            {obj.subtopicos.map((sub, idx) => (
-                              <li key={idx} className="text-xs text-muted-foreground flex items-start gap-1.5">
-                                <span className="mt-1.5 h-1 w-1 rounded-full bg-muted-foreground/50 shrink-0" />
-                                {sub}
-                              </li>
+                        {obj.allSubtopicos.length > 0 && (
+                          <div className="ml-4 mb-1 space-y-0.5">
+                            {/* Selected subtopics */}
+                            {obj.selectedSubtopicos.map((sub, idx) => (
+                              <div key={`sel-${idx}`} className="text-xs text-foreground/70 flex items-center gap-1.5 group/sub">
+                                <span className="mt-0.5 h-1 w-1 rounded-full bg-primary/60 shrink-0" />
+                                <span className="flex-1">{sub}</span>
+                                <button
+                                  onClick={() => removeSubtopico(obj.id, sub)}
+                                  className="opacity-0 group-hover/sub:opacity-100 p-0.5 rounded-sm hover:bg-foreground/10 transition-all"
+                                  title="Remover subtópico"
+                                >
+                                  <X className="h-3 w-3 text-muted-foreground" />
+                                </button>
+                              </div>
                             ))}
-                          </ul>
+                            {/* Available (not selected) subtopics to add back */}
+                            {obj.allSubtopicos
+                              .filter((s) => !obj.selectedSubtopicos.includes(s))
+                              .map((sub, idx) => (
+                                <button
+                                  key={`avail-${idx}`}
+                                  onClick={() => addSubtopico(obj.id, sub)}
+                                  className="w-full text-left text-xs text-muted-foreground/50 flex items-center gap-1.5 hover:text-foreground/70 transition-colors py-0.5 line-through decoration-muted-foreground/30"
+                                  title="Adicionar subtópico"
+                                >
+                                  <span className="mt-0.5 h-1 w-1 rounded-full bg-muted-foreground/20 shrink-0" />
+                                  {sub}
+                                </button>
+                              ))}
+                          </div>
                         )}
                     </React.Fragment>
                     )}
@@ -342,7 +400,7 @@ História
             for (const t of anoData.trimestres) {
               for (const o of t.objetos) {
                 const matchBySkill = o.habilidades.some((h) => plan.habilidades.some((s) => s.codigo === h.codigo));
-                const matchByObjeto = plan.objetosConhecimento.includes(o.id);
+                const matchByObjeto = plan.objetosConhecimento.some((sel) => sel.id === o.id);
                 if (o.sugestaoMetodologica && (matchBySkill || matchByObjeto)) {
                   sugestoes.add(`${o.titulo}: ${o.sugestaoMetodologica}`);
                 }

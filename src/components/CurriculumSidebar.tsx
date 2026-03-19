@@ -3,11 +3,13 @@ import { Search, ChevronDown, ChevronRight } from "lucide-react";
 import { curriculumData, type Habilidade } from "@/data/curriculum";
 import SkillCard from "./SkillCard";
 
+import type { ObjetoSelecionado } from "./LessonPlanForm";
+
 interface CurriculumSidebarProps {
   selectedAno: string;
   selectedTrimestre: number | null;
   selectedSkills: Habilidade[];
-  selectedObjetos: string[];
+  selectedObjetos: ObjetoSelecionado[];
   onToggleSkill: (h: Habilidade) => void;
   onToggleObjeto: (id: string) => void;
 }
@@ -86,7 +88,7 @@ const CurriculumSidebar = ({ selectedAno, selectedTrimestre, selectedSkills, sel
               {expanded && (
                 <div className="space-y-4 ml-1">
                   {trimestre.objetos.map(obj => {
-                    const isObjSelected = selectedObjetos.includes(obj.id);
+                    const isObjSelected = selectedObjetos.some((o) => o.id === obj.id);
                     return (
                     <div key={obj.id}>
                       <button
