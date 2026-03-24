@@ -1,8 +1,11 @@
-import { useState, useCallback } from "react";
-import { Menu, X } from "lucide-react";
+import { useState, useCallback, useEffect, useRef } from "react";
+import { Menu, X, Save, Trash2 } from "lucide-react";
 import CurriculumSidebar from "@/components/CurriculumSidebar";
 import LessonPlanForm, { type LessonPlan } from "@/components/LessonPlanForm";
 import { curriculumData, type Habilidade } from "@/data/curriculum";
+import { toast } from "sonner";
+
+const STORAGE_KEY = "adria-lesson-plan";
 
 const initialPlan: LessonPlan = {
   professor: "",
@@ -20,8 +23,35 @@ const initialPlan: LessonPlan = {
   objetosConhecimento: [],
 };
 
+const loadSavedPlan = (): LessonPlan | null => {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) return JSON.parse(saved) as LessonPlan;
+  } catch { /* ignore */ }
+  return null;
+};
+
 const Index = () => {
-  const [plan, setPlan] = useState<LessonPlan>(initialPlan);
+  const [plan, setPlan] = useState<LessonPlan>(() => loadSavedPlan() ?? initialPlan);
+  const isFirstRender = useRef(true);
+
+  // Auto-save to localStorage on every change
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(plan));
+    } catch { /* storage full, ignore */ }
+  }, [plan]);
+
+  const handleNewPlan = useCallback(() => {
+    if (!window.confirm("Deseja iniciar um novo planejamento? O rascunho atual será apagado.")) return;
+    localStorage.removeItem(STORAGE_KEY);
+    setPlan(initialPlan);
+    toast.success("Novo planejamento iniciado");
+  }, []);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleToggleSkill = useCallback(
@@ -118,6 +148,7 @@ const Index = () => {
             onChange={setPlan}
             onAnoChange={handleAnoChange}
             onTrimestreChange={handleTrimestreChange}
+            onNewPlan={handleNewPlan}
           />
         </div>
       </div>
