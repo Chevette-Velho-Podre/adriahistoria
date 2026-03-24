@@ -57,6 +57,28 @@ const Auth = () => {
     setSubmitting(false);
   };
 
+  if (resetSent) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background px-4">
+        <div className="w-full max-w-sm space-y-6 text-center">
+          <img src={logoSecretaria} alt="Secretaria de Educação" className="h-12 mx-auto" />
+          <div className="p-6 rounded-lg border border-border bg-card space-y-3">
+            <h2 className="text-lg font-semibold text-foreground">Verifique seu e-mail</h2>
+            <p className="text-sm text-muted-foreground">
+              Enviamos um link de recuperação para <strong>{email}</strong>. Acesse seu e-mail para redefinir sua senha.
+            </p>
+          </div>
+          <button
+            onClick={() => { setResetSent(false); setForgotPassword(false); }}
+            className="text-sm text-primary hover:underline"
+          >
+            Voltar ao login
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   if (confirmMessage) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background px-4">
