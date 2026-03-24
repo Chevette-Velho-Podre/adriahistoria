@@ -5,6 +5,7 @@ import { curriculumData, type Habilidade } from "@/data/curriculum";
 import logoSecretaria from "@/assets/logo-secretaria-educacao.png";
 import { exportToPdf } from "@/utils/exportPdf";
 import { exportToDocx } from "@/utils/exportDocx";
+import SavedPlansManager from "@/components/SavedPlansManager";
 
 export interface ObjetoSelecionado {
   id: string;
@@ -29,7 +30,7 @@ export interface LessonPlan {
 
 interface LessonPlanFormProps {
   plan: LessonPlan;
-  onChange: (plan: LessonPlan) => void;
+  onChange: (plan: LessonPlan | ((prev: LessonPlan) => LessonPlan)) => void;
   onAnoChange: (ano: string) => void;
   onTrimestreChange: (trimestre: number | null) => void;
   onNewPlan?: () => void;
@@ -172,6 +173,7 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
                 Novo
               </button>
             )}
+            <SavedPlansManager currentPlan={plan} onLoad={(p) => onChange(p)} />
             <button
               onClick={exportToPdf}
               className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md border border-input bg-background hover:bg-accent transition-colors"
