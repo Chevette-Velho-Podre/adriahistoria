@@ -449,7 +449,7 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
               <div className="space-y-3">
                 {Array.from(sugestoes).map((s, i) =>
                 <div key={i} className="p-3 bg-skill-hover rounded-md border border-border">
-                    <p className="text-sm text-foreground/80 text-pretty leading-relaxed">{s}</p>
+                    <p className="text-sm text-foreground/80 text-justify leading-relaxed">{s}</p>
                   </div>
                 )}
               </div>
