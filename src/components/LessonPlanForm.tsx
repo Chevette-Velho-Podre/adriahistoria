@@ -197,7 +197,7 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
             {onSignOut && (
               <button
                 onClick={onSignOut}
-                className="hidden md:flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md border border-input bg-background hover:bg-accent transition-colors"
+                className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md border border-input bg-background hover:bg-accent transition-colors"
                 title="Sair da conta"
               >
                 <LogOut className="h-3.5 w-3.5" />
