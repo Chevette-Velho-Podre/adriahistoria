@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FolderOpen, Save, Trash2, Clock } from "lucide-react";
+import { FolderOpen, Save, Trash2, Clock, RefreshCw } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -7,6 +7,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { toast } from "sonner";
 import type { LessonPlan } from "@/components/LessonPlanForm";
 
 export interface SavedPlanEntry {
@@ -17,6 +18,7 @@ export interface SavedPlanEntry {
 }
 
 const PLANS_KEY = "adria-saved-plans";
+const ACTIVE_ID_KEY = "adria-active-plan-id";
 
 export const loadAllPlans = (): SavedPlanEntry[] => {
   try {
@@ -29,6 +31,15 @@ export const loadAllPlans = (): SavedPlanEntry[] => {
 
 const persistPlans = (plans: SavedPlanEntry[]) => {
   localStorage.setItem(PLANS_KEY, JSON.stringify(plans));
+};
+
+export const getActivePlanId = (): string | null => {
+  return localStorage.getItem(ACTIVE_ID_KEY);
+};
+
+export const setActivePlanId = (id: string | null) => {
+  if (id) localStorage.setItem(ACTIVE_ID_KEY, id);
+  else localStorage.removeItem(ACTIVE_ID_KEY);
 };
 
 const generateName = (plan: LessonPlan): string => {
@@ -51,12 +62,16 @@ const SavedPlansManager = ({ currentPlan, onLoad }: Props) => {
   const [open, setOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editName, setEditName] = useState("");
+  const [activeId, setActiveIdState] = useState<string | null>(getActivePlanId);
 
   useEffect(() => {
-    if (open) setPlans(loadAllPlans());
+    if (open) {
+      setPlans(loadAllPlans());
+      setActiveIdState(getActivePlanId());
+    }
   }, [open]);
 
-  const handleSave = () => {
+  const handleSaveNew = () => {
     const entry: SavedPlanEntry = {
       id: crypto.randomUUID(),
       name: generateName(currentPlan),
@@ -66,17 +81,38 @@ const SavedPlansManager = ({ currentPlan, onLoad }: Props) => {
     const updated = [entry, ...plans];
     persistPlans(updated);
     setPlans(updated);
+    setActivePlanId(entry.id);
+    setActiveIdState(entry.id);
+    toast.success("Planejamento salvo");
+  };
+
+  const handleUpdate = (id: string) => {
+    const updated = plans.map((p) =>
+      p.id === id
+        ? { ...p, plan: currentPlan, name: generateName(currentPlan), updatedAt: new Date().toISOString() }
+        : p
+    );
+    persistPlans(updated);
+    setPlans(updated);
+    toast.success("Planejamento atualizado");
   };
 
   const handleDelete = (id: string) => {
     const updated = plans.filter((p) => p.id !== id);
     persistPlans(updated);
     setPlans(updated);
+    if (activeId === id) {
+      setActivePlanId(null);
+      setActiveIdState(null);
+    }
   };
 
   const handleLoad = (entry: SavedPlanEntry) => {
     onLoad(entry.plan);
+    setActivePlanId(entry.id);
+    setActiveIdState(entry.id);
     setOpen(false);
+    toast.success("Planejamento carregado");
   };
 
   const handleRename = (id: string) => {
@@ -120,14 +156,25 @@ const SavedPlansManager = ({ currentPlan, onLoad }: Props) => {
           </DialogTitle>
         </DialogHeader>
 
-        {/* Save current */}
-        <button
-          onClick={handleSave}
-          className="flex items-center justify-center gap-2 w-full py-2.5 text-sm font-medium rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
-        >
-          <Save className="h-4 w-4" />
-          Salvar planejamento atual
-        </button>
+        {/* Actions */}
+        <div className="flex gap-2">
+          <button
+            onClick={handleSaveNew}
+            className="flex-1 flex items-center justify-center gap-2 py-2.5 text-sm font-medium rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+          >
+            <Save className="h-4 w-4" />
+            Salvar como novo
+          </button>
+          {activeId && plans.some((p) => p.id === activeId) && (
+            <button
+              onClick={() => handleUpdate(activeId)}
+              className="flex-1 flex items-center justify-center gap-2 py-2.5 text-sm font-medium rounded-md border border-primary text-primary hover:bg-primary/10 transition-colors"
+            >
+              <RefreshCw className="h-4 w-4" />
+              Atualizar atual
+            </button>
+          )}
+        </div>
 
         {/* List */}
         <div className="flex-1 overflow-y-auto space-y-2 mt-2">
@@ -139,7 +186,11 @@ const SavedPlansManager = ({ currentPlan, onLoad }: Props) => {
             plans.map((entry) => (
               <div
                 key={entry.id}
-                className="flex items-start gap-3 p-3 rounded-lg border border-border hover:bg-accent/50 transition-colors group"
+                className={`flex items-start gap-3 p-3 rounded-lg border transition-colors group ${
+                  entry.id === activeId
+                    ? "border-primary/50 bg-primary/5"
+                    : "border-border hover:bg-accent/50"
+                }`}
               >
                 <div className="flex-1 min-w-0">
                   {editingId === entry.id ? (
@@ -165,8 +216,13 @@ const SavedPlansManager = ({ currentPlan, onLoad }: Props) => {
                       onClick={() => handleLoad(entry)}
                       className="text-left w-full"
                     >
-                      <p className="text-sm font-medium text-foreground truncate">
+                      <p className="text-sm font-medium text-foreground truncate flex items-center gap-1.5">
                         {entry.name}
+                        {entry.id === activeId && (
+                          <span className="text-[10px] font-semibold text-primary bg-primary/10 px-1.5 py-0.5 rounded">
+                            atual
+                          </span>
+                        )}
                       </p>
                       <p className="text-[11px] text-muted-foreground flex items-center gap-1 mt-0.5">
                         <Clock className="h-3 w-3" />
@@ -177,6 +233,13 @@ const SavedPlansManager = ({ currentPlan, onLoad }: Props) => {
                   )}
                 </div>
                 <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
+                  <button
+                    onClick={() => handleUpdate(entry.id)}
+                    className="p-1.5 rounded hover:bg-muted text-muted-foreground"
+                    title="Sobrescrever com dados atuais"
+                  >
+                    <RefreshCw className="h-3.5 w-3.5" />
+                  </button>
                   <button
                     onClick={() => {
                       setEditingId(entry.id);
