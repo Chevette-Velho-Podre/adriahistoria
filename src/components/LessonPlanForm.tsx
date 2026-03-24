@@ -22,6 +22,7 @@ export interface LessonPlan {
   metodologia: string;
   avaliacao: string;
   observacoes: string;
+  referencias: string;
   habilidades: Habilidade[];
   objetosConhecimento: ObjetoSelecionado[];
 }
@@ -454,6 +455,20 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange }: Less
             rows={4}
             value={plan.observacoes}
             onChange={(e) => update("observacoes", e.target.value)}
+          />
+        </section>
+
+        {/* Seção: Referências */}
+        <section>
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4 pb-2 border-b border-border">
+            Referências
+          </h2>
+          <textarea
+            className={textareaClass}
+            placeholder="Liste os livros, textos e materiais que subsidiaram a elaboração deste plano..."
+            rows={4}
+            value={plan.referencias}
+            onChange={(e) => update("referencias", e.target.value)}
           />
         </section>
 
