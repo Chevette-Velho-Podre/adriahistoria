@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { Navigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 import logoSecretaria from "@/assets/logo-secretaria-educacao.png";
 
 const Auth = () => {
