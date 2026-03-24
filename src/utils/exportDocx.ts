@@ -304,7 +304,7 @@ export async function exportToDocx(plan: LessonPlan) {
   // Referências
   if (plan.referencias) {
     children.push(sectionTitle("Referências"));
-    children.push(new Paragraph({ children: [new TextRun({ text: plan.referencias, font: "Arial", size: 20 })] }));
+    children.push(new Paragraph({ alignment: AlignmentType.JUSTIFIED, children: [new TextRun({ text: plan.referencias, font: "Arial", size: 20 })] }));
   }
 
   // Assinatura
