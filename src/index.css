@@ -161,26 +161,56 @@
     height: auto !important;
   }
 
-  /* Reduce spacing for denser print layout */
+  /* Compact spacing for print */
   .space-y-8 > * + * {
-    margin-top: 1rem !important;
+    margin-top: 0.75rem !important;
   }
 
-  .space-y-4 > * + * {
+  .space-y-6 > * + * {
     margin-top: 0.5rem !important;
   }
 
-  .space-y-2 > * + * {
+  .space-y-4 > * + * {
+    margin-top: 0.35rem !important;
+  }
+
+  .space-y-3 > * + * {
     margin-top: 0.25rem !important;
   }
 
-  .p-6 {
+  .space-y-2 > * + * {
+    margin-top: 0.15rem !important;
+  }
+
+  .p-6, .sm\:p-6 {
     padding: 0 !important;
   }
 
-  .px-6 {
+  .p-4, .sm\:p-4 {
+    padding: 0 !important;
+  }
+
+  .px-6, .sm\:px-6 {
     padding-left: 0 !important;
     padding-right: 0 !important;
+  }
+
+  .px-4, .sm\:px-4 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .py-3, .sm\:py-4 {
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+  }
+
+  .mb-4 {
+    margin-bottom: 0.25rem !important;
+  }
+
+  .pb-2 {
+    padding-bottom: 0.15rem !important;
   }
 
   /* Compact inputs for print */
@@ -210,17 +240,33 @@
 
   /* Compact badges/pills in print */
   .p-2 {
-    padding: 4px 6px !important;
+    padding: 2px 4px !important;
   }
 
   .p-3 {
-    padding: 6px 8px !important;
+    padding: 4px 6px !important;
+  }
+
+  /* Compact gaps */
+  .gap-4 {
+    gap: 0.35rem !important;
+  }
+
+  .gap-2 {
+    gap: 0.15rem !important;
+  }
+
+  /* Section headings */
+  section h2 {
+    font-size: 10pt !important;
+    margin-bottom: 0.2rem !important;
   }
 
   /* Allow content to flow across pages, avoid large blank spaces */
   section {
     break-inside: auto;
     page-break-inside: auto;
+    margin-top: 0.5rem !important;
   }
 
   /* Only avoid breaks on small atomic items */
@@ -241,12 +287,22 @@
     max-width: 100% !important;
   }
 
-  /* Signature spacing */
+  /* Signature spacing - compact */
   section.mt-12 {
-    margin-top: 2rem !important;
+    margin-top: 1.5rem !important;
   }
 
   section.mt-12 .pt-8 {
-    padding-top: 1rem !important;
+    padding-top: 0.5rem !important;
+  }
+
+  /* Remove rounded corners and background decorations in print */
+  .rounded-md {
+    border-radius: 0 !important;
+  }
+
+  .bg-skill-hover,
+  .bg-accent {
+    background-color: transparent !important;
   }
 }
