@@ -1,11 +1,11 @@
 import { useState, useCallback, useEffect, useRef } from "react";
-import { Menu, X, Save, Trash2 } from "lucide-react";
+import { Menu, X, LogOut } from "lucide-react";
 import CurriculumSidebar from "@/components/CurriculumSidebar";
 import LessonPlanForm, { type LessonPlan } from "@/components/LessonPlanForm";
 import { curriculumData, type Habilidade } from "@/data/curriculum";
+import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-
-const STORAGE_KEY = "adria-lesson-plan";
 
 const initialPlan: LessonPlan = {
   professor: "",
@@ -23,77 +23,83 @@ const initialPlan: LessonPlan = {
   objetosConhecimento: [],
 };
 
-const loadSavedPlan = (): LessonPlan | null => {
-  try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) return JSON.parse(saved) as LessonPlan;
-  } catch { /* ignore */ }
-  return null;
-};
-
 const Index = () => {
-  const [plan, setPlan] = useState<LessonPlan>(() => loadSavedPlan() ?? initialPlan);
-  const isFirstRender = useRef(true);
+  const { user, signOut } = useAuth();
+  const [plan, setPlan] = useState<LessonPlan>(initialPlan);
+  const [activeId, setActiveId] = useState<string | null>(null);
+  const [profileLoaded, setProfileLoaded] = useState(false);
 
-  // Auto-save to localStorage on every change
+  // Load profile data to pre-fill professor/escola
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(plan));
-    } catch { /* storage full, ignore */ }
-  }, [plan]);
+    if (!user || profileLoaded) return;
+    supabase
+      .from("profiles")
+      .select("nome, escola")
+      .eq("user_id", user.id)
+      .single()
+      .then(({ data }) => {
+        if (data && (data.nome || data.escola)) {
+          setPlan((prev) => ({
+            ...prev,
+            professor: data.nome || prev.professor,
+            escola: data.escola || prev.escola,
+          }));
+        }
+        setProfileLoaded(true);
+      });
+  }, [user, profileLoaded]);
+
+  // Save profile when professor/escola change
+  useEffect(() => {
+    if (!user || !profileLoaded) return;
+    const t = setTimeout(() => {
+      supabase
+        .from("profiles")
+        .update({ nome: plan.professor, escola: plan.escola })
+        .eq("user_id", user.id);
+    }, 2000);
+    return () => clearTimeout(t);
+  }, [plan.professor, plan.escola, user, profileLoaded]);
 
   const handleNewPlan = useCallback(() => {
-    if (!window.confirm("Deseja iniciar um novo planejamento? O rascunho atual será apagado.")) return;
-    localStorage.removeItem(STORAGE_KEY);
-    setPlan(initialPlan);
+    if (!window.confirm("Deseja iniciar um novo planejamento?")) return;
+    setPlan((prev) => ({ ...initialPlan, professor: prev.professor, escola: prev.escola }));
+    setActiveId(null);
     toast.success("Novo planejamento iniciado");
   }, []);
+
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const handleToggleSkill = useCallback(
-    (h: Habilidade) => {
-      setPlan((prev) => {
-        const exists = prev.habilidades.some((s) => s.codigo === h.codigo);
-        return {
-          ...prev,
-          habilidades: exists
-            ? prev.habilidades.filter((s) => s.codigo !== h.codigo)
-            : [...prev.habilidades, h],
-        };
-      });
-    },
-    []
-  );
+  const handleToggleSkill = useCallback((h: Habilidade) => {
+    setPlan((prev) => {
+      const exists = prev.habilidades.some((s) => s.codigo === h.codigo);
+      return {
+        ...prev,
+        habilidades: exists
+          ? prev.habilidades.filter((s) => s.codigo !== h.codigo)
+          : [...prev.habilidades, h],
+      };
+    });
+  }, []);
 
-  const handleToggleObjeto = useCallback(
-    (id: string) => {
-      setPlan((prev) => {
-        const exists = prev.objetosConhecimento.some((o) => o.id === id);
-        if (exists) {
-          return {
-            ...prev,
-            objetosConhecimento: prev.objetosConhecimento.filter((o) => o.id !== id),
-          };
-        }
-        // Find the object's subtopics from curriculum data
-        const anoData = curriculumData.find((a) => a.ano === prev.ano);
-        const allObjetos = anoData?.trimestres.flatMap((t) => t.objetos) ?? [];
-        const obj = allObjetos.find((o) => o.id === id);
-        return {
-          ...prev,
-          objetosConhecimento: [
-            ...prev.objetosConhecimento,
-            { id, subtopicos: obj?.subtopicos ? [...obj.subtopicos] : [] },
-          ],
-        };
-      });
-    },
-    []
-  );
+  const handleToggleObjeto = useCallback((id: string) => {
+    setPlan((prev) => {
+      const exists = prev.objetosConhecimento.some((o) => o.id === id);
+      if (exists) {
+        return { ...prev, objetosConhecimento: prev.objetosConhecimento.filter((o) => o.id !== id) };
+      }
+      const anoData = curriculumData.find((a) => a.ano === prev.ano);
+      const allObjetos = anoData?.trimestres.flatMap((t) => t.objetos) ?? [];
+      const obj = allObjetos.find((o) => o.id === id);
+      return {
+        ...prev,
+        objetosConhecimento: [
+          ...prev.objetosConhecimento,
+          { id, subtopicos: obj?.subtopicos ? [...obj.subtopicos] : [] },
+        ],
+      };
+    });
+  }, []);
 
   const handleAnoChange = useCallback((ano: string) => {
     setPlan((prev) => ({ ...prev, ano, trimestre: null, habilidades: [], objetosConhecimento: [] }));
@@ -103,21 +109,33 @@ const Index = () => {
     setPlan((prev) => ({ ...prev, trimestre }));
   }, []);
 
+  const handleSignOut = async () => {
+    await signOut();
+  };
+
   return (
     <div className="h-screen flex flex-col bg-background">
       {/* Mobile header */}
       <div className="lg:hidden flex items-center justify-between px-4 py-3 border-b border-border bg-card">
         <span className="text-sm font-semibold text-foreground">Adria — Assistente de Planejamento</span>
-        <button
-          onClick={() => setSidebarOpen(!sidebarOpen)}
-          className="p-2 rounded-md hover:bg-accent transition-colors"
-        >
-          {sidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={handleSignOut}
+            className="p-2 rounded-md hover:bg-accent transition-colors text-muted-foreground"
+            title="Sair"
+          >
+            <LogOut className="h-4 w-4" />
+          </button>
+          <button
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="p-2 rounded-md hover:bg-accent transition-colors"
+          >
+            {sidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
 
       <div className="flex flex-1 overflow-hidden relative">
-        {/* Backdrop for mobile sidebar */}
         {sidebarOpen && (
           <div
             className="lg:hidden fixed inset-0 z-10 bg-black/40"
@@ -125,7 +143,6 @@ const Index = () => {
           />
         )}
 
-        {/* Sidebar - desktop always visible, mobile slide-over */}
         <div
           className={`${
             sidebarOpen ? "translate-x-0" : "-translate-x-full"
@@ -141,7 +158,6 @@ const Index = () => {
           />
         </div>
 
-        {/* Editor */}
         <div className="flex-1 flex flex-col overflow-hidden w-full">
           <LessonPlanForm
             plan={plan}
@@ -149,6 +165,9 @@ const Index = () => {
             onAnoChange={handleAnoChange}
             onTrimestreChange={handleTrimestreChange}
             onNewPlan={handleNewPlan}
+            activeId={activeId}
+            onActiveIdChange={setActiveId}
+            onSignOut={handleSignOut}
           />
         </div>
       </div>
