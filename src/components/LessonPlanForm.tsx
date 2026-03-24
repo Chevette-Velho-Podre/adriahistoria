@@ -368,7 +368,7 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
                             <span className="font-tabular text-xs font-bold text-skill-badge mr-1.5">
                               {h.codigo}
                             </span>
-                            <span className="text-sm text-foreground/80 text-pretty leading-relaxed">
+                            <span className="text-sm text-foreground/80 text-justify leading-relaxed">
                               {h.descricao}
                             </span>
                           </div>
