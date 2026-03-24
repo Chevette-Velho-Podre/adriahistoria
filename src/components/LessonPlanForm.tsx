@@ -499,13 +499,11 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
           />
         </section>
 
-        {/* Assinatura */}
-        <section className="mt-12 pt-8">
-          <div className="flex flex-col items-center gap-2">
-            <div className="w-64 border-t border-foreground/40" />
-            <p className="text-sm text-muted-foreground">Assinatura do(a) Professor(a)</p>
-          </div>
-        </section>
+        {/* Assinatura - never alone on a page */}
+        <div className="flex flex-col items-center gap-2 mt-12 pt-8" style={{ breakBefore: 'avoid', pageBreakBefore: 'avoid' }}>
+          <div className="w-64 border-t border-foreground/40" />
+          <p className="text-sm text-muted-foreground">Assinatura do(a) Professor(a)</p>
+        </div>
 
         <footer className="mt-10 pb-4 text-center" data-print-hide>
           <p className="text-xs text-muted-foreground/60">Assistente de planejamento Adria — desenvolvida por Rômulo Ferreira — 2026</p>
