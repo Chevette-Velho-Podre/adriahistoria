@@ -275,15 +275,9 @@
     print-color-adjust: exact !important;
   }
 
-  /* Print footer */
-  @page {
-    margin-bottom: 20mm;
-  }
-
-  @bottom-center {
-    content: "Adria, Assistente de Planejamento - by Rômulo Ferreira";
-    font-size: 8pt;
-    color: #666;
+  /* Print-only footer visibility */
+  .print\:block {
+    display: block !important;
   }
 
   /* Allow content to flow across pages, avoid large blank spaces */
