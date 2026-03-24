@@ -4,6 +4,7 @@ import CurriculumSidebar from "@/components/CurriculumSidebar";
 import LessonPlanForm, { type LessonPlan } from "@/components/LessonPlanForm";
 import { curriculumData, type Habilidade } from "@/data/curriculum";
 import { useAuth } from "@/hooks/useAuth";
+import AIChatAssistant from "@/components/AIChatAssistant";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
@@ -171,6 +172,7 @@ const Index = () => {
           />
         </div>
       </div>
+      <AIChatAssistant />
     </div>
   );
 };
