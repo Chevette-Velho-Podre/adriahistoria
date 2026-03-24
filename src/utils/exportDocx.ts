@@ -246,7 +246,7 @@ export async function exportToDocx(plan: LessonPlan) {
     );
     for (const h of plan.habilidades) {
       children.push(
-        new Paragraph({
+        new Paragraph({ alignment: AlignmentType.JUSTIFIED,
           spacing: { before: 40 },
           children: [
             new TextRun({ text: `${h.codigo} `, bold: true, font: "Arial", size: 18, color: "2E5090" }),
@@ -261,7 +261,7 @@ export async function exportToDocx(plan: LessonPlan) {
   if (plan.objetivos) {
     children.push(
       new Paragraph({ spacing: { before: 200, after: 80 }, children: [new TextRun({ text: "Objetivos:", bold: true, font: "Arial", size: 20 })] }),
-      new Paragraph({ children: [new TextRun({ text: plan.objetivos, font: "Arial", size: 20 })] })
+      new Paragraph({ alignment: AlignmentType.JUSTIFIED, children: [new TextRun({ text: plan.objetivos, font: "Arial", size: 20 })] })
     );
   }
 
@@ -271,14 +271,14 @@ export async function exportToDocx(plan: LessonPlan) {
   if (plan.metodologia) {
     children.push(
       new Paragraph({ spacing: { before: 100, after: 80 }, children: [new TextRun({ text: "Metodologia:", bold: true, font: "Arial", size: 20 })] }),
-      new Paragraph({ children: [new TextRun({ text: plan.metodologia, font: "Arial", size: 20 })] })
+      new Paragraph({ alignment: AlignmentType.JUSTIFIED, children: [new TextRun({ text: plan.metodologia, font: "Arial", size: 20 })] })
     );
   }
 
   if (plan.avaliacao) {
     children.push(
       new Paragraph({ spacing: { before: 200, after: 80 }, children: [new TextRun({ text: "Avaliação:", bold: true, font: "Arial", size: 20 })] }),
-      new Paragraph({ children: [new TextRun({ text: plan.avaliacao, font: "Arial", size: 20 })] })
+      new Paragraph({ alignment: AlignmentType.JUSTIFIED, children: [new TextRun({ text: plan.avaliacao, font: "Arial", size: 20 })] })
     );
   }
 
@@ -298,13 +298,13 @@ export async function exportToDocx(plan: LessonPlan) {
   // Observações
   if (plan.observacoes) {
     children.push(sectionTitle("Observações"));
-    children.push(new Paragraph({ children: [new TextRun({ text: plan.observacoes, font: "Arial", size: 20 })] }));
+    children.push(new Paragraph({ alignment: AlignmentType.JUSTIFIED, children: [new TextRun({ text: plan.observacoes, font: "Arial", size: 20 })] }));
   }
 
   // Referências
   if (plan.referencias) {
     children.push(sectionTitle("Referências"));
-    children.push(new Paragraph({ children: [new TextRun({ text: plan.referencias, font: "Arial", size: 20 })] }));
+    children.push(new Paragraph({ alignment: AlignmentType.JUSTIFIED, children: [new TextRun({ text: plan.referencias, font: "Arial", size: 20 })] }));
   }
 
   // Assinatura
