@@ -30,7 +30,7 @@ export interface LessonPlan {
 
 interface LessonPlanFormProps {
   plan: LessonPlan;
-  onChange: (plan: LessonPlan) => void;
+  onChange: (plan: LessonPlan | ((prev: LessonPlan) => LessonPlan)) => void;
   onAnoChange: (ano: string) => void;
   onTrimestreChange: (trimestre: number | null) => void;
   onNewPlan?: () => void;
