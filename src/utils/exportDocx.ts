@@ -271,7 +271,7 @@ export async function exportToDocx(plan: LessonPlan) {
   if (plan.metodologia) {
     children.push(
       new Paragraph({ spacing: { before: 100, after: 80 }, children: [new TextRun({ text: "Metodologia:", bold: true, font: "Arial", size: 20 })] }),
-      new Paragraph({ children: [new TextRun({ text: plan.metodologia, font: "Arial", size: 20 })] })
+      new Paragraph({ alignment: AlignmentType.JUSTIFIED, children: [new TextRun({ text: plan.metodologia, font: "Arial", size: 20 })] })
     );
   }
 
