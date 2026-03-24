@@ -166,7 +166,7 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
               </motion.div>
             }
           </AnimatePresence>
-          <div data-print-hide className="flex items-center gap-1.5">
+          <div data-print-hide className="flex items-center gap-1.5 flex-wrap">
             {onNewPlan && (
               <button
                 onClick={onNewPlan}
