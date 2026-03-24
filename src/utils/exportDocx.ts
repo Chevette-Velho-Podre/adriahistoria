@@ -246,7 +246,7 @@ export async function exportToDocx(plan: LessonPlan) {
     );
     for (const h of plan.habilidades) {
       children.push(
-        new Paragraph({
+        new Paragraph({ alignment: AlignmentType.JUSTIFIED,
           spacing: { before: 40 },
           children: [
             new TextRun({ text: `${h.codigo} `, bold: true, font: "Arial", size: 18, color: "2E5090" }),
