@@ -158,16 +158,41 @@ const Auth = () => {
             {submitting ? "Aguarde..." : forgotPassword ? "Enviar link de recuperação" : isSignUp ? "Criar conta" : "Entrar"}
           </button>
 
-          <p className="text-xs text-center text-muted-foreground">
-            {isSignUp ? "Já tem conta?" : "Não tem conta?"}{" "}
-            <button
-              type="button"
-              onClick={() => { setIsSignUp(!isSignUp); setError(null); }}
-              className="text-primary hover:underline font-medium"
-            >
-              {isSignUp ? "Faça login" : "Cadastre-se"}
-            </button>
-          </p>
+          {forgotPassword ? (
+            <p className="text-xs text-center text-muted-foreground">
+              <button
+                type="button"
+                onClick={() => { setForgotPassword(false); setError(null); }}
+                className="text-primary hover:underline font-medium"
+              >
+                Voltar ao login
+              </button>
+            </p>
+          ) : (
+            <>
+              {!isSignUp && (
+                <p className="text-xs text-center">
+                  <button
+                    type="button"
+                    onClick={() => { setForgotPassword(true); setError(null); }}
+                    className="text-muted-foreground hover:text-primary hover:underline"
+                  >
+                    Esqueci minha senha
+                  </button>
+                </p>
+              )}
+              <p className="text-xs text-center text-muted-foreground">
+                {isSignUp ? "Já tem conta?" : "Não tem conta?"}{" "}
+                <button
+                  type="button"
+                  onClick={() => { setIsSignUp(!isSignUp); setError(null); }}
+                  className="text-primary hover:underline font-medium"
+                >
+                  {isSignUp ? "Faça login" : "Cadastre-se"}
+                </button>
+              </p>
+            </>
+          )}
         </form>
 
         <p className="text-[10px] text-center text-muted-foreground/60">
