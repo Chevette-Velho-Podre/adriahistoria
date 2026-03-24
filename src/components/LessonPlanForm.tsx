@@ -22,6 +22,7 @@ export interface LessonPlan {
   metodologia: string;
   avaliacao: string;
   observacoes: string;
+  referencias: string;
   habilidades: Habilidade[];
   objetosConhecimento: ObjetoSelecionado[];
 }
