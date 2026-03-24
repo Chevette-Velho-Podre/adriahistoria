@@ -32,6 +32,7 @@ interface LessonPlanFormProps {
   onChange: (plan: LessonPlan) => void;
   onAnoChange: (ano: string) => void;
   onTrimestreChange: (trimestre: number | null) => void;
+  onNewPlan?: () => void;
 }
 
 const InputGroup = ({
