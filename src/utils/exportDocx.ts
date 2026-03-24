@@ -291,6 +291,7 @@ export async function exportToDocx(plan: LessonPlan) {
       children.push(
         new Paragraph({
           spacing: { before: 60 },
+          alignment: AlignmentType.JUSTIFIED,
           children: [new TextRun({ text: s, font: "Arial", size: 18, italics: true })],
         })
       );
