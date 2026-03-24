@@ -347,6 +347,6 @@ export async function exportToDocx(plan: LessonPlan) {
   });
 
   const buffer = await Packer.toBlob(doc);
-  const filename = `plano-de-aula${plan.data ? `-${plan.data}` : ""}.docx`;
+  const filename = `plano-de-aula${plan.data ? `-${formatDateBR(plan.data)}` : ""}.docx`;
   saveAs(buffer, filename);
 }
