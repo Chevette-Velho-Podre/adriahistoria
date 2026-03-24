@@ -116,7 +116,7 @@ const Index = () => {
   return (
     <div className="h-screen flex flex-col bg-background">
       {/* Mobile header */}
-      <div className="md:hidden flex items-center justify-between px-4 py-3 border-b border-border bg-card">
+      <div className="lg:hidden flex items-center justify-between px-4 py-3 border-b border-border bg-card">
         <span className="text-sm font-semibold text-foreground">Adria — Assistente de Planejamento</span>
         <div className="flex items-center gap-2">
           <button
@@ -138,7 +138,7 @@ const Index = () => {
       <div className="flex flex-1 overflow-hidden relative">
         {sidebarOpen && (
           <div
-            className="md:hidden fixed inset-0 z-10 bg-black/40"
+            className="lg:hidden fixed inset-0 z-10 bg-black/40"
             onClick={() => setSidebarOpen(false)}
           />
         )}
@@ -146,7 +146,7 @@ const Index = () => {
         <div
           className={`${
             sidebarOpen ? "translate-x-0" : "-translate-x-full"
-          } md:translate-x-0 fixed md:relative z-20 h-[calc(100vh-49px)] md:h-full w-[85vw] max-w-[400px] md:w-[320px] lg:w-[400px] md:min-w-[280px] lg:min-w-[400px] transition-transform duration-300 ease-in-out`}
+          } lg:translate-x-0 fixed lg:relative z-20 h-[calc(100vh-49px)] lg:h-full w-[85vw] max-w-[400px] lg:w-[400px] lg:min-w-[400px] transition-transform duration-300 ease-in-out`}
         >
           <CurriculumSidebar
             selectedAno={plan.ano}
