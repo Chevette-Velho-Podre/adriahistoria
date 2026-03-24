@@ -307,9 +307,9 @@ export async function exportToDocx(plan: LessonPlan) {
     children.push(new Paragraph({ alignment: AlignmentType.JUSTIFIED, children: [new TextRun({ text: plan.referencias, font: "Arial", size: 20 })] }));
   }
 
-  // Assinatura
+  // Assinatura - keepNext on spacer to prevent isolation on separate page
   children.push(
-    new Paragraph({ spacing: { before: 600 }, children: [] }),
+    new Paragraph({ spacing: { before: 600 }, keepNext: true, children: [] }),
     new Paragraph({
       alignment: AlignmentType.CENTER,
       border: { top: { style: BorderStyle.SINGLE, size: 1, color: "999999", space: 1 } },
