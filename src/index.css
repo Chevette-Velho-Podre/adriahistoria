@@ -297,19 +297,16 @@
     page-break-after: avoid !important;
   }
 
-  /* Keep each InputGroup (label + field) together */
-  section > div > div,
-  section > textarea,
-  section > .space-y-4 > div {
+  /* Only keep very small atomic items together (individual skill badges, single input groups) */
+  .flex.items-start.gap-2 {
     break-inside: avoid;
     page-break-inside: avoid;
   }
 
-  /* Only avoid breaks on small atomic items */
-  section > .space-y-3 > div,
-  .flex.items-start.gap-2 {
-    break-inside: avoid;
-    page-break-inside: avoid;
+  /* Labels should stay with their immediately following field */
+  label {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
   }
 
   /* Remove decorative max-width */
