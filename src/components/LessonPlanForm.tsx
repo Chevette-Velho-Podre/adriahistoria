@@ -297,7 +297,7 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
                       transition={{ duration: 0.2 }}
                       className="flex items-start gap-2 p-2 rounded-md bg-accent border border-border">
                       
-                          <span className="flex-1 text-sm text-foreground/90 leading-relaxed">{obj.titulo}</span>
+                          <span className="flex-1 text-sm text-foreground/90 leading-relaxed text-justify">{obj.titulo}</span>
                           <button
                         onClick={() => removeObjeto(obj.id)}
                         className="mt-0.5 p-0.5 rounded-sm hover:bg-foreground/10 transition-colors">
@@ -368,7 +368,7 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
                             <span className="font-tabular text-xs font-bold text-skill-badge mr-1.5">
                               {h.codigo}
                             </span>
-                            <span className="text-sm text-foreground/80 text-pretty leading-relaxed">
+                            <span className="text-sm text-foreground/80 text-justify leading-relaxed">
                               {h.descricao}
                             </span>
                           </div>
@@ -449,7 +449,7 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
               <div className="space-y-3">
                 {Array.from(sugestoes).map((s, i) =>
                 <div key={i} className="p-3 bg-skill-hover rounded-md border border-border">
-                    <p className="text-sm text-foreground/80 text-pretty leading-relaxed">{s}</p>
+                    <p className="text-sm text-foreground/80 text-justify leading-relaxed">{s}</p>
                   </div>
                 )}
               </div>
