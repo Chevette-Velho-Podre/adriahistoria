@@ -156,6 +156,7 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
           <AnimatePresence>
             {saved && <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0 }}
+            data-print-hide
             className="flex items-center gap-1.5 text-success text-xs font-medium">
                 <Check className="h-3.5 w-3.5" />
                 Salvo
@@ -495,6 +496,11 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
 
         <footer className="mt-10 pb-4 text-center" data-print-hide>
           <p className="text-xs text-muted-foreground/60">Assistente de planejamento Adria — desenvolvida por Rômulo Ferreira — 2026</p>
+        </footer>
+
+        {/* Print-only footer */}
+        <footer className="hidden print:block mt-8 text-center border-t border-gray-300 pt-2">
+          <p style={{ fontSize: '8pt', color: '#666' }}>Adria, Assistente de Planejamento - by Rômulo Ferreira</p>
         </footer>
       </div>
     </div>);
