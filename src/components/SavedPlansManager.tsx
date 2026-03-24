@@ -88,7 +88,7 @@ const SavedPlansManager = ({ currentPlan, onLoad, activeId, onActiveIdChange }: 
     const name = generateName(currentPlan);
     const { error } = await supabase
       .from("lesson_plans")
-      .update({ name, plan_data: currentPlan as unknown as Record<string, unknown> })
+      .update({ name, plan_data: JSON.parse(JSON.stringify(currentPlan)) })
       .eq("id", id);
     if (error) { toast.error("Erro ao atualizar"); return; }
     fetchPlans();
