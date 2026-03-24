@@ -200,7 +200,7 @@ export async function exportToDocx(plan: LessonPlan) {
       rows: [
         new TableRow({ children: [makeHeaderCell("Professor(a)", col1), makeCell(plan.professor || "—", { width: col2 })] }),
         new TableRow({ children: [makeHeaderCell("Escola", col1), makeCell(plan.escola || "—", { width: col2 })] }),
-        new TableRow({ children: [makeHeaderCell("Data", col1), makeCell(plan.data || "—", { width: col2 })] }),
+        new TableRow({ children: [makeHeaderCell("Data", col1), makeCell(plan.data ? formatDateBR(plan.data) : "—", { width: col2 })] }),
         new TableRow({ children: [makeHeaderCell("Ano/Série", col1), makeCell(plan.ano, { width: col2 })] }),
         new TableRow({ children: [makeHeaderCell("Trimestre", col1), makeCell(plan.trimestre ? `${plan.trimestre}º Trimestre` : "—", { width: col2 })] }),
       ],
