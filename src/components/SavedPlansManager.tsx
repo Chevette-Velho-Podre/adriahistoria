@@ -8,6 +8,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
 import type { LessonPlan } from "@/components/LessonPlanForm";
 
 export interface SavedPlanEntry {
@@ -16,31 +18,6 @@ export interface SavedPlanEntry {
   plan: LessonPlan;
   updatedAt: string;
 }
-
-const PLANS_KEY = "adria-saved-plans";
-const ACTIVE_ID_KEY = "adria-active-plan-id";
-
-export const loadAllPlans = (): SavedPlanEntry[] => {
-  try {
-    const raw = localStorage.getItem(PLANS_KEY);
-    return raw ? (JSON.parse(raw) as SavedPlanEntry[]) : [];
-  } catch {
-    return [];
-  }
-};
-
-const persistPlans = (plans: SavedPlanEntry[]) => {
-  localStorage.setItem(PLANS_KEY, JSON.stringify(plans));
-};
-
-export const getActivePlanId = (): string | null => {
-  return localStorage.getItem(ACTIVE_ID_KEY);
-};
-
-export const setActivePlanId = (id: string | null) => {
-  if (id) localStorage.setItem(ACTIVE_ID_KEY, id);
-  else localStorage.removeItem(ACTIVE_ID_KEY);
-};
 
 const generateName = (plan: LessonPlan): string => {
   const parts: string[] = [];
@@ -55,87 +32,100 @@ const generateName = (plan: LessonPlan): string => {
 interface Props {
   currentPlan: LessonPlan;
   onLoad: (plan: LessonPlan) => void;
+  activeId: string | null;
+  onActiveIdChange: (id: string | null) => void;
 }
 
-const SavedPlansManager = ({ currentPlan, onLoad }: Props) => {
+const SavedPlansManager = ({ currentPlan, onLoad, activeId, onActiveIdChange }: Props) => {
+  const { user } = useAuth();
   const [plans, setPlans] = useState<SavedPlanEntry[]>([]);
   const [open, setOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editName, setEditName] = useState("");
-  const [activeId, setActiveIdState] = useState<string | null>(getActivePlanId);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    if (open) {
-      setPlans(loadAllPlans());
-      setActiveIdState(getActivePlanId());
+  const fetchPlans = async () => {
+    if (!user) return;
+    setLoading(true);
+    const { data } = await supabase
+      .from("lesson_plans")
+      .select("*")
+      .order("updated_at", { ascending: false });
+    if (data) {
+      setPlans(
+        data.map((row) => ({
+          id: row.id,
+          name: row.name,
+          plan: row.plan_data as unknown as LessonPlan,
+          updatedAt: row.updated_at,
+        }))
+      );
     }
-  }, [open]);
-
-  const handleSaveNew = () => {
-    const entry: SavedPlanEntry = {
-      id: crypto.randomUUID(),
-      name: generateName(currentPlan),
-      plan: currentPlan,
-      updatedAt: new Date().toISOString(),
-    };
-    const updated = [entry, ...plans];
-    persistPlans(updated);
-    setPlans(updated);
-    setActivePlanId(entry.id);
-    setActiveIdState(entry.id);
-    toast.success("Planejamento salvo");
+    setLoading(false);
   };
 
-  const handleUpdate = (id: string) => {
-    const updated = plans.map((p) =>
-      p.id === id
-        ? { ...p, plan: currentPlan, name: generateName(currentPlan), updatedAt: new Date().toISOString() }
-        : p
-    );
-    persistPlans(updated);
-    setPlans(updated);
+  useEffect(() => {
+    if (open) fetchPlans();
+  }, [open]);
+
+  const handleSaveNew = async () => {
+    if (!user) return;
+    const name = generateName(currentPlan);
+    const { data, error } = await supabase
+      .from("lesson_plans")
+      .insert([{ user_id: user.id, name, plan_data: JSON.parse(JSON.stringify(currentPlan)) }])
+      .select()
+      .single();
+    if (error) { toast.error("Erro ao salvar"); return; }
+    if (data) {
+      onActiveIdChange(data.id);
+      fetchPlans();
+      toast.success("Planejamento salvo");
+    }
+  };
+
+  const handleUpdate = async (id: string) => {
+    const name = generateName(currentPlan);
+    const { error } = await supabase
+      .from("lesson_plans")
+      .update({ name, plan_data: JSON.parse(JSON.stringify(currentPlan)) })
+      .eq("id", id);
+    if (error) { toast.error("Erro ao atualizar"); return; }
+    fetchPlans();
     toast.success("Planejamento atualizado");
   };
 
-  const handleDelete = (id: string) => {
-    const updated = plans.filter((p) => p.id !== id);
-    persistPlans(updated);
-    setPlans(updated);
-    if (activeId === id) {
-      setActivePlanId(null);
-      setActiveIdState(null);
-    }
+  const handleDelete = async (id: string) => {
+    const { error } = await supabase.from("lesson_plans").delete().eq("id", id);
+    if (error) { toast.error("Erro ao excluir"); return; }
+    if (activeId === id) onActiveIdChange(null);
+    fetchPlans();
   };
 
   const handleLoad = (entry: SavedPlanEntry) => {
     onLoad(entry.plan);
-    setActivePlanId(entry.id);
-    setActiveIdState(entry.id);
+    onActiveIdChange(entry.id);
     setOpen(false);
     toast.success("Planejamento carregado");
   };
 
-  const handleRename = (id: string) => {
-    const updated = plans.map((p) =>
-      p.id === id ? { ...p, name: editName.trim() || p.name } : p
-    );
-    persistPlans(updated);
-    setPlans(updated);
+  const handleRename = async (id: string) => {
+    const { error } = await supabase
+      .from("lesson_plans")
+      .update({ name: editName.trim() })
+      .eq("id", id);
+    if (error) { toast.error("Erro ao renomear"); return; }
     setEditingId(null);
+    fetchPlans();
   };
 
   const formatDate = (iso: string) => {
     try {
       return new Date(iso).toLocaleString("pt-BR", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "2-digit",
-        hour: "2-digit",
-        minute: "2-digit",
+        day: "2-digit", month: "2-digit", year: "2-digit",
+        hour: "2-digit", minute: "2-digit",
       });
-    } catch {
-      return "";
-    }
+    } catch { return ""; }
   };
 
   return (
@@ -151,12 +141,9 @@ const SavedPlansManager = ({ currentPlan, onLoad }: Props) => {
       </DialogTrigger>
       <DialogContent className="sm:max-w-lg max-h-[80vh] flex flex-col">
         <DialogHeader>
-          <DialogTitle className="text-base font-semibold">
-            Meus Planejamentos
-          </DialogTitle>
+          <DialogTitle className="text-base font-semibold">Meus Planejamentos</DialogTitle>
         </DialogHeader>
 
-        {/* Actions */}
         <div className="flex gap-2">
           <button
             onClick={handleSaveNew}
@@ -176,9 +163,10 @@ const SavedPlansManager = ({ currentPlan, onLoad }: Props) => {
           )}
         </div>
 
-        {/* List */}
         <div className="flex-1 overflow-y-auto space-y-2 mt-2">
-          {plans.length === 0 ? (
+          {loading ? (
+            <p className="text-sm text-muted-foreground text-center py-8">Carregando...</p>
+          ) : plans.length === 0 ? (
             <p className="text-sm text-muted-foreground text-center py-8">
               Nenhum planejamento salvo ainda.
             </p>
@@ -195,10 +183,7 @@ const SavedPlansManager = ({ currentPlan, onLoad }: Props) => {
                 <div className="flex-1 min-w-0">
                   {editingId === entry.id ? (
                     <form
-                      onSubmit={(e) => {
-                        e.preventDefault();
-                        handleRename(entry.id);
-                      }}
+                      onSubmit={(e) => { e.preventDefault(); handleRename(entry.id); }}
                       className="flex gap-1.5"
                     >
                       <input
@@ -207,15 +192,10 @@ const SavedPlansManager = ({ currentPlan, onLoad }: Props) => {
                         className="flex-1 px-2 py-1 text-sm border border-input rounded bg-background"
                         autoFocus
                       />
-                      <button type="submit" className="text-xs text-primary font-medium">
-                        OK
-                      </button>
+                      <button type="submit" className="text-xs text-primary font-medium">OK</button>
                     </form>
                   ) : (
-                    <button
-                      onClick={() => handleLoad(entry)}
-                      className="text-left w-full"
-                    >
+                    <button onClick={() => handleLoad(entry)} className="text-left w-full">
                       <p className="text-sm font-medium text-foreground truncate flex items-center gap-1.5">
                         {entry.name}
                         {entry.id === activeId && (
@@ -241,10 +221,7 @@ const SavedPlansManager = ({ currentPlan, onLoad }: Props) => {
                     <RefreshCw className="h-3.5 w-3.5" />
                   </button>
                   <button
-                    onClick={() => {
-                      setEditingId(entry.id);
-                      setEditName(entry.name);
-                    }}
+                    onClick={() => { setEditingId(entry.id); setEditName(entry.name); }}
                     className="p-1.5 rounded hover:bg-muted text-muted-foreground text-xs"
                     title="Renomear"
                   >

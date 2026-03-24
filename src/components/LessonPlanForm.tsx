@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { FileText, Check, X, Download, FilePlus } from "lucide-react";
+import { FileText, Check, X, Download, FilePlus, LogOut } from "lucide-react";
 import { curriculumData, type Habilidade } from "@/data/curriculum";
 import logoSecretaria from "@/assets/logo-secretaria-educacao.png";
 import { exportToPdf } from "@/utils/exportPdf";
@@ -34,6 +34,9 @@ interface LessonPlanFormProps {
   onAnoChange: (ano: string) => void;
   onTrimestreChange: (trimestre: number | null) => void;
   onNewPlan?: () => void;
+  activeId: string | null;
+  onActiveIdChange: (id: string | null) => void;
+  onSignOut?: () => void;
 }
 
 const InputGroup = ({
@@ -57,7 +60,7 @@ const inputClass =
 const textareaClass =
 "w-full px-3 py-2 text-sm bg-background border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring/30 transition-all resize-y min-h-[80px] placeholder:text-muted-foreground/50";
 
-const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewPlan }: LessonPlanFormProps) => {
+const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewPlan, activeId, onActiveIdChange, onSignOut }: LessonPlanFormProps) => {
   const [saved, setSaved] = useState(false);
 
   const update = useCallback(
@@ -174,7 +177,7 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
                 Novo
               </button>
             )}
-            <SavedPlansManager currentPlan={plan} onLoad={(p) => onChange(p)} />
+            <SavedPlansManager currentPlan={plan} onLoad={(p) => onChange(p)} activeId={activeId} onActiveIdChange={onActiveIdChange} />
             <button
               onClick={exportToPdf}
               className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md border border-input bg-background hover:bg-accent transition-colors"
@@ -191,6 +194,16 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
               <FileText className="h-3.5 w-3.5" />
               DOCX
             </button>
+            {onSignOut && (
+              <button
+                onClick={onSignOut}
+                className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md border border-input bg-background hover:bg-accent transition-colors"
+                title="Sair da conta"
+              >
+                <LogOut className="h-3.5 w-3.5" />
+                Sair
+              </button>
+            )}
           </div>
         </div>
       </div>
