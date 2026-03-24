@@ -177,7 +177,7 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
                 Novo
               </button>
             )}
-            <SavedPlansManager currentPlan={plan} onLoad={(p) => onChange(p)} />
+            <SavedPlansManager currentPlan={plan} onLoad={(p) => onChange(p)} activeId={activeId} onActiveIdChange={onActiveIdChange} />
             <button
               onClick={exportToPdf}
               className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md border border-input bg-background hover:bg-accent transition-colors"
