@@ -317,13 +317,13 @@
     max-width: 100% !important;
   }
 
-  /* Signature spacing - compact */
-  section.mt-12 {
+  /* Signature - keep with previous content, never isolated */
+  .mt-12.pt-8 {
     margin-top: 1.5rem !important;
-  }
-
-  section.mt-12 .pt-8 {
     padding-top: 0.5rem !important;
+    break-before: avoid !important;
+    page-break-before: avoid !important;
+    break-inside: avoid !important;
   }
 
   /* Remove rounded corners and background decorations in print */
