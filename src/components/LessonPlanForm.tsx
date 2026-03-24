@@ -435,7 +435,7 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
                 const matchBySkill = o.habilidades.some((h) => plan.habilidades.some((s) => s.codigo === h.codigo));
                 const matchByObjeto = plan.objetosConhecimento.some((sel) => sel.id === o.id);
                 if (o.sugestaoMetodologica && (matchBySkill || matchByObjeto)) {
-                  sugestoes.add(`${o.titulo}: ${o.sugestaoMetodologica}`);
+                  sugestoes.add(o.sugestaoMetodologica);
                 }
               }
             }
