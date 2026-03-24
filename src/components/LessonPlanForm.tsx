@@ -5,6 +5,7 @@ import { curriculumData, type Habilidade } from "@/data/curriculum";
 import logoSecretaria from "@/assets/logo-secretaria-educacao.png";
 import { exportToPdf } from "@/utils/exportPdf";
 import { exportToDocx } from "@/utils/exportDocx";
+import SavedPlansManager from "@/components/SavedPlansManager";
 
 export interface ObjetoSelecionado {
   id: string;
