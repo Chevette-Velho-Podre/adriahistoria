@@ -172,6 +172,7 @@ const Index = () => {
           />
         </div>
       </div>
+      <AIChatAssistant />
     </div>
   );
 };
