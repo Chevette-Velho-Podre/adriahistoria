@@ -258,7 +258,9 @@
 
   /* Section headings - ensure visibility */
   section h2,
-  section > h2 {
+  section > h2,
+  h2.text-sm,
+  h2[class*="tracking-wider"] {
     font-size: 10pt !important;
     margin-bottom: 0.2rem !important;
     color: #333 !important;
@@ -266,6 +268,12 @@
     print-color-adjust: exact !important;
     visibility: visible !important;
     display: block !important;
+    opacity: 1 !important;
+  }
+
+  /* Force muted-foreground to be visible in print */
+  .text-muted-foreground {
+    color: #444 !important;
   }
 
   /* Labels */
