@@ -193,6 +193,9 @@
 
   textarea {
     min-height: 2em !important;
+    height: auto !important;
+    overflow: visible !important;
+    field-sizing: content !important;
   }
 
   /* Compact form groups */
