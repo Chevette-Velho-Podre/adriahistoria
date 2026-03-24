@@ -224,6 +224,7 @@ export async function exportToDocx(plan: LessonPlan) {
       children.push(
         new Paragraph({
           spacing: { before: 80 },
+          alignment: AlignmentType.JUSTIFIED,
           bullet: { level: 0 },
           children: [new TextRun({ text: obj.titulo, bold: true, font: "Arial", size: 20 })],
         })
@@ -231,6 +232,7 @@ export async function exportToDocx(plan: LessonPlan) {
       for (const sub of obj.subtopicos) {
         children.push(
           new Paragraph({
+            alignment: AlignmentType.JUSTIFIED,
             indent: { left: 720 },
             children: [new TextRun({ text: `• ${sub}`, font: "Arial", size: 18 })],
           })
@@ -289,6 +291,7 @@ export async function exportToDocx(plan: LessonPlan) {
       children.push(
         new Paragraph({
           spacing: { before: 60 },
+          alignment: AlignmentType.JUSTIFIED,
           children: [new TextRun({ text: s, font: "Arial", size: 18, italics: true })],
         })
       );
