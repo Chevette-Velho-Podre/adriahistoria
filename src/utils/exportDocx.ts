@@ -129,6 +129,12 @@ async function loadLogo(): Promise<LoadedLogo | null> {
   }
 }
 
+function formatDateBR(dateStr: string): string {
+  const parts = dateStr.split("-");
+  if (parts.length === 3) return `${parts[2]}-${parts[1]}-${parts[0]}`;
+  return dateStr;
+}
+
 export async function exportToDocx(plan: LessonPlan) {
   const objetos = resolveObjetos(plan);
   const sugestoes = resolveSugestoes(plan);
@@ -194,7 +200,7 @@ export async function exportToDocx(plan: LessonPlan) {
       rows: [
         new TableRow({ children: [makeHeaderCell("Professor(a)", col1), makeCell(plan.professor || "—", { width: col2 })] }),
         new TableRow({ children: [makeHeaderCell("Escola", col1), makeCell(plan.escola || "—", { width: col2 })] }),
-        new TableRow({ children: [makeHeaderCell("Data", col1), makeCell(plan.data || "—", { width: col2 })] }),
+        new TableRow({ children: [makeHeaderCell("Data", col1), makeCell(plan.data ? formatDateBR(plan.data) : "—", { width: col2 })] }),
         new TableRow({ children: [makeHeaderCell("Ano/Série", col1), makeCell(plan.ano, { width: col2 })] }),
         new TableRow({ children: [makeHeaderCell("Trimestre", col1), makeCell(plan.trimestre ? `${plan.trimestre}º Trimestre` : "—", { width: col2 })] }),
       ],
@@ -341,6 +347,6 @@ export async function exportToDocx(plan: LessonPlan) {
   });
 
   const buffer = await Packer.toBlob(doc);
-  const filename = `plano-de-aula${plan.data ? `-${plan.data}` : ""}.docx`;
+  const filename = `plano-de-aula${plan.data ? `-${formatDateBR(plan.data)}` : ""}.docx`;
   saveAs(buffer, filename);
 }
