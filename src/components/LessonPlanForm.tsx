@@ -162,6 +162,16 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
             }
           </AnimatePresence>
           <div data-print-hide className="flex items-center gap-1.5">
+            {onNewPlan && (
+              <button
+                onClick={onNewPlan}
+                className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md border border-input bg-background hover:bg-accent transition-colors"
+                title="Iniciar novo planejamento"
+              >
+                <FilePlus className="h-3.5 w-3.5" />
+                Novo
+              </button>
+            )}
             <button
               onClick={exportToPdf}
               className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md border border-input bg-background hover:bg-accent transition-colors"
