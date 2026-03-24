@@ -301,6 +301,12 @@ export async function exportToDocx(plan: LessonPlan) {
     children.push(new Paragraph({ children: [new TextRun({ text: plan.observacoes, font: "Arial", size: 20 })] }));
   }
 
+  // Referências
+  if (plan.referencias) {
+    children.push(sectionTitle("Referências"));
+    children.push(new Paragraph({ children: [new TextRun({ text: plan.referencias, font: "Arial", size: 20 })] }));
+  }
+
   // Assinatura
   children.push(
     new Paragraph({ spacing: { before: 600 }, children: [] }),

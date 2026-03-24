@@ -458,6 +458,20 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange }: Less
           />
         </section>
 
+        {/* Seção: Referências */}
+        <section>
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4 pb-2 border-b border-border">
+            Referências
+          </h2>
+          <textarea
+            className={textareaClass}
+            placeholder="Liste os livros, textos e materiais que subsidiaram a elaboração deste plano..."
+            rows={4}
+            value={plan.referencias}
+            onChange={(e) => update("referencias", e.target.value)}
+          />
+        </section>
+
         {/* Assinatura */}
         <section className="mt-12 pt-8">
           <div className="flex flex-col items-center gap-2">

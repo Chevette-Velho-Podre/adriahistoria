@@ -15,6 +15,7 @@ const initialPlan: LessonPlan = {
   metodologia: "",
   avaliacao: "",
   observacoes: "",
+  referencias: "",
   habilidades: [],
   objetosConhecimento: [],
 };
