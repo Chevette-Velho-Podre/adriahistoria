@@ -73,7 +73,7 @@ const SavedPlansManager = ({ currentPlan, onLoad, activeId, onActiveIdChange }: 
     const name = generateName(currentPlan);
     const { data, error } = await supabase
       .from("lesson_plans")
-      .insert({ user_id: user.id, name, plan_data: currentPlan as unknown as Record<string, unknown> })
+      .insert([{ user_id: user.id, name, plan_data: JSON.parse(JSON.stringify(currentPlan)) }])
       .select()
       .single();
     if (error) { toast.error("Erro ao salvar"); return; }
