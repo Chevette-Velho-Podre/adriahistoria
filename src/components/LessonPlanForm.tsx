@@ -156,6 +156,7 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
           <AnimatePresence>
             {saved && <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0 }}
+            data-print-hide
             className="flex items-center gap-1.5 text-success text-xs font-medium">
                 <Check className="h-3.5 w-3.5" />
                 Salvo
