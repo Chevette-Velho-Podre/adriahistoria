@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { Navigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 import logoSecretaria from "@/assets/logo-secretaria-educacao.png";
 
 const Auth = () => {
@@ -11,6 +12,8 @@ const Auth = () => {
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [confirmMessage, setConfirmMessage] = useState(false);
+  const [forgotPassword, setForgotPassword] = useState(false);
+  const [resetSent, setResetSent] = useState(false);
 
   if (loading) {
     return (
@@ -27,6 +30,19 @@ const Auth = () => {
     setError(null);
     setSubmitting(true);
 
+    if (forgotPassword) {
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: `${window.location.origin}/reset-password`,
+      });
+      if (error) {
+        setError(error.message);
+      } else {
+        setResetSent(true);
+      }
+      setSubmitting(false);
+      return;
+    }
+
     if (isSignUp) {
       const { error } = await signUp(email, password);
       if (error) {
@@ -40,6 +56,28 @@ const Auth = () => {
     }
     setSubmitting(false);
   };
+
+  if (resetSent) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background px-4">
+        <div className="w-full max-w-sm space-y-6 text-center">
+          <img src={logoSecretaria} alt="Secretaria de Educação" className="h-12 mx-auto" />
+          <div className="p-6 rounded-lg border border-border bg-card space-y-3">
+            <h2 className="text-lg font-semibold text-foreground">Verifique seu e-mail</h2>
+            <p className="text-sm text-muted-foreground">
+              Enviamos um link de recuperação para <strong>{email}</strong>. Acesse seu e-mail para redefinir sua senha.
+            </p>
+          </div>
+          <button
+            onClick={() => { setResetSent(false); setForgotPassword(false); }}
+            className="text-sm text-primary hover:underline"
+          >
+            Voltar ao login
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   if (confirmMessage) {
     return (
@@ -74,7 +112,7 @@ const Auth = () => {
 
         <form onSubmit={handleSubmit} className="space-y-4 p-6 rounded-lg border border-border bg-card">
           <h2 className="text-base font-semibold text-foreground text-center">
-            {isSignUp ? "Criar conta" : "Entrar"}
+            {forgotPassword ? "Recuperar senha" : isSignUp ? "Criar conta" : "Entrar"}
           </h2>
 
           {error && (
@@ -95,39 +133,66 @@ const Auth = () => {
             />
           </div>
 
-          <div>
-            <label className="block text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">
-              Senha
-            </label>
-            <input
-              type="password"
-              required
-              minLength={6}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3 py-2 text-sm bg-background border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring/30"
-              placeholder="Mínimo 6 caracteres"
-            />
-          </div>
+          {!forgotPassword && (
+            <div>
+              <label className="block text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">
+                Senha
+              </label>
+              <input
+                type="password"
+                required
+                minLength={6}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-3 py-2 text-sm bg-background border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring/30"
+                placeholder="Mínimo 6 caracteres"
+              />
+            </div>
+          )}
 
           <button
             type="submit"
             disabled={submitting}
             className="w-full py-2.5 text-sm font-medium rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-50"
           >
-            {submitting ? "Aguarde..." : isSignUp ? "Criar conta" : "Entrar"}
+            {submitting ? "Aguarde..." : forgotPassword ? "Enviar link de recuperação" : isSignUp ? "Criar conta" : "Entrar"}
           </button>
 
-          <p className="text-xs text-center text-muted-foreground">
-            {isSignUp ? "Já tem conta?" : "Não tem conta?"}{" "}
-            <button
-              type="button"
-              onClick={() => { setIsSignUp(!isSignUp); setError(null); }}
-              className="text-primary hover:underline font-medium"
-            >
-              {isSignUp ? "Faça login" : "Cadastre-se"}
-            </button>
-          </p>
+          {forgotPassword ? (
+            <p className="text-xs text-center text-muted-foreground">
+              <button
+                type="button"
+                onClick={() => { setForgotPassword(false); setError(null); }}
+                className="text-primary hover:underline font-medium"
+              >
+                Voltar ao login
+              </button>
+            </p>
+          ) : (
+            <>
+              {!isSignUp && (
+                <p className="text-xs text-center">
+                  <button
+                    type="button"
+                    onClick={() => { setForgotPassword(true); setError(null); }}
+                    className="text-muted-foreground hover:text-primary hover:underline"
+                  >
+                    Esqueci minha senha
+                  </button>
+                </p>
+              )}
+              <p className="text-xs text-center text-muted-foreground">
+                {isSignUp ? "Já tem conta?" : "Não tem conta?"}{" "}
+                <button
+                  type="button"
+                  onClick={() => { setIsSignUp(!isSignUp); setError(null); }}
+                  className="text-primary hover:underline font-medium"
+                >
+                  {isSignUp ? "Faça login" : "Cadastre-se"}
+                </button>
+              </p>
+            </>
+          )}
         </form>
 
         <p className="text-[10px] text-center text-muted-foreground/60">
