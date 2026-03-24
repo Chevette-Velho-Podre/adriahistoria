@@ -256,10 +256,18 @@
     gap: 0.15rem !important;
   }
 
-  /* Section headings */
+  /* Section headings - ensure visibility */
   section h2 {
     font-size: 10pt !important;
     margin-bottom: 0.2rem !important;
+    color: #333 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Labels */
+  label {
+    color: #444 !important;
   }
 
   /* Allow content to flow across pages, avoid large blank spaces */
@@ -269,17 +277,25 @@
     margin-top: 0.5rem !important;
   }
 
+  /* Keep section heading together with its first child content */
+  section h2 {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  /* Keep each InputGroup (label + field) together */
+  section > div > div,
+  section > textarea,
+  section > .space-y-4 > div {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
   /* Only avoid breaks on small atomic items */
   section > .space-y-3 > div,
   .flex.items-start.gap-2 {
     break-inside: avoid;
     page-break-inside: avoid;
-  }
-
-  /* Sections headers should stay with content */
-  h2 {
-    break-after: avoid;
-    page-break-after: avoid;
   }
 
   /* Remove decorative max-width */
