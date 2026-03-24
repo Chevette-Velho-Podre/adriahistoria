@@ -56,7 +56,7 @@ const inputClass =
 const textareaClass =
 "w-full px-3 py-2 text-sm bg-background border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring/30 transition-all resize-y min-h-[80px] placeholder:text-muted-foreground/50";
 
-const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange }: LessonPlanFormProps) => {
+const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewPlan }: LessonPlanFormProps) => {
   const [saved, setSaved] = useState(false);
 
   const update = useCallback(
