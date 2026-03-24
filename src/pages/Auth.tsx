@@ -112,7 +112,7 @@ const Auth = () => {
 
         <form onSubmit={handleSubmit} className="space-y-4 p-6 rounded-lg border border-border bg-card">
           <h2 className="text-base font-semibold text-foreground text-center">
-            {isSignUp ? "Criar conta" : "Entrar"}
+            {forgotPassword ? "Recuperar senha" : isSignUp ? "Criar conta" : "Entrar"}
           </h2>
 
           {error && (
@@ -133,27 +133,29 @@ const Auth = () => {
             />
           </div>
 
-          <div>
-            <label className="block text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">
-              Senha
-            </label>
-            <input
-              type="password"
-              required
-              minLength={6}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3 py-2 text-sm bg-background border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring/30"
-              placeholder="Mínimo 6 caracteres"
-            />
-          </div>
+          {!forgotPassword && (
+            <div>
+              <label className="block text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">
+                Senha
+              </label>
+              <input
+                type="password"
+                required
+                minLength={6}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-3 py-2 text-sm bg-background border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring/30"
+                placeholder="Mínimo 6 caracteres"
+              />
+            </div>
+          )}
 
           <button
             type="submit"
             disabled={submitting}
             className="w-full py-2.5 text-sm font-medium rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-50"
           >
-            {submitting ? "Aguarde..." : isSignUp ? "Criar conta" : "Entrar"}
+            {submitting ? "Aguarde..." : forgotPassword ? "Enviar link de recuperação" : isSignUp ? "Criar conta" : "Entrar"}
           </button>
 
           <p className="text-xs text-center text-muted-foreground">
