@@ -298,7 +298,7 @@ export async function exportToDocx(plan: LessonPlan) {
   // Observações
   if (plan.observacoes) {
     children.push(sectionTitle("Observações"));
-    children.push(new Paragraph({ children: [new TextRun({ text: plan.observacoes, font: "Arial", size: 20 })] }));
+    children.push(new Paragraph({ alignment: AlignmentType.JUSTIFIED, children: [new TextRun({ text: plan.observacoes, font: "Arial", size: 20 })] }));
   }
 
   // Referências
