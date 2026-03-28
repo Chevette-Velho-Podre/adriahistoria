@@ -466,7 +466,7 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
                   <div className="flex items-center gap-1.5 shrink-0">
                     <button
                       type="button"
-                      onClick={() => updateEstimativa(obj.id, (plan.estimativaAulas[obj.id] ?? 3) - 1)}
+                      onClick={() => updateEstimativa(obj.id, ((plan.estimativaAulas ?? {})[obj.id] ?? 3) - 1)}
                       className="p-1 rounded hover:bg-accent transition-colors text-muted-foreground"
                     >
                       <Minus className="h-3.5 w-3.5" />
