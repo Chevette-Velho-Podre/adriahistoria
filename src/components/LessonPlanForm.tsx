@@ -165,7 +165,7 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
   }, [onChange]);
 
   const totalAulas = useMemo(() => {
-    return Object.values(plan.estimativaAulas).reduce((sum, v) => sum + v, 0);
+    return Object.values(plan.estimativaAulas ?? {}).reduce((sum, v) => sum + v, 0);
   }, [plan.estimativaAulas]);
 
   const totalSemanas = useMemo(() => Math.ceil(totalAulas / 3), [totalAulas]);
