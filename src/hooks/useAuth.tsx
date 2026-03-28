@@ -19,10 +19,19 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       setSession(session);
       setUser(session?.user ?? null);
       setLoading(false);
+
+      // Track login
+      if (event === "SIGNED_IN" && session?.user) {
+        supabase.from("user_activity").insert({
+          user_id: session.user.id,
+          email: session.user.email ?? "",
+          action: "login",
+        });
+      }
     });
 
     supabase.auth.getSession().then(({ data: { session } }) => {
