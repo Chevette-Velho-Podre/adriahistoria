@@ -136,7 +136,7 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
 
   // Auto-suggest 3 aulas per new object
   useEffect(() => {
-    const updated = { ...plan.estimativaAulas };
+    const updated = { ...(plan.estimativaAulas ?? {}) };
     let changed = false;
     for (const obj of plan.objetosConhecimento) {
       if (!(obj.id in updated)) {
