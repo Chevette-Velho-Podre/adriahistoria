@@ -64,9 +64,9 @@ function resolveObjetos(plan: LessonPlan) {
     .map((sel) => {
       const obj = all.find((o) => o.id === sel.id);
       if (!obj) return null;
-      return { titulo: obj.titulo, subtopicos: sel.subtopicos };
+      return { id: sel.id, titulo: obj.titulo, subtopicos: sel.subtopicos };
     })
-    .filter(Boolean) as { titulo: string; subtopicos: string[] }[];
+    .filter(Boolean) as { id: string; titulo: string; subtopicos: string[] }[];
 }
 
 function resolveSugestoes(plan: LessonPlan): string[] {
@@ -270,6 +270,56 @@ export async function exportToDocx(plan: LessonPlan) {
     children.push(
       new Paragraph({ spacing: { before: 200, after: 80 }, children: [new TextRun({ text: "Objetivos:", bold: true, font: "Arial", size: 20 })] }),
       new Paragraph({ alignment: AlignmentType.JUSTIFIED, children: [new TextRun({ text: plan.objetivos, font: "Arial", size: 20 })] })
+    );
+  }
+
+  // Estimativa de Aulas
+  if (objetos.length > 0 && Object.keys(plan.estimativaAulas).length > 0) {
+    children.push(sectionTitle("Estimativa de Aulas"));
+    children.push(
+      new Paragraph({
+        spacing: { after: 100 },
+        children: [new TextRun({ text: "3 aulas semanais de 50 minutos por turma.", font: "Arial", size: 18, color: "666666", italics: true })],
+      })
+    );
+
+    const estCol1 = 6960;
+    const estCol2 = 2400;
+    const estRows = [
+      new TableRow({
+        children: [
+          makeHeaderCell("Objeto de Conhecimento", estCol1),
+          makeHeaderCell("Aulas", estCol2),
+        ],
+      }),
+    ];
+    for (const obj of objetos) {
+      const aulas = plan.estimativaAulas[obj.id] ?? 3;
+      estRows.push(
+        new TableRow({
+          children: [
+            makeCell(obj.titulo, { width: estCol1 }),
+            makeCell(`${aulas}`, { width: estCol2 }),
+          ],
+        })
+      );
+    }
+    const totalAulas = Object.values(plan.estimativaAulas).reduce((s, v) => s + v, 0);
+    const totalSemanas = Math.ceil(totalAulas / 3);
+    estRows.push(
+      new TableRow({
+        children: [
+          makeCell("TOTAL", { bold: true, width: estCol1, shading: "E8F0FE" }),
+          makeCell(`${totalAulas} aulas · ≈ ${totalSemanas} semana(s) · ${totalAulas * 50} min`, { bold: true, width: estCol2, shading: "E8F0FE" }),
+        ],
+      })
+    );
+    children.push(
+      new Table({
+        width: { size: tableWidth, type: WidthType.DXA },
+        columnWidths: [estCol1, estCol2],
+        rows: estRows,
+      })
     );
   }
 
