@@ -449,7 +449,58 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
           </div>
         </section>
 
-        {/* Seção: Execução */}
+        {/* Seção: Estimativa de Aulas */}
+        {selectedObjetos.length > 0 && (
+          <section>
+            <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4 pb-2 border-b border-border flex items-center gap-2">
+              <Clock className="h-4 w-4" />
+              Estimativa de Aulas
+            </h2>
+            <p className="text-xs text-muted-foreground mb-3">
+              3 aulas semanais de 50 min por turma. O sistema sugere uma estimativa — ajuste conforme sua necessidade.
+            </p>
+            <div className="space-y-2">
+              {selectedObjetos.map((obj) => (
+                <div key={obj.id} className="flex items-center gap-3 p-2.5 bg-background border border-input rounded-md">
+                  <span className="flex-1 text-sm text-foreground/80 leading-snug line-clamp-2">{obj.titulo}</span>
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    <button
+                      type="button"
+                      onClick={() => updateEstimativa(obj.id, (plan.estimativaAulas[obj.id] ?? 3) - 1)}
+                      className="p-1 rounded hover:bg-accent transition-colors text-muted-foreground"
+                    >
+                      <Minus className="h-3.5 w-3.5" />
+                    </button>
+                    <input
+                      type="number"
+                      min={1}
+                      max={20}
+                      value={plan.estimativaAulas[obj.id] ?? 3}
+                      onChange={(e) => updateEstimativa(obj.id, parseInt(e.target.value) || 1)}
+                      className="w-10 text-center text-sm font-semibold bg-accent border border-input rounded px-1 py-0.5 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => updateEstimativa(obj.id, (plan.estimativaAulas[obj.id] ?? 3) + 1)}
+                      className="p-1 rounded hover:bg-accent transition-colors text-muted-foreground"
+                    >
+                      <Plus className="h-3.5 w-3.5" />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-3 p-3 bg-skill-hover rounded-md border border-border flex flex-wrap items-center justify-between gap-2">
+              <div className="text-sm font-semibold text-foreground">
+                Total: {totalAulas} {totalAulas === 1 ? "aula" : "aulas"}
+              </div>
+              <div className="text-xs text-muted-foreground">
+                ≈ {totalSemanas} {totalSemanas === 1 ? "semana" : "semanas"} · {totalAulas * 50} min
+              </div>
+            </div>
+          </section>
+        )}
+
         <section>
           <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4 pb-2 border-b border-border">
             Execução
