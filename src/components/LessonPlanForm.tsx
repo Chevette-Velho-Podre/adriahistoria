@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FileText, Check, X, Download, FilePlus, LogOut, Clock, Minus, Plus } from "lucide-react";
-import { FileText, Check, X, Download, FilePlus, LogOut } from "lucide-react";
 import { curriculumData, type Habilidade } from "@/data/curriculum";
 import logoSecretaria from "@/assets/logo-secretaria-educacao.png";
 import { exportToPdf } from "@/utils/exportPdf";
