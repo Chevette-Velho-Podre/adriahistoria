@@ -475,7 +475,7 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
                       type="number"
                       min={1}
                       max={20}
-                      value={plan.estimativaAulas[obj.id] ?? 3}
+                      value={(plan.estimativaAulas ?? {})[obj.id] ?? 3}
                       onChange={(e) => updateEstimativa(obj.id, parseInt(e.target.value) || 1)}
                       className="w-10 text-center text-sm font-semibold bg-accent border border-input rounded px-1 py-0.5 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                     />
