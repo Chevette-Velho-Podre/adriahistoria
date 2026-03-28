@@ -26,6 +26,7 @@ export interface LessonPlan {
   referencias: string;
   habilidades: Habilidade[];
   objetosConhecimento: ObjetoSelecionado[];
+  estimativaAulas: Record<string, number>;
 }
 
 interface LessonPlanFormProps {

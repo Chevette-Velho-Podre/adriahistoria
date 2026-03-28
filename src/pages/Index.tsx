@@ -22,6 +22,7 @@ const initialPlan: LessonPlan = {
   referencias: "",
   habilidades: [],
   objetosConhecimento: [],
+  estimativaAulas: {},
 };
 
 const Index = () => {
