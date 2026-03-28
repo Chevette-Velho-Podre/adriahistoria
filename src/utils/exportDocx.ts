@@ -273,6 +273,56 @@ export async function exportToDocx(plan: LessonPlan) {
     );
   }
 
+  // Estimativa de Aulas
+  if (objetos.length > 0 && Object.keys(plan.estimativaAulas).length > 0) {
+    children.push(sectionTitle("Estimativa de Aulas"));
+    children.push(
+      new Paragraph({
+        spacing: { after: 100 },
+        children: [new TextRun({ text: "3 aulas semanais de 50 minutos por turma.", font: "Arial", size: 18, color: "666666", italics: true })],
+      })
+    );
+
+    const estCol1 = 6960;
+    const estCol2 = 2400;
+    const estRows = [
+      new TableRow({
+        children: [
+          makeHeaderCell("Objeto de Conhecimento", estCol1),
+          makeHeaderCell("Aulas", estCol2),
+        ],
+      }),
+    ];
+    for (const obj of objetos) {
+      const aulas = plan.estimativaAulas[obj.id] ?? 3;
+      estRows.push(
+        new TableRow({
+          children: [
+            makeCell(obj.titulo, { width: estCol1 }),
+            makeCell(`${aulas}`, { width: estCol2 }),
+          ],
+        })
+      );
+    }
+    const totalAulas = Object.values(plan.estimativaAulas).reduce((s, v) => s + v, 0);
+    const totalSemanas = Math.ceil(totalAulas / 3);
+    estRows.push(
+      new TableRow({
+        children: [
+          makeCell("TOTAL", { bold: true, width: estCol1, shading: "E8F0FE" }),
+          makeCell(`${totalAulas} aulas · ≈ ${totalSemanas} semana(s) · ${totalAulas * 50} min`, { bold: true, width: estCol2, shading: "E8F0FE" }),
+        ],
+      })
+    );
+    children.push(
+      new Table({
+        width: { size: tableWidth, type: WidthType.DXA },
+        columnWidths: [estCol1, estCol2],
+        rows: estRows,
+      })
+    );
+  }
+
   // Execução
   children.push(sectionTitle("Execução"));
 
