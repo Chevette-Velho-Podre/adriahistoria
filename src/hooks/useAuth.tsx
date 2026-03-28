@@ -24,13 +24,16 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       setUser(session?.user ?? null);
       setLoading(false);
 
-      // Track login
+      // Track login – defer to ensure the auth token is set on the client
       if (event === "SIGNED_IN" && session?.user) {
-        supabase.from("user_activity").insert({
-          user_id: session.user.id,
-          email: session.user.email ?? "",
-          action: "login",
-        });
+        setTimeout(async () => {
+          const { error } = await supabase.from("user_activity").insert({
+            user_id: session.user.id,
+            email: session.user.email ?? "",
+            action: "login",
+          });
+          if (error) console.error("Failed to log activity:", error.message);
+        }, 0);
       }
     });
 
