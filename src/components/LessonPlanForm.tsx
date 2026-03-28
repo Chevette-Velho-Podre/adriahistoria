@@ -65,6 +65,8 @@ const textareaClass =
 
 const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewPlan, activeId, onActiveIdChange, onSignOut }: LessonPlanFormProps) => {
   const [saved, setSaved] = useState(false);
+  const { isAdmin } = useAdmin();
+  const navigate = useNavigate();
 
   const update = useCallback(
     (field: keyof LessonPlan, value: string) => {
