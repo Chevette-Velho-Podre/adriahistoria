@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { FileText, Check, X, Download, FilePlus, LogOut, Clock, Minus, Plus } from "lucide-react";
+import { FileText, Check, X, Download, FilePlus, LogOut, Clock, Minus, Plus, Shield } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useAdmin } from "@/hooks/useAdmin";
 import { curriculumData, type Habilidade } from "@/data/curriculum";
 import logoSecretaria from "@/assets/logo-secretaria-educacao.png";
 import { exportToPdf } from "@/utils/exportPdf";
@@ -63,6 +65,8 @@ const textareaClass =
 
 const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewPlan, activeId, onActiveIdChange, onSignOut }: LessonPlanFormProps) => {
   const [saved, setSaved] = useState(false);
+  const { isAdmin } = useAdmin();
+  const navigate = useNavigate();
 
   const update = useCallback(
     (field: keyof LessonPlan, value: string) => {
@@ -231,6 +235,15 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
               <FileText className="h-3.5 w-3.5" />
               DOCX
             </button>
+            {isAdmin && (
+              <button
+                onClick={() => navigate("/admin")}
+                className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md border border-input bg-background hover:bg-accent transition-colors text-muted-foreground"
+                title="Painel administrativo"
+              >
+                <Shield className="h-3.5 w-3.5" />
+              </button>
+            )}
             {onSignOut && (
               <button
                 onClick={onSignOut}
