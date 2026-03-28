@@ -136,7 +136,7 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
 
   // Auto-suggest 3 aulas per new object
   useEffect(() => {
-    const updated = { ...plan.estimativaAulas };
+    const updated = { ...(plan.estimativaAulas ?? {}) };
     let changed = false;
     for (const obj of plan.objetosConhecimento) {
       if (!(obj.id in updated)) {
@@ -165,7 +165,7 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
   }, [onChange]);
 
   const totalAulas = useMemo(() => {
-    return Object.values(plan.estimativaAulas).reduce((sum, v) => sum + v, 0);
+    return Object.values(plan.estimativaAulas ?? {}).reduce((sum, v) => sum + v, 0);
   }, [plan.estimativaAulas]);
 
   const totalSemanas = useMemo(() => Math.ceil(totalAulas / 3), [totalAulas]);
@@ -466,7 +466,7 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
                   <div className="flex items-center gap-1.5 shrink-0">
                     <button
                       type="button"
-                      onClick={() => updateEstimativa(obj.id, (plan.estimativaAulas[obj.id] ?? 3) - 1)}
+                      onClick={() => updateEstimativa(obj.id, ((plan.estimativaAulas ?? {})[obj.id] ?? 3) - 1)}
                       className="p-1 rounded hover:bg-accent transition-colors text-muted-foreground"
                     >
                       <Minus className="h-3.5 w-3.5" />
@@ -475,13 +475,13 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
                       type="number"
                       min={1}
                       max={20}
-                      value={plan.estimativaAulas[obj.id] ?? 3}
+                      value={(plan.estimativaAulas ?? {})[obj.id] ?? 3}
                       onChange={(e) => updateEstimativa(obj.id, parseInt(e.target.value) || 1)}
                       className="w-10 text-center text-sm font-semibold bg-accent border border-input rounded px-1 py-0.5 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                     />
                     <button
                       type="button"
-                      onClick={() => updateEstimativa(obj.id, (plan.estimativaAulas[obj.id] ?? 3) + 1)}
+                      onClick={() => updateEstimativa(obj.id, ((plan.estimativaAulas ?? {})[obj.id] ?? 3) + 1)}
                       className="p-1 rounded hover:bg-accent transition-colors text-muted-foreground"
                     >
                       <Plus className="h-3.5 w-3.5" />
