@@ -134,6 +134,42 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
       .filter(Boolean) as { id: string; titulo: string; allSubtopicos: string[]; selectedSubtopicos: string[] }[];
   }, [plan.ano, plan.objetosConhecimento]);
 
+  // Auto-suggest 3 aulas per new object
+  useEffect(() => {
+    const updated = { ...plan.estimativaAulas };
+    let changed = false;
+    for (const obj of plan.objetosConhecimento) {
+      if (!(obj.id in updated)) {
+        updated[obj.id] = 3;
+        changed = true;
+      }
+    }
+    // Clean up removed objects
+    for (const id of Object.keys(updated)) {
+      if (!plan.objetosConhecimento.some((o) => o.id === id)) {
+        delete updated[id];
+        changed = true;
+      }
+    }
+    if (changed) {
+      onChange((prev) => ({ ...prev, estimativaAulas: updated }));
+    }
+  }, [plan.objetosConhecimento]);
+
+  const updateEstimativa = useCallback((id: string, value: number) => {
+    const clamped = Math.max(1, Math.min(20, value));
+    onChange((prev) => ({
+      ...prev,
+      estimativaAulas: { ...prev.estimativaAulas, [id]: clamped },
+    }));
+  }, [onChange]);
+
+  const totalAulas = useMemo(() => {
+    return Object.values(plan.estimativaAulas).reduce((sum, v) => sum + v, 0);
+  }, [plan.estimativaAulas]);
+
+  const totalSemanas = useMemo(() => Math.ceil(totalAulas / 3), [totalAulas]);
+
   // Auto-save indicator
   useEffect(() => {
     const timer = setTimeout(() => {
