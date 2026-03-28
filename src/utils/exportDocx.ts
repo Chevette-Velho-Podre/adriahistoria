@@ -64,9 +64,9 @@ function resolveObjetos(plan: LessonPlan) {
     .map((sel) => {
       const obj = all.find((o) => o.id === sel.id);
       if (!obj) return null;
-      return { titulo: obj.titulo, subtopicos: sel.subtopicos };
+      return { id: sel.id, titulo: obj.titulo, subtopicos: sel.subtopicos };
     })
-    .filter(Boolean) as { titulo: string; subtopicos: string[] }[];
+    .filter(Boolean) as { id: string; titulo: string; subtopicos: string[] }[];
 }
 
 function resolveSugestoes(plan: LessonPlan): string[] {
