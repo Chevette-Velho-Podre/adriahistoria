@@ -235,6 +235,15 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
               <FileText className="h-3.5 w-3.5" />
               DOCX
             </button>
+            {isAdmin && (
+              <button
+                onClick={() => navigate("/admin")}
+                className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md border border-input bg-background hover:bg-accent transition-colors text-muted-foreground"
+                title="Painel administrativo"
+              >
+                <Shield className="h-3.5 w-3.5" />
+              </button>
+            )}
             {onSignOut && (
               <button
                 onClick={onSignOut}
