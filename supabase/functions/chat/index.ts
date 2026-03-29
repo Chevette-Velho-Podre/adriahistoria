@@ -34,7 +34,33 @@ serve(async (req) => {
       });
     }
 
-    const { messages } = await req.json();
+    const body = await req.json();
+    
+    // Validar input
+    if (!body || !Array.isArray(body.messages) || body.messages.length === 0 || body.messages.length > 50) {
+      return new Response(JSON.stringify({ error: "Formato de mensagem inválido" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+    
+    const messages = body.messages.filter(
+      (m: unknown) =>
+        m && typeof m === "object" &&
+        ("role" in (m as Record<string, unknown>)) &&
+        ("content" in (m as Record<string, unknown>)) &&
+        typeof (m as Record<string, string>).content === "string" &&
+        (m as Record<string, string>).content.length <= 10000 &&
+        ["user", "assistant"].includes((m as Record<string, string>).role)
+    );
+    
+    if (messages.length === 0) {
+      return new Response(JSON.stringify({ error: "Nenhuma mensagem válida" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+    
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
