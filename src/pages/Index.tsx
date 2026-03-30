@@ -31,6 +31,7 @@ const Index = () => {
   const [plan, setPlan] = useState<LessonPlan>(initialPlan);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [profileLoaded, setProfileLoaded] = useState(false);
+  const [needsOnboarding, setNeedsOnboarding] = useState(false);
 
   // Load profile data to pre-fill professor/escola
   useEffect(() => {
@@ -41,16 +42,31 @@ const Index = () => {
       .eq("user_id", user.id)
       .single()
       .then(({ data }) => {
-        if (data && (data.nome || data.escola)) {
+        if (data && data.nome && data.escola) {
           setPlan((prev) => ({
             ...prev,
             professor: data.nome || prev.professor,
             escola: data.escola || prev.escola,
           }));
+          setNeedsOnboarding(false);
+        } else {
+          setNeedsOnboarding(true);
         }
         setProfileLoaded(true);
       });
   }, [user, profileLoaded]);
+
+  if (needsOnboarding && user) {
+    return (
+      <OnboardingForm
+        userId={user.id}
+        onComplete={() => {
+          setNeedsOnboarding(false);
+          setProfileLoaded(false); // re-load profile
+        }}
+      />
+    );
+  }
 
   // Save profile when professor/escola change
   useEffect(() => {
