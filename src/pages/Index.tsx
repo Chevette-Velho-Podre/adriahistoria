@@ -5,6 +5,7 @@ import LessonPlanForm, { type LessonPlan } from "@/components/LessonPlanForm";
 import { curriculumData, type Habilidade } from "@/data/curriculum";
 import { useAuth } from "@/hooks/useAuth";
 import AIChatAssistant from "@/components/AIChatAssistant";
+import OnboardingForm from "@/components/OnboardingForm";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
