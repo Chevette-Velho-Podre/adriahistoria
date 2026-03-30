@@ -10,6 +10,8 @@ const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [nome, setNome] = useState("");
+  const [escola, setEscola] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [confirmMessage, setConfirmMessage] = useState(false);
@@ -45,7 +47,7 @@ const Auth = () => {
     }
 
     if (isSignUp) {
-      const { error } = await signUp(email, password);
+      const { error } = await signUp(email, password, { nome: nome.trim(), escola: escola.trim() });
       if (error) {
         setError(error);
       } else {
@@ -118,6 +120,40 @@ const Auth = () => {
 
           {error && (
             <p className="text-xs text-destructive bg-destructive/10 rounded-md p-2 text-center">{error}</p>
+          )}
+
+          {isSignUp && (
+            <>
+              <div>
+                <label className="block text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">
+                  Nome completo
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={nome}
+                  onChange={(e) => setNome(e.target.value)}
+                  className="w-full px-3 py-2 text-sm bg-background border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring/30"
+                  placeholder="Seu nome completo"
+                  maxLength={200}
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">
+                  Instituição de origem
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={escola}
+                  onChange={(e) => setEscola(e.target.value)}
+                  className="w-full px-3 py-2 text-sm bg-background border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring/30"
+                  placeholder="Nome da escola ou instituição"
+                  maxLength={200}
+                />
+              </div>
+            </>
           )}
 
           <div>

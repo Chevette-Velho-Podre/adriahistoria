@@ -5,6 +5,7 @@ import LessonPlanForm, { type LessonPlan } from "@/components/LessonPlanForm";
 import { curriculumData, type Habilidade } from "@/data/curriculum";
 import { useAuth } from "@/hooks/useAuth";
 import AIChatAssistant from "@/components/AIChatAssistant";
+import OnboardingForm from "@/components/OnboardingForm";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
@@ -30,6 +31,8 @@ const Index = () => {
   const [plan, setPlan] = useState<LessonPlan>(initialPlan);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [profileLoaded, setProfileLoaded] = useState(false);
+  const [needsOnboarding, setNeedsOnboarding] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Load profile data to pre-fill professor/escola
   useEffect(() => {
@@ -40,12 +43,15 @@ const Index = () => {
       .eq("user_id", user.id)
       .single()
       .then(({ data }) => {
-        if (data && (data.nome || data.escola)) {
+        if (data && data.nome && data.escola) {
           setPlan((prev) => ({
             ...prev,
             professor: data.nome || prev.professor,
             escola: data.escola || prev.escola,
           }));
+          setNeedsOnboarding(false);
+        } else {
+          setNeedsOnboarding(true);
         }
         setProfileLoaded(true);
       });
@@ -53,7 +59,7 @@ const Index = () => {
 
   // Save profile when professor/escola change
   useEffect(() => {
-    if (!user || !profileLoaded) return;
+    if (!user || !profileLoaded || needsOnboarding) return;
     const t = setTimeout(() => {
       supabase
         .from("profiles")
@@ -61,7 +67,7 @@ const Index = () => {
         .eq("user_id", user.id);
     }, 2000);
     return () => clearTimeout(t);
-  }, [plan.professor, plan.escola, user, profileLoaded]);
+  }, [plan.professor, plan.escola, user, profileLoaded, needsOnboarding]);
 
   const handleNewPlan = useCallback(() => {
     if (!window.confirm("Deseja iniciar um novo planejamento?")) return;
@@ -69,8 +75,6 @@ const Index = () => {
     setActiveId(null);
     toast.success("Novo planejamento iniciado");
   }, []);
-
-  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleToggleSkill = useCallback((h: Habilidade) => {
     setPlan((prev) => {
@@ -114,6 +118,18 @@ const Index = () => {
   const handleSignOut = async () => {
     await signOut();
   };
+
+  if (needsOnboarding && user) {
+    return (
+      <OnboardingForm
+        userId={user.id}
+        onComplete={() => {
+          setNeedsOnboarding(false);
+          setProfileLoaded(false);
+        }}
+      />
+    );
+  }
 
   return (
     <div className="h-screen flex flex-col bg-background">
