@@ -47,7 +47,7 @@ const Auth = () => {
     }
 
     if (isSignUp) {
-      const { error } = await signUp(email, password);
+      const { error } = await signUp(email, password, { nome: nome.trim(), escola: escola.trim() });
       if (error) {
         setError(error);
       } else {
