@@ -37,8 +37,13 @@ const ResetPassword = () => {
       return;
     }
 
-    if (password.length < 6) {
-      setError("A senha deve ter no mínimo 6 caracteres.");
+    if (password.length < 8) {
+      setError("A senha deve ter no mínimo 8 caracteres.");
+      return;
+    }
+
+    if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) {
+      setError("A senha deve conter pelo menos 1 caractere especial.");
       return;
     }
 
@@ -99,11 +104,13 @@ const ResetPassword = () => {
             <input
               type="password"
               required
-              minLength={6}
+              minLength={8}
+              pattern="^(?=.*[!@#$%^&*()_+\-=\[\]{};':&quot;\\|,.<>\/?]).{8,}$"
+              title="Mínimo 8 caracteres com pelo menos 1 caractere especial"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full px-3 py-2 text-sm bg-background border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring/30"
-              placeholder="Mínimo 6 caracteres"
+              placeholder="Mínimo 8 caracteres com caractere especial"
             />
           </div>
 
@@ -114,7 +121,7 @@ const ResetPassword = () => {
             <input
               type="password"
               required
-              minLength={6}
+              minLength={8}
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               className="w-full px-3 py-2 text-sm bg-background border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring/30"
