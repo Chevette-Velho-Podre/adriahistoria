@@ -142,11 +142,13 @@ const Auth = () => {
               <input
                 type="password"
                 required
-                minLength={6}
+                minLength={8}
+                pattern="^(?=.*[!@#$%^&*()_+\-=\[\]{};':&quot;\\|,.<>\/?]).{8,}$"
+                title="Mínimo 8 caracteres com pelo menos 1 caractere especial"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full px-3 py-2 text-sm bg-background border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring/30"
-                placeholder="Mínimo 6 caracteres"
+                placeholder="Mínimo 8 caracteres com caractere especial"
               />
             </div>
           )}
