@@ -6,7 +6,7 @@ interface AuthContext {
   user: User | null;
   session: Session | null;
   loading: boolean;
-  signUp: (email: string, password: string) => Promise<{ error: string | null }>;
+  signUp: (email: string, password: string, metadata?: Record<string, string>) => Promise<{ error: string | null }>;
   signIn: (email: string, password: string) => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
 }
