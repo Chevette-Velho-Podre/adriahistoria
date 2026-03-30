@@ -32,6 +32,7 @@ const Index = () => {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [profileLoaded, setProfileLoaded] = useState(false);
   const [needsOnboarding, setNeedsOnboarding] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Load profile data to pre-fill professor/escola
   useEffect(() => {
@@ -56,21 +57,9 @@ const Index = () => {
       });
   }, [user, profileLoaded]);
 
-  if (needsOnboarding && user) {
-    return (
-      <OnboardingForm
-        userId={user.id}
-        onComplete={() => {
-          setNeedsOnboarding(false);
-          setProfileLoaded(false); // re-load profile
-        }}
-      />
-    );
-  }
-
   // Save profile when professor/escola change
   useEffect(() => {
-    if (!user || !profileLoaded) return;
+    if (!user || !profileLoaded || needsOnboarding) return;
     const t = setTimeout(() => {
       supabase
         .from("profiles")
@@ -78,7 +67,7 @@ const Index = () => {
         .eq("user_id", user.id);
     }, 2000);
     return () => clearTimeout(t);
-  }, [plan.professor, plan.escola, user, profileLoaded]);
+  }, [plan.professor, plan.escola, user, profileLoaded, needsOnboarding]);
 
   const handleNewPlan = useCallback(() => {
     if (!window.confirm("Deseja iniciar um novo planejamento?")) return;
@@ -86,8 +75,6 @@ const Index = () => {
     setActiveId(null);
     toast.success("Novo planejamento iniciado");
   }, []);
-
-  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleToggleSkill = useCallback((h: Habilidade) => {
     setPlan((prev) => {
@@ -131,6 +118,18 @@ const Index = () => {
   const handleSignOut = async () => {
     await signOut();
   };
+
+  if (needsOnboarding && user) {
+    return (
+      <OnboardingForm
+        userId={user.id}
+        onComplete={() => {
+          setNeedsOnboarding(false);
+          setProfileLoaded(false);
+        }}
+      />
+    );
+  }
 
   return (
     <div className="h-screen flex flex-col bg-background">
