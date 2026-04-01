@@ -70,6 +70,22 @@ const SavedPlansManager = ({ currentPlan, onLoad, activeId, onActiveIdChange, sa
     if (open) fetchPlans();
   }, [open]);
 
+  // Expose save function for external "Salvar" button
+  const handleQuickSave = useCallback(async () => {
+    if (!user) return;
+    if (activeId) {
+      await handleUpdate(activeId);
+    } else {
+      await handleSaveNew();
+    }
+  }, [user, activeId, currentPlan]);
+
+  useEffect(() => {
+    if (saveTriggerRef) {
+      saveTriggerRef.current = handleQuickSave;
+    }
+  }, [handleQuickSave, saveTriggerRef]);
+
   const handleSaveNew = async () => {
     if (!user) return;
     const name = generateName(currentPlan);
