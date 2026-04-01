@@ -224,12 +224,12 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
         </div>
         <div className="flex items-center gap-2 self-end sm:self-auto">
           <AnimatePresence>
-            {saved && <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }}
+            {(saved || autoSaveStatus) && <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0 }}
             data-print-hide
-            className="flex items-center gap-1.5 text-success text-xs font-medium">
+            className={`flex items-center gap-1.5 text-xs font-medium ${autoSaveStatus?.includes("Erro") ? "text-destructive" : "text-success"}`}>
                 <Check className="h-3.5 w-3.5" />
-                Salvo
+                {saved ? "Salvo" : autoSaveStatus}
               </motion.div>
             }
           </AnimatePresence>
