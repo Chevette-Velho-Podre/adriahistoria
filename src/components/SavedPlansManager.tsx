@@ -34,6 +34,8 @@ interface Props {
   onLoad: (plan: LessonPlan) => void;
   activeId: string | null;
   onActiveIdChange: (id: string | null) => void;
+  onSaveTrigger?: () => void;
+  saveTriggerRef?: React.MutableRefObject<(() => Promise<void>) | null>;
 }
 
 const SavedPlansManager = ({ currentPlan, onLoad, activeId, onActiveIdChange }: Props) => {

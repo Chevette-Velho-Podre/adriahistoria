@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { FileText, Check, X, Download, FilePlus, LogOut, Clock, Minus, Plus, Shield } from "lucide-react";
+import { FileText, Check, X, Download, FilePlus, LogOut, Clock, Minus, Plus, Shield, Save } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useAdmin } from "@/hooks/useAdmin";
 import { curriculumData, type Habilidade } from "@/data/curriculum";
