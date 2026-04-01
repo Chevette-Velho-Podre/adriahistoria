@@ -154,7 +154,7 @@ const SavedPlansManager = ({ currentPlan, onLoad, activeId, onActiveIdChange, sa
           title="Meus planejamentos salvos"
         >
           <FolderOpen className="h-3.5 w-3.5" />
-          Salvos
+          Meus Planos
         </button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-lg max-h-[80vh] flex flex-col">
