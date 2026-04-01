@@ -65,7 +65,9 @@ const textareaClass =
 
 const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewPlan, activeId, onActiveIdChange, onSignOut }: LessonPlanFormProps) => {
   const [saved, setSaved] = useState(false);
+  const [saving, setSaving] = useState(false);
   const { isAdmin } = useAdmin();
+  const saveTriggerRef = useRef<(() => Promise<void>) | null>(null);
   const navigate = useNavigate();
 
   const update = useCallback(
