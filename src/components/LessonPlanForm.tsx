@@ -66,9 +66,33 @@ const textareaClass =
 const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewPlan, activeId, onActiveIdChange, onSignOut }: LessonPlanFormProps) => {
   const [saved, setSaved] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [autoSaveStatus, setAutoSaveStatus] = useState<string | null>(null);
   const { isAdmin } = useAdmin();
   const saveTriggerRef = useRef<(() => Promise<void>) | null>(null);
+  const lastAutoSaveRef = useRef<string>("");
   const navigate = useNavigate();
+
+  // Auto-save every 30 seconds when plan has content
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      const hasContent = plan.tema || plan.objetivos || plan.metodologia || plan.avaliacao || plan.habilidades.length > 0;
+      if (!hasContent || !saveTriggerRef.current) return;
+
+      const planSnapshot = JSON.stringify(plan);
+      if (planSnapshot === lastAutoSaveRef.current) return;
+
+      try {
+        await saveTriggerRef.current();
+        lastAutoSaveRef.current = planSnapshot;
+        setAutoSaveStatus("Salvo automaticamente");
+        setTimeout(() => setAutoSaveStatus(null), 3000);
+      } catch {
+        setAutoSaveStatus("Erro ao salvar");
+        setTimeout(() => setAutoSaveStatus(null), 3000);
+      }
+    }, 30000);
+    return () => clearInterval(interval);
+  }, [plan]);
 
   const update = useCallback(
     (field: keyof LessonPlan, value: string) => {
@@ -200,12 +224,12 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
         </div>
         <div className="flex items-center gap-2 self-end sm:self-auto">
           <AnimatePresence>
-            {saved && <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }}
+            {(saved || autoSaveStatus) && <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0 }}
             data-print-hide
-            className="flex items-center gap-1.5 text-success text-xs font-medium">
+            className={`flex items-center gap-1.5 text-xs font-medium ${autoSaveStatus?.includes("Erro") ? "text-destructive" : "text-success"}`}>
                 <Check className="h-3.5 w-3.5" />
-                Salvo
+                {saved ? "Salvo" : autoSaveStatus}
               </motion.div>
             }
           </AnimatePresence>
