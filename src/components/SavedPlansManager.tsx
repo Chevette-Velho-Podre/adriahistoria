@@ -38,7 +38,7 @@ interface Props {
   saveTriggerRef?: React.MutableRefObject<(() => Promise<void>) | null>;
 }
 
-const SavedPlansManager = ({ currentPlan, onLoad, activeId, onActiveIdChange }: Props) => {
+const SavedPlansManager = ({ currentPlan, onLoad, activeId, onActiveIdChange, saveTriggerRef }: Props) => {
   const { user } = useAuth();
   const [plans, setPlans] = useState<SavedPlanEntry[]>([]);
   const [open, setOpen] = useState(false);
