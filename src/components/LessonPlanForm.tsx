@@ -66,9 +66,33 @@ const textareaClass =
 const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewPlan, activeId, onActiveIdChange, onSignOut }: LessonPlanFormProps) => {
   const [saved, setSaved] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [autoSaveStatus, setAutoSaveStatus] = useState<string | null>(null);
   const { isAdmin } = useAdmin();
   const saveTriggerRef = useRef<(() => Promise<void>) | null>(null);
+  const lastAutoSaveRef = useRef<string>("");
   const navigate = useNavigate();
+
+  // Auto-save every 30 seconds when plan has content
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      const hasContent = plan.tema || plan.objetivos || plan.metodologia || plan.avaliacao || plan.habilidades.length > 0;
+      if (!hasContent || !saveTriggerRef.current) return;
+
+      const planSnapshot = JSON.stringify(plan);
+      if (planSnapshot === lastAutoSaveRef.current) return;
+
+      try {
+        await saveTriggerRef.current();
+        lastAutoSaveRef.current = planSnapshot;
+        setAutoSaveStatus("Salvo automaticamente");
+        setTimeout(() => setAutoSaveStatus(null), 3000);
+      } catch {
+        setAutoSaveStatus("Erro ao salvar");
+        setTimeout(() => setAutoSaveStatus(null), 3000);
+      }
+    }, 30000);
+    return () => clearInterval(interval);
+  }, [plan]);
 
   const update = useCallback(
     (field: keyof LessonPlan, value: string) => {
