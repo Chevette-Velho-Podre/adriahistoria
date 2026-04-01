@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import React, { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { FileText, Check, X, Download, FilePlus, LogOut, Clock, Minus, Plus, Shield } from "lucide-react";
+import { FileText, Check, X, Download, FilePlus, LogOut, Clock, Minus, Plus, Shield, Save } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useAdmin } from "@/hooks/useAdmin";
 import { curriculumData, type Habilidade } from "@/data/curriculum";
@@ -65,7 +65,9 @@ const textareaClass =
 
 const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewPlan, activeId, onActiveIdChange, onSignOut }: LessonPlanFormProps) => {
   const [saved, setSaved] = useState(false);
+  const [saving, setSaving] = useState(false);
   const { isAdmin } = useAdmin();
+  const saveTriggerRef = useRef<(() => Promise<void>) | null>(null);
   const navigate = useNavigate();
 
   const update = useCallback(
@@ -218,7 +220,24 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
                 Novo
               </button>
             )}
-            <SavedPlansManager currentPlan={plan} onLoad={(p) => onChange(p)} activeId={activeId} onActiveIdChange={onActiveIdChange} />
+            <button
+              onClick={async () => {
+                if (saveTriggerRef.current) {
+                  setSaving(true);
+                  await saveTriggerRef.current();
+                  setSaved(true);
+                  setTimeout(() => setSaved(false), 2000);
+                  setSaving(false);
+                }
+              }}
+              disabled={saving}
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-50"
+              title={activeId ? "Atualizar planejamento" : "Salvar novo planejamento"}
+            >
+              <Save className="h-3.5 w-3.5" />
+              {saving ? "Salvando..." : "Salvar"}
+            </button>
+            <SavedPlansManager currentPlan={plan} onLoad={(p) => onChange(p)} activeId={activeId} onActiveIdChange={onActiveIdChange} saveTriggerRef={saveTriggerRef} />
             <button
               onClick={exportToPdf}
               className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md border border-input bg-background hover:bg-accent transition-colors"

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { FolderOpen, Save, Trash2, Clock, RefreshCw } from "lucide-react";
 import {
   Dialog,
@@ -34,9 +34,11 @@ interface Props {
   onLoad: (plan: LessonPlan) => void;
   activeId: string | null;
   onActiveIdChange: (id: string | null) => void;
+  onSaveTrigger?: () => void;
+  saveTriggerRef?: React.MutableRefObject<(() => Promise<void>) | null>;
 }
 
-const SavedPlansManager = ({ currentPlan, onLoad, activeId, onActiveIdChange }: Props) => {
+const SavedPlansManager = ({ currentPlan, onLoad, activeId, onActiveIdChange, saveTriggerRef }: Props) => {
   const { user } = useAuth();
   const [plans, setPlans] = useState<SavedPlanEntry[]>([]);
   const [open, setOpen] = useState(false);
@@ -67,6 +69,22 @@ const SavedPlansManager = ({ currentPlan, onLoad, activeId, onActiveIdChange }: 
   useEffect(() => {
     if (open) fetchPlans();
   }, [open]);
+
+  // Expose save function for external "Salvar" button
+  const handleQuickSave = useCallback(async () => {
+    if (!user) return;
+    if (activeId) {
+      await handleUpdate(activeId);
+    } else {
+      await handleSaveNew();
+    }
+  }, [user, activeId, currentPlan]);
+
+  useEffect(() => {
+    if (saveTriggerRef) {
+      saveTriggerRef.current = handleQuickSave;
+    }
+  }, [handleQuickSave, saveTriggerRef]);
 
   const handleSaveNew = async () => {
     if (!user) return;
@@ -136,7 +154,7 @@ const SavedPlansManager = ({ currentPlan, onLoad, activeId, onActiveIdChange }: 
           title="Meus planejamentos salvos"
         >
           <FolderOpen className="h-3.5 w-3.5" />
-          Salvos
+          Meus Planos
         </button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-lg max-h-[80vh] flex flex-col">
