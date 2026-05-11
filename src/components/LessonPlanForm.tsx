@@ -650,7 +650,7 @@ const LessonPlanForm = ({ plan, onChange, onAnoChange, onTrimestreChange, onNewP
         </div>
 
         <footer className="mt-10 pb-4 text-center" data-print-hide>
-          <p className="text-xs text-muted-foreground/60">Assistente de planejamento Adria — desenvolvida por Rômulo Ferreira — 2026</p>
+          <p className="text-xs text-muted-foreground/60">Adria — sua assistente de planejamento de aulas — desenvolvida por Rômulo Ferreira — 2026</p>
         </footer>
       </div>
     </div>);
