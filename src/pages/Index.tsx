@@ -156,15 +156,15 @@ const Index = () => {
       <div className="flex flex-1 overflow-hidden relative">
         {sidebarOpen && (
           <div
-            className="lg:hidden fixed inset-0 z-10 bg-black/40"
+            className="lg:hidden fixed inset-0 z-30 bg-black/50"
             onClick={() => setSidebarOpen(false)}
           />
         )}
 
         <div
           className={`${
-            sidebarOpen ? "translate-x-0" : "-translate-x-full"
-          } lg:translate-x-0 fixed lg:relative z-20 h-[calc(100vh-49px)] lg:h-full w-[85vw] max-w-[400px] lg:w-[400px] lg:min-w-[400px] transition-transform duration-300 ease-in-out`}
+            sidebarOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full"
+          } lg:translate-x-0 lg:shadow-none fixed lg:relative top-[49px] lg:top-0 left-0 z-40 lg:z-auto h-[calc(100vh-49px)] lg:h-full w-[100vw] sm:w-[92vw] sm:max-w-[440px] md:max-w-[460px] lg:w-[400px] lg:min-w-[400px] lg:max-w-none transition-transform duration-300 ease-in-out`}
         >
           <CurriculumSidebar
             selectedAno={plan.ano}
@@ -173,6 +173,7 @@ const Index = () => {
             selectedObjetos={plan.objetosConhecimento}
             onToggleSkill={handleToggleSkill}
             onToggleObjeto={handleToggleObjeto}
+            onClose={() => setSidebarOpen(false)}
           />
         </div>
 
