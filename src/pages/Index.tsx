@@ -190,7 +190,9 @@ const Index = () => {
           />
         </div>
       </div>
-      <AIChatAssistant />
+      <div className={sidebarOpen ? "hidden lg:block" : ""}>
+        <AIChatAssistant />
+      </div>
     </div>
   );
 };
