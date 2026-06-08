@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { Search, ChevronDown, ChevronRight } from "lucide-react";
+import { Search, ChevronDown, ChevronRight, X } from "lucide-react";
 import { curriculumData, type Habilidade } from "@/data/curriculum";
 import SkillCard from "./SkillCard";
 
@@ -12,9 +12,10 @@ interface CurriculumSidebarProps {
   selectedObjetos: ObjetoSelecionado[];
   onToggleSkill: (h: Habilidade) => void;
   onToggleObjeto: (id: string) => void;
+  onClose?: () => void;
 }
 
-const CurriculumSidebar = ({ selectedAno, selectedTrimestre, selectedSkills, selectedObjetos, onToggleSkill, onToggleObjeto }: CurriculumSidebarProps) => {
+const CurriculumSidebar = ({ selectedAno, selectedTrimestre, selectedSkills, selectedObjetos, onToggleSkill, onToggleObjeto, onClose }: CurriculumSidebarProps) => {
   const [search, setSearch] = useState("");
   const [expandedTrimestres, setExpandedTrimestres] = useState<Record<string, boolean>>({});
 
