@@ -58,9 +58,20 @@ const CurriculumSidebar = ({ selectedAno, selectedTrimestre, selectedSkills, sel
   return (
     <aside className="w-full h-full flex flex-col bg-card border-r border-border">
       <div className="p-4 border-b border-border">
-        <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-3">
-          Secretaria de Educação de Montes Claros Referencial Curricular Municipal Planejamento de história                                                             
-        </h2>
+        <div className="flex items-start justify-between gap-2 mb-3">
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+            Secretaria de Educação de Montes Claros Referencial Curricular Municipal Planejamento de história
+          </h2>
+          {onClose && (
+            <button
+              onClick={onClose}
+              className="lg:hidden -mt-1 -mr-1 p-1.5 rounded-md hover:bg-accent text-muted-foreground shrink-0"
+              aria-label="Fechar"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          )}
+        </div>
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <input type="text" placeholder="Buscar habilidades..."
