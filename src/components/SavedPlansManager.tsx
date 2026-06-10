@@ -52,6 +52,7 @@ const SavedPlansManager = ({ currentPlan, onLoad, activeId, onActiveIdChange, sa
     const { data } = await supabase
       .from("lesson_plans")
       .select("*")
+      .eq("user_id", user.id)
       .order("updated_at", { ascending: false });
     if (data) {
       setPlans(
